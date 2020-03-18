@@ -64,6 +64,129 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-算法设计与分析" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/03/18/%E7%AE%97%E6%B3%95%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%88%86%E6%9E%90/" class="article-date">
+  <time datetime="2020-03-18T02:28:17.000Z" itemprop="datePublished">2020-03-18</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/03/18/%E7%AE%97%E6%B3%95%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%88%86%E6%9E%90/">算法设计与分析</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="第一章-算法介绍"><a href="#第一章-算法介绍" class="headerlink" title="第一章 算法介绍"></a>第一章 算法介绍</h2><p>算法设计的基本步骤：</p>
+<ol>
+<li>问题的建模。</li>
+<li>选择什么样的算法以及怎样描述这个方法？</li>
+<li>这个算法是否对所有的实例都能得到最优解（算法的效率）？如何证明？</li>
+<li>如果不是，能否找到反例？</li>
+</ol>
+<p>投资问题蛮力算法的排列组合算法</p>
+<p>方程X1 + X2 + … + Xn = m 的非负整数解&lt;x1,x2, … xn&gt;的个数估计：<br>可行解表示成0-1序列： m个1，n-1个0<br> 例如  m = 5  n = 4<br>  0 0 0 1 1 1 1 1<br>  则该解的集合会有C（5+4-1，3）= 56个元素。</p>
+<h2 id="排序算法"><a href="#排序算法" class="headerlink" title="排序算法"></a>排序算法</h2><p>一. 插入排序<br>二. 归并排序<br>三. 堆排序<br>四. 快速排序<br>（以上是非线性排序算法，以下是线性排序算法）<br>五. 计数排序<br>六. 基数排序<br>七. 桶排序</p>
+<ol>
+<li>数组A放入数组B中。分桶</li>
+<li>数组B内插入排序。桶内采用插入排序</li>
+<li>B[0]-B[9]数组接起来。接桶<br>时间复杂度分析：<br>T（n）= O（n）+ ΣO（n^2）<br>使用要求：最好是数组内的元素按一定的规律事先排序好的。<br>空间复杂度？<br>稳定性？</li>
+</ol>
+<h2 id="中位数和顺序统计学"><a href="#中位数和顺序统计学" class="headerlink" title="中位数和顺序统计学"></a>中位数和顺序统计学</h2><p>顺序统计学：<br>找到N个元素中第i小的元素</p>
+<p>中位数：最中间的位置（不受极大值和极小值的影响）<br>偶数位会有两个中位数（3，4位），只取一个的话取小（？）。</p>
+<p>最大最小的话时间复杂度O（n）</p>
+<p>第i小的话O（nlgn）<br>可以使用构建堆的方式时间复杂度为O（n）时间复杂度为O(nlgi)</p>
+<p>利用快速排序 先找到基准元素的位置k，k为第k小的元素，之后即可根据k和i关系找到第i小的元素伪代码展示如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">RANDOMIZED-SELECT(A,p,r,i)</span><br><span class="line"><span class="keyword">if</span>(p = r)</span><br></pre></td></tr></table></figure>
+<p>最坏的情况下：9：1（k为最开始或最末尾）<br>时间复杂度为O（n^2）<br>T（n）= T（n-1）+O（n）</p>
+<p>大部分状况下为：O（n）使用主方法证明<br>T（n）= T（9n/10）+ O（n）</p>
+<p>解决方法尽量避免最坏情况：找到一个尽量好的基准元素。<br>插入排序对组内元素进行排序（5个元素一组），找出中位数，再递归进行插入排序，依然为5个一组，知道找到合适的中位数。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">SELECT(A,i)</span><br><span class="line">1. 分成n/5个中位数组插入排序</span><br><span class="line">2. 找到中位数</span><br><span class="line">3. 将中位数再排序，找到中位数x （n/5）/2</span><br><span class="line">4. 3倍的大于，3倍的小于</span><br><span class="line">5.  7n/10 + 6 e  ？？？？？？</span><br></pre></td></tr></table></figure>
+<h2 id="动态规划"><a href="#动态规划" class="headerlink" title="动态规划"></a>动态规划</h2><p>往往用来求最优化问题<br>最短路线，最优方案，最小值。<br>方法：自底向上（分治总是和递归方法在一起）<br>步骤：</p>
+<ol>
+<li>刻画最优解的结构；</li>
+<li>递归地去定义最优解的值；(以递归方式去定义)</li>
+<li>以自底向上的方式求最优解的值；（以迭代的方式去求解，并记录最优解的路线）</li>
+<li>根据最优解的路线最优解构造出来。</li>
+</ol>
+<p>问题背景：<br>公司有两条装配线1，2，每条线有n个工位<br>S1，1 - S1，n<br>S2，1 - S2，n对应的工作完全一样<br>但是每个对应工位的效率是不同的<br>相同装配线工位的交接是可以忽略不计的，不同的装配线之间的交接是需要时间的。<br>问：快速装配汽车，找一条从汽车底盘进入装配线到离开装配线为止最快的路线？（链接 dp6）<br>动态规划只求一个最优解</p>
+<p>问题解决：</p>
+<ol>
+<li>刻画最优解的结构：<br>经过S1，j最快的路径，j = 1，直接上配置线1；如果j &gt;= 2，必须经过S2，j-1或者S1，j-1<br>  经过S1，j-1的话必须经过S1，j-1的最佳路径<br> 经过S2，j-1的话必须经过S2，j-1的最佳路径<br>最优解结构：<br>一个问题的最优解一定包含子问题的最优解。</li>
+<li>递归地去定义最优解的值：<br> 第一种方法（但是不用递归求解，而是用自底向上求）：<br> 经过S1（dp page8）切换线需要额外的传输时间<br> 经过S2（dp page8）</li>
+<li>以自底向上的方式求最优解的值：<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">FASTEST-WAY(a,t,e,x,n)</span><br></pre></td></tr></table></figure>
+L1[J] 和L2[J]不是记录最优路线的。L[J]是记录最有路线的。</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://github.com/111zx/111zx.github.io/2020/03/18/%E7%AE%97%E6%B3%95%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%88%86%E6%9E%90/" data-id="ck7wv0pak0000r8ubckx8hvwh" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-IDEA-学习" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/03/15/IDEA-%E5%AD%A6%E4%B9%A0/" class="article-date">
+  <time datetime="2020-03-15T07:13:57.000Z" itemprop="datePublished">2020-03-15</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/03/15/IDEA-%E5%AD%A6%E4%B9%A0/">IDEA 学习</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="一-Intellij-IDEA的介绍和优势"><a href="#一-Intellij-IDEA的介绍和优势" class="headerlink" title="一. Intellij IDEA的介绍和优势"></a>一. Intellij IDEA的介绍和优势</h2><h3 id="1-所属公司：JetBrains"><a href="#1-所属公司：JetBrains" class="headerlink" title="1.所属公司：JetBrains"></a>1.所属公司：JetBrains</h3><pre><code>其他产品：
+AppCode
+GoLand
+PyCharm
+WebStorm等
+Android Studio：谷歌公司基于IDEA开发的。</code></pre><h3 id="2-Intellj-IDEA-介绍"><a href="#2-Intellj-IDEA-介绍" class="headerlink" title="2.Intellj IDEA 介绍"></a>2.Intellj IDEA 介绍</h3><pre><code>Intellj IDEA是用于支持JAVA,Sacla，Groovy等语言的开发工具，擅长于企业应用，移动应用和Web应用。</code></pre><h3 id="3-Intellj-IDEA-优势（相比Eclipse）"><a href="#3-Intellj-IDEA-优势（相比Eclipse）" class="headerlink" title="3.Intellj IDEA 优势（相比Eclipse）"></a>3.Intellj IDEA 优势（相比Eclipse）</h3><pre><code>①强大的整合能力。
+②提示功能快速，便捷。
+③提示功能的范围广。
+④好用的快捷键和代码模板。
+⑤精准搜索。</code></pre><h2 id="二-Intellj-IDEA的安装"><a href="#二-Intellj-IDEA的安装" class="headerlink" title="二. Intellj IDEA的安装"></a>二. Intellj IDEA的安装</h2><h3 id="1-Intellj-IDEA的安装目录"><a href="#1-Intellj-IDEA的安装目录" class="headerlink" title="1.Intellj IDEA的安装目录"></a>1.Intellj IDEA的安装目录</h3><p>①bin目录：启动文件和虚拟机的配置信息和IDEA的基本属性的信息等。<br>    虚拟机配置信息文档idea64.exe.vmoptions<br>            <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">-Xms2048m <span class="comment">#初始内存</span></span><br><span class="line">-Xmx4096m <span class="comment">#最大内存 可以降低垃圾回收频率</span></span><br><span class="line">-XX:ReservedCodeCacheSize=512m <span class="comment">#可保留代码的缓存大小 可以降低垃圾回收频率</span></span><br><span class="line">-XX:+UseConcMarkSweepGC</span><br><span class="line">-XX:SoftRefLRUPolicyMSPerMB=50</span><br><span class="line">-ea</span><br><span class="line">-XX:CICompilerCount=2</span><br><span class="line">-Dsun.io.useCanonPrefixCache=<span class="literal">false</span></span><br><span class="line">-Djava.net.preferIPv4Stack=<span class="literal">true</span></span><br><span class="line">-Djdk.http.auth.tunneling.disabledSchemes=<span class="string">""</span></span><br><span class="line">-XX:+HeapDumpOnOutOfMemoryError</span><br><span class="line">-XX:-OmitStackTraceInFastThrow</span><br><span class="line">-Djdk.attach.allowAttachSelf=<span class="literal">true</span></span><br><span class="line">-Dkotlinx.coroutines.debug=off</span><br><span class="line">-Djdk.module.illegalAccess.silent=<span class="literal">true</span></span><br><span class="line">-Xverify:none</span><br><span class="line">-javaagent:..\..\bin\JetbrainsCrack.jar</span><br></pre></td></tr></table></figure></p>
+<p>②help：帮助文档。<br>③jre64：jre的运行环境。<br>④lib：IDEA相关的类库。<br>⑤license：相关插件的一些许可信息。<br>⑥plugins：插件信息。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://github.com/111zx/111zx.github.io/2020/03/15/IDEA-%E5%AD%A6%E4%B9%A0/" data-id="ck7sqh7bi00007kub1ybwh8a5" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-我的第一篇博客" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2020/03/14/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/" class="article-date">
@@ -86,14 +209,17 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="第一章"><a href="#第一章" class="headerlink" title="第一章"></a>第一章</h2><hr>
+        <h2 id="第一章"><a href="#第一章" class="headerlink" title="第一章"></a>第一章</h2><p>1<br>2<br>3<br>4<br>5</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
+
+
+<h2 id="第二章"><a href="#第二章" class="headerlink" title="第二章"></a>第二章</h2><p>4<br>5<br>5<br>6</p>
 <p>##参考文献</p>
-<hr>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://github.com/111zx/111zx.github.io/2020/03/14/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/" data-id="ck7r5s1x20000fwub86mj1ygj" class="article-share-link">Share</a>
+      <a data-url="https://github.com/111zx/111zx.github.io/2020/03/14/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/" data-id="ck7sqh7c300027kub7cczc863" class="article-share-link">Share</a>
       
       
     </footer>
@@ -126,7 +252,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
+<h2 id="Hello-Hexo"><a href="#Hello-Hexo" class="headerlink" title="Hello Hexo"></a>Hello Hexo</h2><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
 
 <p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
 <h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
@@ -142,7 +268,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://github.com/111zx/111zx.github.io/2020/03/14/hello-world/" data-id="ck7r5s1xp0001fwub5f4v2awf" class="article-share-link">Share</a>
+      <a data-url="https://github.com/111zx/111zx.github.io/2020/03/14/hello-world/" data-id="ck7sqh7by00017kub6wzh4oj2" class="article-share-link">Share</a>
       
       
     </footer>
@@ -181,6 +307,14 @@
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2020/03/18/%E7%AE%97%E6%B3%95%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%88%86%E6%9E%90/">算法设计与分析</a>
+          </li>
+        
+          <li>
+            <a href="/2020/03/15/IDEA-%E5%AD%A6%E4%B9%A0/">IDEA 学习</a>
+          </li>
         
           <li>
             <a href="/2020/03/14/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/">我的第一篇博客</a>
