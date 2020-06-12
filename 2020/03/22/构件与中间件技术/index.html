@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>构件与中间件技术 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="第二章 CORBA基本原理对象管理体系结构 CORBA体系结构 对象的客户操作性 CORBA规范和产品  对象管理组织OMG     OMG主要规范         UML(Unified Model Language)：是面向对象分析与设计阶段的表示技术规范         CORBA：（Common Object Request Broker Architecture）  对象管理体系结构OM">
+<meta property="og:type" content="article">
+<meta property="og:title" content="构件与中间件技术">
+<meta property="og:url" content="https://github.com/111zx/111zx.github.io/2020/03/22/%E6%9E%84%E4%BB%B6%E4%B8%8E%E4%B8%AD%E9%97%B4%E4%BB%B6%E6%8A%80%E6%9C%AF/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="第二章 CORBA基本原理对象管理体系结构 CORBA体系结构 对象的客户操作性 CORBA规范和产品  对象管理组织OMG     OMG主要规范         UML(Unified Model Language)：是面向对象分析与设计阶段的表示技术规范         CORBA：（Common Object Request Broker Architecture）  对象管理体系结构OM">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-03-22T11:25:53.000Z">
+<meta property="article:modified_time" content="2020-03-23T01:15:30.736Z">
+<meta property="article:author" content="zx">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://github.com/111zx/111zx.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-构件与中间件技术" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/03/22/%E6%9E%84%E4%BB%B6%E4%B8%8E%E4%B8%AD%E9%97%B4%E4%BB%B6%E6%8A%80%E6%9C%AF/" class="article-date">
+  <time datetime="2020-03-22T11:25:53.000Z" itemprop="datePublished">2020-03-22</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      构件与中间件技术
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="第二章-CORBA基本原理"><a href="#第二章-CORBA基本原理" class="headerlink" title="第二章 CORBA基本原理"></a>第二章 CORBA基本原理</h2><pre><code>对象管理体系结构
+CORBA体系结构
+对象的客户操作性
+CORBA规范和产品
+
+对象管理组织OMG
+    OMG主要规范
+        UML(Unified Model Language)：是面向对象分析与设计阶段的表示技术规范
+        CORBA：（Common Object Request Broker Architecture）
+
+对象管理体系结构OMA：
+Object Management Architecture是CORBA所给予的概念框架，他描述了一个较高层次的分布式计算环境
+    核心内容是对象模型和参考模型
+        对象模型：定义了外部可见特征的，独立于具体实现的语义
+        参考模型：标识和刻画了组成OMA的组件，接口和协议
+
+组成：
+
+    对象请求代理(ORB): 连接对象服务（功能），靠接口来实现功能（应用程序接口，领域接口，公共设施）。
+        是OMA参考模型的核心
+        提供了分布式对象之间透明的发送和接受响应的基本机制
+
+
+    对象服务（需要完成的功能）：
+        对象服务是一种通用的服务
+        对象服务的本质是将覆盖对象整个生存期的对象管理任务标准化：
+            例如，对象的创建，对象的访问控制，并发和安全性等
+            可导致不同应用程序的一致性，提高开发的效率
+            COSS：包括对象命名，事件，等的规范
+
+    公共设施：包括分布式文档设施，打印社是，数据库设施，电子邮件设施等
+        同样具有自己的规范
+
+    领域接口：
+        与应用领域有关的接口
+        例如，金融，医疗，电子商务等
+        不同领域有不同的规范
+        标准划主要是指针对接口的标准化
+
+    应用程序的接口：
+        应用程序对象是终端用户执行的任务
+        不是OMG标准划的内容，是构成整个OMA模型的最上层</code></pre><h3 id="CORBA体系结构"><a href="#CORBA体系结构" class="headerlink" title="CORBA体系结构"></a>CORBA体系结构</h3><pre><code>对象模型
+    对象模型描述了对象外部特征的标准语义
+    对象，类型，操作属性等语义和Java等OO语言十分相近
+    但同时具有组件/构件的特征
+    分布式对象
+客户程序与对象实现之间的界面是对象的接口定义
+    接口
+        客户程序所看到的对象接口完全独立于
+            对象所处的位置
+            实现对象的程序设计语言
+            对象接口中未反映的其他特性
+    这种独立性是独立于ORB来保证
+对象接口采用接口定义语言IDL定义
+
+OMG请求可携带的信息：
+    操作
+    提供服务的目标对象引用
+    实际参数
+    一个可选的上下文
+    请求表
+
+对象的创建和撤销
+    从客户的角度看，没有特别的机之用于创建和撤销对象
+
+ORB结构
+    客户程序与动态调用接口，IDL Stub，ORB接口交互
+    对象实现与ORB接口，静态IDLSkeleton，动态框架，对象适配器交互
+
+ORB接口：
+    客户程序只能通过对象的接口定义掌握对象的逻辑结构，客户程序不会知道对象具体的实现方式，也不必知道哪个对象适配器以及需要哪个ORB访问该对象实现
+    对象实现可以用多种方式实现
+        独立的服务程序，程序库每个方法用一个程序实现
+        通过附加的程序适配器，ORB事实上可以支持所有风格的对象实现
+
+Stub/Skeleton机制
+    采用Stub/Skeleton机制支持客户端和服务端的交互
+    stub桩的调用方式：静态调用
+        静态调用借助于客户程序桩完成
+        桩与框架再编译时创建并且在运行时不再改变，所以这些接口成为SII（Static Invocation Interface）
+        IDL桩负责客户程序的实现语言与ORB内核之间的映射
+        客户程序需要在编译之前知道操作的名字，方式等
+    IDL skeleton：静态请求分派方式
+        静态方式通过由IDL生成的框架完成
+        ORB通过IDL框架查找合适的实现代码，传送参数，并将控制传送给对象实现
+        对象实现执行请求时可以通过对象适配器OA获取ORB的某些服务，请求完成后控制与结果返回客户程序
+
+    动态调用接口（DII）
+        客户程序使用DII时不许生成一个请求，其中包括对象引用，操作以及参数表
+        使用DII的应用程序访问对象实现提供的服务时，不必包含由IDL编译器生成的桩，只需在运行时间访问ANY对象
+        代价：程序员必须用DII接口指定操作和每个操作的类型和值，并由我们自己解决类型检查
+        延迟同步调用：
+            用户程序提交请求后不必等候答复，还必须轮询，可以利用CORBA的异步消息服务来实现纯异步
+        DII较SII更适合的场合：
+            编写CORBA服务的浏览器
+            应用程序浏览器
+            转换协议的桥接
+            访问大量不同的接口
+            应用程序的监控
+            同意对象测试程序等
+
+    动态框架接口（DSI）
+        动态方式使用DSI
+        不必包含IDL产生的框架
+        需要手工编程必须检查类型的安全性
+        DIS优于静态的场合：
+            类似DII
+
+    对象适配器
+        对象实现与ORB内核之间的通信由对象适配器完成（客户程序不需要与ORB内核交互）
+            对象适配器负责与对象有关的一系列操作，包括
+                对象引用的生成与解释，方法调用，交互的安全性，对象实现的激活与冻结等
+            为满足特定的系统，不同的系统又不同的适配器
+
+CORBA的可操作性
+    ORB对于可操作性的支持
+        ORB可以支持同一厂家ORB上的客户端与服务端方便的交互
+        不同的ORB产品之间的互操作性
+        影响互操作性的因素    
+            实现方面的差异
+            安全性
+    域：支持开发人员根据自己实现因素或者管理原因将对象划分为不同的集合
+        不同域的对象之间需要桥接机制才可以彼此交互
+    域之间的桥接
+        直接桥接
+            需交互的元素直接转换为两个域的内部表示
+            效率高通用性不好
+        简介桥接
+            需交互元素在域的内部表现形式和各个域认可的另一种表现形式之间互相转换
+    不同平台域语言之间的互操作性
+        IDL标准和IDL到程序语言的映射
+    不同厂商的ORB产品之间的互操作性
+        靠FIOP和IIOP的协议实现</code></pre><h2 id="第三章-CORBA应用程序的开发"><a href="#第三章-CORBA应用程序的开发" class="headerlink" title="第三章 CORBA应用程序的开发"></a>第三章 CORBA应用程序的开发</h2><h3 id="CORBA平台架构"><a href="#CORBA平台架构" class="headerlink" title="CORBA平台架构"></a>CORBA平台架构</h3><pre><code>建议使用OO语言实现CORBA
+    IDL是OO风格的
+
+CORBA运行平台
+网络传输
+消息传递
+    同步方式
+        ORB默认的通信方式    
+    异步方式（延迟同步方式）
+    单向通信
+        监控
+    不同场合使用：
+        所申请的服务只需要很短时间就可以完成（同步）
+        所申请的服务需要较长的时间才可以完成（异步）
+        客户端无需获取请求已完成的确认信息（单向）
+资源优化
+
+CORBA应用程序开发过程
+    面向对象分析与设计
+    用IDL编写对象接口
+    编译IDL文件生成装与框架
+    编写客户端/服务程序代码
+    编译客户端/服务程序
+    部署应用程序
+    运行应用程序
+
+银行账户管理案例：
+    定义接口对象：</code></pre><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">// 银行帐户管理系统的对象接口定义</span><br><span class="line">module Bank &#123;</span><br><span class="line">    // 帐户</span><br><span class="line">    interface Account &#123;</span><br><span class="line">        // 存款</span><br><span class="line">        void deposit(<span class="keyword">in</span> <span class="built_in">float</span> amount);</span><br><span class="line">        // 取款</span><br><span class="line">        boolean withdraw(<span class="keyword">in</span> <span class="built_in">float</span> amount);</span><br><span class="line">        // 查询余额</span><br><span class="line">        <span class="built_in">float</span> getBalance();</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    // 帐户管理员</span><br><span class="line">    interface AccountManager &#123;</span><br><span class="line">        // 查询指定名字的帐户，查无则新开帐户</span><br><span class="line">        Account open(<span class="keyword">in</span> string name);</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<pre><code>    定义结构定义对象为了生成stub与skeleton
+        账户对象Account：
+
+            AccountOperations.java ：
+            Account.java
+            _AccountStub.java ：客户端存根（stub），是Account再客户端的桩代码，它实现的Account接口
+                程序员编写的客户程序代码一般不调用这个类中的方法
+                VisiBroker for java生成了另外的辅助类AccountHelper
+                    该类提供了一个narrow方法，用于返回一个Account接口的指针
+                    实际上该方法实例化了一个_AccountStub对象，所以客户端通过返回的接口指针实际调用了桩对象的代码
+                    由桩对象完成具体的和服务端的通信
+            AccountPOA.java ：服务端框架（skeletion），是Account对象的服务器框架代码，功能：
+                解开in类型的参数，并将参数传递给对象实现
+                打包返回值与所有out类型的参数
+                    打包：java的数据类型转化为CORBA的ⅡOP流格式
+                    解包：从ⅡOP流格式转换为依赖于JAVA的数据结构
+                编写对象实现的最简单途径是继承这些POA类
+                    即把他们作为对象的基类
+    生成的纽带机制类：
+        AccountPOAtIE.java用于采用纽带机制实现服务端的Account对象
+            AccountPOATie是Account接口的委托方的实现
+            应为java语言的单重继承限制，所以引入了纽带机制
+            每一个AccountTie对象必须关联一个真正的实现类
+            真正的实现类必须实现AccountOperations接口
+    生成的辅助工具类：
+        AccountHelper.java声明AccountHelper类
+            该类为Account接口定义了许多实用功能和支持功能的静态方法
+            绑定对象与类型转换操作
+            从输入/输出流读写对象
+    生成的对象传递支撑类：
+        AccountHolder.java声明的AccountHeolder类为传递对象提供支持
+            IDL由三种传递参数的方式：in，out，inout
+            in类型的参数以及返回结构与java类型参数传递与返回结构完全相同
+            out和inout两种类型的参数允许参数具有返回结果的能力，无法直接映射到java语言的参数传递机制
+            这是AccountHolder类为参数传递out和inout参数提供了一个托架
+账户对象实现：</code></pre><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">public class AccountImpl</span><br><span class="line">	extends Bank.AccountPOA</span><br><span class="line">&#123;</span><br><span class="line">	protected <span class="built_in">float</span> balance;//定义余额属性</span><br><span class="line">	</span><br><span class="line">	public AccountImpl(<span class="built_in">float</span> bal)</span><br><span class="line">	//构造方法，按照传递的余额（bal）创建新的账户</span><br><span class="line">	&#123;</span><br><span class="line">		balance = bal;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	public void deposit(<span class="built_in">float</span> amount)</span><br><span class="line">	//存款 </span><br><span class="line">	&#123;</span><br><span class="line">		balance += amount;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	public boolean withdraw(<span class="built_in">float</span> amount)</span><br><span class="line">	//取款，如果不够返回<span class="literal">false</span></span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span>(balance &lt; amount)</span><br><span class="line">			<span class="built_in">return</span> <span class="literal">false</span>;</span><br><span class="line">		<span class="keyword">else</span>&#123;</span><br><span class="line">			balance -= amount;</span><br><span class="line">			<span class="built_in">return</span> <span class="literal">true</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	public <span class="built_in">float</span> getBalance()</span><br><span class="line">	//查询余额</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">return</span> balance;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code>账户管理员对象实现：</code></pre><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">import java.util.*;</span><br><span class="line">import org.omg.PortableServer.*;</span><br><span class="line"></span><br><span class="line">public class AccountManagerImpl</span><br><span class="line">	extends Bank.AccountManagerPOA</span><br><span class="line">&#123;</span><br><span class="line">	protected Hashtable accountList;//该账户管理员所负责的账户清单</span><br><span class="line">	public AccountManagerImpl()</span><br><span class="line">	//构造方法，创建一个管理员对象</span><br><span class="line">	&#123;</span><br><span class="line">		accountList = new Hashtable();</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	public synchronized Bank.Account open(String name)</span><br><span class="line">	//给用户开户</span><br><span class="line">	&#123;</span><br><span class="line">		Bank.Account account = (Bank.Account)accountList.get(name);</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">if</span>(account == null)</span><br><span class="line">		//如果该name对应的账户不存在，则新开一个账户，初始余额为0</span><br><span class="line">			&#123;			</span><br><span class="line">			<span class="built_in">float</span> balance = 0;</span><br><span class="line">			AccountImpl accountServant = new AccountImpl(balance);</span><br><span class="line">			try&#123;</span><br><span class="line">				//用缺省的POA激活对象，这里缺省的POA就是根POA</span><br><span class="line">				org.omg.CORBA.Object obj = </span><br><span class="line">					_default_POA().servant_to_reference(accountServant);</span><br><span class="line">				//将对象引用窄化为Account类型</span><br><span class="line">				account = Bank.AccountHelper.narrow(obj);</span><br><span class="line">			&#125;catch(Exception exc)&#123;</span><br><span class="line">				exc.printStackTrace();</span><br><span class="line">			&#125;</span><br><span class="line">			</span><br><span class="line">			accountList.put(name, account);</span><br><span class="line">			System.out.println(<span class="string">"新开账户："</span> + name);</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		<span class="built_in">return</span> account;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code>编写服务程序：
+    初始化ORB
+    创建一个对象适配器
+    创建提供服务的伺服对象
+    激活私服对象
+    激活POA管理器
+    等待客户程序发来请求
+服务程序：</code></pre><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">import org.omg.PortableServer.*;</span><br><span class="line"></span><br><span class="line">public class Server</span><br><span class="line">&#123;</span><br><span class="line">	public static void main(String[] args)</span><br><span class="line">	&#123;</span><br><span class="line">		try&#123;</span><br><span class="line">			//初始化ORB</span><br><span class="line">			org.omg.CORBA.ORB orb = org.omg.CORBA.ORB.init(args, null);</span><br><span class="line">			//获取根POA的引用</span><br><span class="line">			POA rootPOA = POAHelper.narrow(</span><br><span class="line">				orb.resolve_initial_references(<span class="string">"RootPOA"</span>));</span><br><span class="line">			//创建持久POA的策略</span><br><span class="line">			org.omg.CORBA.Policy[] policies = &#123;</span><br><span class="line">				rootPOA.create_lifespan_policy(LifespanPolicyValue.PERSISTENT),</span><br><span class="line">				//rootPOA.create_id_assignment_policy(IdAssignmentPolicyValue.USER_ID)</span><br><span class="line">			&#125;;</span><br><span class="line">			//用新定义的策略创建myPOA</span><br><span class="line">			POA myPOA = rootPOA.create_POA(<span class="string">"BankPOA"</span>, rootPOA.the_POAManager(), policies);</span><br><span class="line">			//创建伺服对象</span><br><span class="line">			AccountManagerImpl managerServant = new AccountManagerImpl();</span><br><span class="line">			//在myPOA上用标识<span class="string">"BankManager"</span>激活伺服对象</span><br><span class="line">			myPOA.activate_object_with_id(<span class="string">"BankManager"</span>.getBytes(), managerServant);</span><br><span class="line">			//激活POA管理器</span><br><span class="line">			rootPOA.the_POAManager().activate();</span><br><span class="line">			//等待处理客户程序的请求</span><br><span class="line">			System.out.println(<span class="string">"账户管理员BankManager已就绪...\n"</span>);</span><br><span class="line">			orb.run();</span><br><span class="line">		&#125;catch(Exception exc)&#123;</span><br><span class="line">			exc.printStackTrace();</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code>客户程序：</code></pre><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">public class Client</span><br><span class="line">&#123;</span><br><span class="line">	public static void main(String[] args)</span><br><span class="line">	&#123;</span><br><span class="line">		//初始化ORB</span><br><span class="line">		org.omg.CORBA.ORB orb = org.omg.CORBA.ORB.init(args, null);</span><br><span class="line">		//利用POA全称与对象标识<span class="string">"BankManager"</span>查找账户管理员</span><br><span class="line">		Bank.AccountManager manager = Bank.AccountManagerHelper.bind(</span><br><span class="line">			orb, <span class="string">"/BankPOA"</span>, <span class="string">"BankManager"</span>.getBytes());//,<span class="string">"192.168.118.3"</span>, new com.inprise.vbroker.CORBA.BindOptions());</span><br><span class="line">		String name = args.length &gt; 0? args[0]:<span class="string">"SHLSong"</span>;</span><br><span class="line">		Bank.Account account = manager.open(name);</span><br><span class="line">		</span><br><span class="line">		System.out.println(name + <span class="string">"的账户余额为"</span> + account.getBalance() + <span class="string">"元"</span>);</span><br><span class="line">		account.deposit(400);</span><br><span class="line">		System.out.println(<span class="string">"存款400元后，余额为"</span> + account.getBalance() + <span class="string">"元"</span>);</span><br><span class="line">		<span class="keyword">if</span>(account.withdraw(500))&#123;</span><br><span class="line">			System.out.println(<span class="string">"取款500元后，余额为"</span> + account.getBalance() + <span class="string">"元"</span>);</span><br><span class="line">		&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">			System.out.println(<span class="string">"余额不足500元，取款失败，余额保持不变"</span>);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code>编译应用程序
+    利用VisiBroker for java提供的编译器vbjc完成这一工作：</code></pre><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">vbjc Server.java</span><br><span class="line">vbjc Client.java</span><br></pre></td></tr></table></figure>
+<pre><code>    vbjc十几张封装了JDK提供的Java编译器
+    Holder类和POATie需要指定额外的参数才会下生成
+按一定的顺序启动应用程序
+    1. 启动智能代理
+        运行CORBA应用程序之前，网络之中必须至少有一台主机上启动了智能代理osagent
+        这是VisiBroker特有的分布式位置服务守护进程，网络中多个智能代理可写作查找合适的对象实现</code></pre><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">osagent</span><br></pre></td></tr></table></figure>
+<pre><code>2. 启动服务程序</code></pre><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">start vbj Server</span><br></pre></td></tr></table></figure>
+<pre><code>3. 启动客户程序</code></pre><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vbj Client</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://github.com/111zx/111zx.github.io/2020/03/22/%E6%9E%84%E4%BB%B6%E4%B8%8E%E4%B8%AD%E9%97%B4%E4%BB%B6%E6%8A%80%E6%9C%AF/" data-id="ck88at6vd000714ubh0pkb3z4" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2020/03/24/%E7%B3%BB%E7%BB%9F%E5%88%86%E6%9E%90%E4%B8%8E%E8%AE%BE%E8%AE%A1/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          系统分析与设计
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2020/03/21/Web%E5%B7%A5%E7%A8%8B/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Web工程</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/03/26/%E8%BD%AF%E4%BB%B6%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84/">软件体系结构</a>
+          </li>
+        
+          <li>
+            <a href="/2020/03/26/%E8%BD%AF%E4%BB%B6%E8%BF%87%E7%A8%8B%E7%AE%A1%E7%90%86/">软件过程管理</a>
+          </li>
+        
+          <li>
+            <a href="/2020/03/25/javaWeb%E9%A1%B9%E7%9B%AE%E5%87%BA%E7%8E%B0%E9%97%AE%E9%A2%98%E6%95%B4%E5%90%88/">javaWeb项目出现问题整合</a>
+          </li>
+        
+          <li>
+            <a href="/2020/03/24/Web%E6%A1%88%E4%BE%8B%E5%AD%A6%E4%B9%A0/">Web案例学习</a>
+          </li>
+        
+          <li>
+            <a href="/2020/03/24/%E7%B3%BB%E7%BB%9F%E5%88%86%E6%9E%90%E4%B8%8E%E8%AE%BE%E8%AE%A1/">系统分析与设计</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 zx<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>Python基础 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="第一章 Python介绍Python历史Gudi van Rossum（python之父）开发的一种解释程序，作为ABC语言的一种继承。 第一个Python解释器是由C语言实现的，并且可以调用C语言的库文件。  Python的设计目标     1. 简单直观     2. 开源，以便任何人都可以为它做出贡献     3. 代码像纯英文那样容易理解     4. 适用于短期开发的日常任务Python">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Python基础">
+<meta property="og:url" content="https://github.com/111zx/111zx.github.io/2020/03/18/Python%E5%9F%BA%E7%A1%80/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="第一章 Python介绍Python历史Gudi van Rossum（python之父）开发的一种解释程序，作为ABC语言的一种继承。 第一个Python解释器是由C语言实现的，并且可以调用C语言的库文件。  Python的设计目标     1. 简单直观     2. 开源，以便任何人都可以为它做出贡献     3. 代码像纯英文那样容易理解     4. 适用于短期开发的日常任务Python">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://github.com/2020/03/18/Python%E5%9F%BA%E7%A1%80/1.jpg">
+<meta property="article:published_time" content="2020-03-18T08:31:31.000Z">
+<meta property="article:modified_time" content="2020-03-24T04:31:54.650Z">
+<meta property="article:author" content="zx">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://github.com/2020/03/18/Python%E5%9F%BA%E7%A1%80/1.jpg">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://github.com/111zx/111zx.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-Python基础" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/03/18/Python%E5%9F%BA%E7%A1%80/" class="article-date">
+  <time datetime="2020-03-18T08:31:31.000Z" itemprop="datePublished">2020-03-18</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Python基础
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="第一章-Python介绍"><a href="#第一章-Python介绍" class="headerlink" title="第一章 Python介绍"></a>第一章 Python介绍</h2><h3 id="Python历史"><a href="#Python历史" class="headerlink" title="Python历史"></a>Python历史</h3><pre><code>Gudi van Rossum（python之父）开发的一种解释程序，作为ABC语言的一种继承。
+第一个Python解释器是由C语言实现的，并且可以调用C语言的库文件。
+
+Python的设计目标
+    1. 简单直观
+    2. 开源，以便任何人都可以为它做出贡献
+    3. 代码像纯英文那样容易理解
+    4. 适用于短期开发的日常任务</code></pre><h3 id="Python的执行方式"><a href="#Python的执行方式" class="headerlink" title="Python的执行方式"></a>Python的执行方式</h3><pre><code>Python是一种跨平台，开源，免费的解释习性高级动态编程语言。但不是一种严格的解释型语言（和JAVA类似）。
+    Python语言在运行前，.py文件会先伪编译成.pyc文件（字节码文件），.pyc文件与平台无关，不论是Windows还是Linux都可以执行，运行时虚拟机逐行把字节码翻译成目标代码。</code></pre><img src="/2020/03/18/Python%E5%9F%BA%E7%A1%80/1.jpg" class title="[Python程序执行流程]">
+
+<h2 id="第二章-Python语言基础"><a href="#第二章-Python语言基础" class="headerlink" title="第二章 Python语言基础"></a>第二章 Python语言基础</h2><h3 id="Python的对象模式"><a href="#Python的对象模式" class="headerlink" title="Python的对象模式"></a>Python的对象模式</h3><pre><code>Python种有许多内置对象可供编程者使用，内置对象可直接使用，如数字，字符串，列表，del等；非内置对象需要导入模块才能使用，如正选函数sin(),随机数产生函数random().
+
+常用的内置对象：
+    1. 数字（int，float，complex），数字没有大小限制，内置支持复数及其运算。
+    2. 字符串(str)，单引号，双引号和三引号作为定界符，以字母R或者r引导的表示原始字符串（忽略转义字符）。
+    3. 字节串（bytes），以字母b引导，可以使用单引号，双引号和三引号作为定界符
+    4. 列表（list），所有元素放在一对括号中，元素之间用逗号分隔，其中元素可以是任意类型。
+    5. 字典（dict），所有元素放在一对大括号中，元素之间用逗号分隔，元素形式为“键：值”。
+    6. 元组（tuple），不可变，所有元素放在一对大括号中，元素之间使用逗号分隔。如果元组只有一个元素的话，后面的都好不能省略。
+    7. 集合（set，frozenset），所有元素放在一对大括号中，元素之间使用逗号分隔，元素不允许重复；另外set是可变的，frozenset是不可变的。</code></pre><h3 id="Python变量"><a href="#Python变量" class="headerlink" title="Python变量"></a>Python变量</h3><pre><code>在Python之中不需要事先声明变量名以及其类型，直接复制即可创建各种类型的变量。
+Python是一种强类型编程语言，Python解释器会根据赋值或运算自动推断变量类型。而且Python的变量类型是可以随时变化的。</code></pre><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; x = 3</span><br><span class="line">&gt;&gt;&gt; <span class="built_in">print</span>(<span class="built_in">type</span>(x))</span><br><span class="line">&lt;class <span class="string">'int'</span>&gt;</span><br><span class="line">&gt;&gt;&gt; x = <span class="string">"python"</span></span><br><span class="line">&gt;&gt;&gt; <span class="built_in">print</span>(<span class="built_in">type</span>(x))</span><br><span class="line">&lt;class <span class="string">'str'</span>&gt; //类型从int转成了str</span><br><span class="line">&gt;&gt;&gt;</span><br><span class="line">&gt;&gt;&gt; isinstance(x,int)</span><br><span class="line">False //x类型判断不是int</span><br></pre></td></tr></table></figure>
+<pre><code>字符串和元组属于不可变序列，不能通过下标的方式修改其中的元素值
+在Python中允许多个变量指向同一个值，当其中一个变量修改值之后，其内存地址将会发生变化，但不影响另一个变量。</code></pre><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; x = 3</span><br><span class="line">&gt;&gt;&gt; y = 3</span><br><span class="line">&gt;&gt;&gt; id(x)</span><br><span class="line">2073487312</span><br><span class="line">&gt;&gt;&gt; id(y)</span><br><span class="line">2073487312 //x 和 y指向同一个地址</span><br><span class="line">&gt;&gt;&gt; y = y+3</span><br><span class="line">&gt;&gt;&gt; y</span><br><span class="line">6</span><br><span class="line">&gt;&gt;&gt; id(y)</span><br><span class="line">2073487360 // y变量改变值，生成了一个新的地址，值为6</span><br><span class="line">&gt;&gt;&gt; id(x)</span><br><span class="line">2073487312 //y的盖面并没有影响x指向的地址</span><br></pre></td></tr></table></figure>
+<pre><code>Python语句执行的过程
+    1. 将等号右侧的表达式的值计算出来，存在内存中。
+    2. 创建变量指向这个内存地址
+Python具有自动内存管理功能，对于没有变量指向的值，会自动将其删除。
+但是使用del删除不需要的资源也是一个很好的习惯
+变量命名需要注意的问题：
+    1. 必须以下划线或者字母开头，下划线开头有特殊的含义
+    2. 不能有关键字
+    3. 不能有空格以及标点符号
+    4. 不建议使用系统内置的模块名，类型名或者函数名
+    5. python对大小写敏感，Stu和stu是不同的
+数字：
+    数字式不可变对象，可以表示无限大的数
+    进制表示：
+        十进制： 5
+        二进制： 0b101
+        八进制： 0o5
+        十六进制：0x5
+    python内置支持复数类型</code></pre><h2 id="第四章-字符串"><a href="#第四章-字符串" class="headerlink" title="第四章 字符串"></a>第四章 字符串</h2><pre><code>在python，字符串属于不可变序列类型，只能访问和读取，但是不可以修改。
+Python字符串驻留机制：短字符串，赋值给多个对象时，内存之中只会有一个副本，但是长字符串就不会只有一个副本。</code></pre><p>字符串格式化<br>%r和%s<br>int函数转整型<br>str可以把对象转换成字符串<br>eval函数<br>format方法可以格式化</p>
+<p>python3.6之后支持新的格式化方式在字符串前+f</p>
+<p>字符串常用的个方法<br>find(),rfind(),ubdex(),rindex(),count()等.</p>
+<p>split(),rsplit()从左往右，从右往左，允许需指定最大分割次数 None参数的含义：任何空白符号，空格，换行，制表符连续多个空白符好被看作一个空白符，再明确指定分隔符时正常分割。</p>
+<p>连接符join（）可指定连接符  ，效率相比其他的方法会快很多</p>
+<p>timeit显示运行时间</p>
+<p>效率： map函数&gt;列表&gt;普通<br>lower()等<br>replace()，全部替换，换成一个新的字符串</p>
+<p>例子：替换敏感词</p>
+<p>maketrans() 和 translate() 相比replace而言不是整体的替换，此处是映射替换，maketrans()生成字符映射表，translate根据表中的映射规则替换其中的字符</p>
+<p>例子：转钱的数字转换，凯撒加密</p>
+<p>partition rpartition</p>
+<p>strip 从两边开始向里面开始逐个删除</p>
+<p>文本规范化</p>
+<p>内置函数eval()：对字符串进行求值  </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">eval</span>(<span class="string">'a+b'</span>)</span><br></pre></td></tr></table></figure>
+<p>结果为8<br>eval()函数是非常危险的，只管执行，不管判断<br>合法的eval()代替eval()可以降低危险</p>
+<p>关键字in</p>
+<p>字符串的乘法：重复并且时新的串</p>
+<p>startswith，endswith 判断是否以指定的字符开始或者结束，可以根据文件格式查找文件。</p>
+<p>center，ljust，rjust为居中，左对齐和右对齐。</p>
+<p>zfill()返回指定宽度的字符串，默认填0</p>
+<p>判断的一系列方法（isalnum，isalpha，isdigit等）</p>
+<p>isdigit只能判断整数</p>
+<p>isnumeric可以判断汉字的数字和罗马数字</p>
+<p>len(),max(),min(),list(zip(x,x))</p>
+<p>切片也适用于字符串，但是仅限于读取其中的元素，不可以修改</p>
+<p>zlib.compress</p>
+<p>随机密码生成原理</p>
+<p>可变字符串</p>
+<p>正则表达式</p>
+<h2 id="lambda表达式"><a href="#lambda表达式" class="headerlink" title="lambda表达式"></a>lambda表达式</h2><p>作用：省去定义函数过程<br>     不需要给代码起名字<br>     增加可读性<br>emample：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; list(filter(lambda x : x % 2, range(10)))</span><br><span class="line">[1, 3, 5, 7, 9]</span><br></pre></td></tr></table></figure>
+<p>等价于</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; def <span class="built_in">test</span>(x):</span><br><span class="line">	<span class="built_in">return</span> x % 2</span><br><span class="line">&gt;&gt;&gt; list(filter(<span class="built_in">test</span>,range(10)))</span><br><span class="line">[1, 3, 5, 7, 9]</span><br></pre></td></tr></table></figure>
+
+<h2 id="正则表达式"><a href="#正则表达式" class="headerlink" title="正则表达式"></a>正则表达式</h2><pre><code>匹配IP地址：</code></pre><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">import re</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://github.com/111zx/111zx.github.io/2020/03/18/Python%E5%9F%BA%E7%A1%80/" data-id="ck88at6v5000114ub614c0370" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2020/03/21/Web%E5%B7%A5%E7%A8%8B/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Web工程
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2020/03/18/%E7%AE%97%E6%B3%95%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%88%86%E6%9E%90/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">算法设计与分析</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/03/26/%E8%BD%AF%E4%BB%B6%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84/">软件体系结构</a>
+          </li>
+        
+          <li>
+            <a href="/2020/03/26/%E8%BD%AF%E4%BB%B6%E8%BF%87%E7%A8%8B%E7%AE%A1%E7%90%86/">软件过程管理</a>
+          </li>
+        
+          <li>
+            <a href="/2020/03/25/javaWeb%E9%A1%B9%E7%9B%AE%E5%87%BA%E7%8E%B0%E9%97%AE%E9%A2%98%E6%95%B4%E5%90%88/">javaWeb项目出现问题整合</a>
+          </li>
+        
+          <li>
+            <a href="/2020/03/24/Web%E6%A1%88%E4%BE%8B%E5%AD%A6%E4%B9%A0/">Web案例学习</a>
+          </li>
+        
+          <li>
+            <a href="/2020/03/24/%E7%B3%BB%E7%BB%9F%E5%88%86%E6%9E%90%E4%B8%8E%E8%AE%BE%E8%AE%A1/">系统分析与设计</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 zx<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

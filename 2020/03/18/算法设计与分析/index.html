@@ -15,7 +15,7 @@
 <meta property="og:description" content="第一章 算法介绍算法设计的基本步骤：  问题的建模。 选择什么样的算法以及怎样描述这个方法？ 这个算法是否对所有的实例都能得到最优解（算法的效率）？如何证明？ 如果不是，能否找到反例？  投资问题蛮力算法的排列组合算法 方程X1 + X2 + … + Xn &#x3D; m 的非负整数解&lt;x1,x2, … xn&gt;的个数估计：可行解表示成0-1序列： m个1，n-1个0 例如  m &#x3D; 5  n">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-03-18T02:28:17.000Z">
-<meta property="article:modified_time" content="2020-03-18T05:02:12.082Z">
+<meta property="article:modified_time" content="2020-03-26T02:57:18.383Z">
 <meta property="article:author" content="zx">
 <meta name="twitter:card" content="summary">
   
@@ -128,11 +128,20 @@
 <li>以自底向上的方式求最优解的值：<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">FASTEST-WAY(a,t,e,x,n)</span><br></pre></td></tr></table></figure>
 L1[J] 和L2[J]不是记录最优路线的。L[J]是记录最有路线的。</li>
 </ol>
+<h3 id="矩阵链乘"><a href="#矩阵链乘" class="headerlink" title="矩阵链乘"></a>矩阵链乘</h3><p>目的是确定那些矩阵先相乘，那些矩阵后相乘</p>
+<p>蛮力法数量太大</p>
+<p>假设Ai ~ Aj 相乘 在Ak断开，是最优解，包含子问题最优解<br>自底向上的伪代码算法</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
+<h3 id="问题：非递减数组一定是最小堆吗"><a href="#问题：非递减数组一定是最小堆吗" class="headerlink" title="问题：非递减数组一定是最小堆吗"></a>问题：非递减数组一定是最小堆吗</h3><h3 id="动态规划最重要的一步：刻画最优子结构"><a href="#动态规划最重要的一步：刻画最优子结构" class="headerlink" title="动态规划最重要的一步：刻画最优子结构"></a>动态规划最重要的一步：刻画最优子结构</h3><pre><code>问题的最优解包含了子问题的最优解
+
+不是所有的最优解都有最优子结构
+
+最长路径没有最优子结构 最短路径有最优子结构</code></pre>
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://github.com/111zx/111zx.github.io/2020/03/18/%E7%AE%97%E6%B3%95%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%88%86%E6%9E%90/" data-id="ck7wv0pak0000r8ubckx8hvwh" class="article-share-link">Share</a>
+      <a data-url="https://github.com/111zx/111zx.github.io/2020/03/18/%E7%AE%97%E6%B3%95%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%88%86%E6%9E%90/" data-id="ck88at6ve000814ubeq3h9g87" class="article-share-link">Share</a>
       
       
     </footer>
@@ -140,6 +149,15 @@ L1[J] 和L2[J]不是记录最优路线的。L[J]是记录最有路线的。</li>
   
     
 <nav id="article-nav">
+  
+    <a href="/2020/03/18/Python%E5%9F%BA%E7%A1%80/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Python基础
+        
+      </div>
+    </a>
   
   
     <a href="/2020/03/15/IDEA-%E5%AD%A6%E4%B9%A0/" id="article-nav-older" class="article-nav-link-wrap">
@@ -181,19 +199,23 @@ L1[J] 和L2[J]不是记录最优路线的。L[J]是记录最有路线的。</li>
       <ul>
         
           <li>
-            <a href="/2020/03/18/%E7%AE%97%E6%B3%95%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%88%86%E6%9E%90/">算法设计与分析</a>
+            <a href="/2020/03/26/%E8%BD%AF%E4%BB%B6%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84/">软件体系结构</a>
           </li>
         
           <li>
-            <a href="/2020/03/15/IDEA-%E5%AD%A6%E4%B9%A0/">IDEA 学习</a>
+            <a href="/2020/03/26/%E8%BD%AF%E4%BB%B6%E8%BF%87%E7%A8%8B%E7%AE%A1%E7%90%86/">软件过程管理</a>
           </li>
         
           <li>
-            <a href="/2020/03/14/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/">我的第一篇博客</a>
+            <a href="/2020/03/25/javaWeb%E9%A1%B9%E7%9B%AE%E5%87%BA%E7%8E%B0%E9%97%AE%E9%A2%98%E6%95%B4%E5%90%88/">javaWeb项目出现问题整合</a>
           </li>
         
           <li>
-            <a href="/2020/03/14/hello-world/">Hello World</a>
+            <a href="/2020/03/24/Web%E6%A1%88%E4%BE%8B%E5%AD%A6%E4%B9%A0/">Web案例学习</a>
+          </li>
+        
+          <li>
+            <a href="/2020/03/24/%E7%B3%BB%E7%BB%9F%E5%88%86%E6%9E%90%E4%B8%8E%E8%AE%BE%E8%AE%A1/">系统分析与设计</a>
           </li>
         
       </ul>
