@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>linux | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="[TOC] 第一章 概述1-1 学习方向 linux运维工程师：维护大量服务器 JAVAEE：java程序一般是部署在Linux操作系统上  1-2 应用领域 个人桌面：弱 服务器：最强 嵌入式：定制OS内核  1-3 学习进阶之路 linux环境下基本操作命令 linux各种配置 搭建语言开发环境（基本） 能写shell脚本，对Linux服务器进行维护 能进行安全设置，防止攻击，保障服务器正常运">
+<meta property="og:type" content="article">
+<meta property="og:title" content="linux">
+<meta property="og:url" content="https://github.com/111zx/111zx.github.io/2020/05/24/linux/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="[TOC] 第一章 概述1-1 学习方向 linux运维工程师：维护大量服务器 JAVAEE：java程序一般是部署在Linux操作系统上  1-2 应用领域 个人桌面：弱 服务器：最强 嵌入式：定制OS内核  1-3 学习进阶之路 linux环境下基本操作命令 linux各种配置 搭建语言开发环境（基本） 能写shell脚本，对Linux服务器进行维护 能进行安全设置，防止攻击，保障服务器正常运">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://github.com/111zx/111zx.github.io/2020/05/24/linux/C:%5CUsers%5C14914%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200608155511139.png">
+<meta property="og:image" content="https://github.com/111zx/111zx.github.io/2020/05/24/linux/C:%5CUsers%5C14914%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200608155629722.png">
+<meta property="og:image" content="https://github.com/111zx/111zx.github.io/2020/05/24/linux/C:%5CUsers%5C14914%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200608162304223.png">
+<meta property="og:image" content="https://github.com/111zx/111zx.github.io/2020/05/24/linux/C:%5CUsers%5C14914%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200608162425436.png">
+<meta property="og:image" content="https://github.com/111zx/111zx.github.io/2020/05/24/linux/C:%5CUsers%5C14914%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200608162509170.png">
+<meta property="og:image" content="https://github.com/111zx/111zx.github.io/2020/05/24/linux/C:%5CUsers%5C14914%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200608164324116.png">
+<meta property="og:image" content="https://github.com/111zx/111zx.github.io/2020/05/24/linux/C:%5CUsers%5C14914%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200610202248908.png">
+<meta property="og:image" content="https://github.com/111zx/111zx.github.io/2020/05/24/linux/C:%5CUsers%5C14914%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200610202601933.png">
+<meta property="og:image" content="https://github.com/111zx/111zx.github.io/2020/05/24/linux/C:%5CUsers%5C14914%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200610202636219.png">
+<meta property="og:image" content="https://github.com/111zx/111zx.github.io/2020/05/24/linux/C:%5CUsers%5C14914%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200610202658109.png">
+<meta property="og:image" content="https://github.com/111zx/111zx.github.io/2020/05/24/linux/C:%5CUsers%5C14914%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200610213851434.png">
+<meta property="og:image" content="https://github.com/111zx/111zx.github.io/2020/05/24/linux/C:%5CUsers%5C14914%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200610214207616.png">
+<meta property="og:image" content="https://github.com/111zx/111zx.github.io/2020/05/24/linux/C:%5CUsers%5C14914%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200610214409901.png">
+<meta property="og:image" content="https://github.com/111zx/111zx.github.io/2020/05/24/linux/C:%5CUsers%5C14914%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200612105352068.png">
+<meta property="og:image" content="https://github.com/111zx/111zx.github.io/2020/05/24/linux/C:%5CUsers%5C14914%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200612113244241.png">
+<meta property="og:image" content="https://github.com/111zx/111zx.github.io/2020/05/24/linux/C:%5CUsers%5C14914%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200612163724707.png">
+<meta property="article:published_time" content="2020-05-24T04:38:31.000Z">
+<meta property="article:modified_time" content="2020-06-12T08:57:13.120Z">
+<meta property="article:author" content="zx">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://github.com/111zx/111zx.github.io/2020/05/24/linux/C:%5CUsers%5C14914%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200608155511139.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://github.com/111zx/111zx.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-linux" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/05/24/linux/" class="article-date">
+  <time datetime="2020-05-24T04:38:31.000Z" itemprop="datePublished">2020-05-24</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      linux
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>[TOC]</p>
+<h1 id="第一章-概述"><a href="#第一章-概述" class="headerlink" title="第一章 概述"></a>第一章 概述</h1><h2 id="1-1-学习方向"><a href="#1-1-学习方向" class="headerlink" title="1-1 学习方向"></a>1-1 学习方向</h2><ul>
+<li>linux运维工程师：维护大量服务器</li>
+<li>JAVAEE：java程序一般是部署在Linux操作系统上</li>
+</ul>
+<h2 id="1-2-应用领域"><a href="#1-2-应用领域" class="headerlink" title="1-2 应用领域"></a>1-2 应用领域</h2><ul>
+<li>个人桌面：弱</li>
+<li>服务器：最强</li>
+<li>嵌入式：定制OS内核</li>
+</ul>
+<h2 id="1-3-学习进阶之路"><a href="#1-3-学习进阶之路" class="headerlink" title="1-3 学习进阶之路"></a>1-3 学习进阶之路</h2><ol>
+<li>linux环境下基本操作命令</li>
+<li>linux各种配置</li>
+<li>搭建语言开发环境（基本）</li>
+<li>能写shell脚本，对Linux服务器进行维护</li>
+<li>能进行安全设置，防止攻击，保障服务器正常运行，能对系统调优</li>
+<li>深入理解Linux系统，内核优化</li>
+</ol>
+<hr>
+<h1 id="第二章-Linux基础篇"><a href="#第二章-Linux基础篇" class="headerlink" title="第二章 Linux基础篇"></a>第二章 Linux基础篇</h1><h2 id="Linux入门"><a href="#Linux入门" class="headerlink" title="Linux入门"></a>Linux入门</h2><h3 id="Linux介绍"><a href="#Linux介绍" class="headerlink" title="Linux介绍"></a>Linux介绍</h3><ul>
+<li>Linux时一款操作系统，免费，开源，安全，高效，<strong>稳定</strong>（服务器运行半年不需要重新启动，而Windows却不稳定），处理高并发非常强悍。企业级项目大多都部署在Linux上。.net一般会在Windows平台</li>
+<li>创始人：linux（林纳斯），吉祥物：企鹅（tux，晚礼服）。</li>
+<li><strong>linux内核</strong>是核心，各种发行版是在内核上添加各种应用软件。</li>
+<li>Linux（菜）主要发行版（西红柿炒蛋）：<ul>
+<li>Centos（前身是Redhat）</li>
+<li>Redhat</li>
+<li>Ubuntu</li>
+<li>Suse</li>
+<li>红旗Linux</li>
+</ul>
+</li>
+<li>目前主要的操作系统：Windows，android，Mac，IOS。</li>
+</ul>
+<h2 id="Linux和Unix关系"><a href="#Linux和Unix关系" class="headerlink" title="Linux和Unix关系"></a>Linux和Unix关系</h2><ul>
+<li><p>Ken tompson :C 语言和B语言创始人</p>
+</li>
+<li><p>Dennis richres：C语言之父</p>
+</li>
+<li><p>Richard Stallman：源码应该供用户免费开放</p>
+<ul>
+<li>GNU计划<ul>
+<li>人=&gt;软件=&gt;shell=&gt;内核=&gt;硬件</li>
+<li><strong>其中内核的开发引导着Linux的诞生</strong></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>贝尔实验室：</p>
+<ul>
+<li>通讯卫星</li>
+<li>有声电影</li>
+<li>晶体管</li>
+</ul>
+</li>
+<li><p>Unix一开始用B语言做的，贝尔实验室<strong>73年用C语言实现</strong></p>
+</li>
+<li><p>Unix是开源的</p>
+</li>
+<li><p>由AT&amp;T System V版本演变来的Minix</p>
+<ul>
+<li>林纳斯在Minix的基础上开发出了Linux内核，最后一只演变到现在</li>
+</ul>
+</li>
+</ul>
+<h2 id="Linux和Windows比较"><a href="#Linux和Windows比较" class="headerlink" title="Linux和Windows比较"></a>Linux和Windows比较</h2><ul>
+<li>windows<ul>
+<li>贵</li>
+<li>安全性弱</li>
+<li>图形界面方便</li>
+<li>可定制性差</li>
+<li>桌面应用</li>
+</ul>
+</li>
+<li>Linux<ul>
+<li>开源，自由软件</li>
+<li>相比Windows安全得多（原因：开源，每次发现漏洞就会发布，维护次数多）</li>
+<li>命令行操作强大</li>
+<li>开源，可定制</li>
+<li>服务器应用</li>
+</ul>
+</li>
+</ul>
+<h3 id="Windows，VM-和-CentOS的关系"><a href="#Windows，VM-和-CentOS的关系" class="headerlink" title="Windows，VM 和 CentOS的关系"></a>Windows，VM 和 CentOS的关系</h3><ul>
+<li>Windows：本机</li>
+<li>VM软件：虚拟机空间</li>
+<li>CentOS:一个系统在虚拟机空间运行</li>
+<li>BIOS里修改设置开启虚拟化设备支持</li>
+</ul>
+<h3 id="CentOS安装"><a href="#CentOS安装" class="headerlink" title="CentOS安装"></a>CentOS安装</h3><h4 id="网络设置"><a href="#网络设置" class="headerlink" title="网络设置"></a>网络设置</h4><ul>
+<li>桥连接模式：虚拟机的IP和主机的IP在一个网段<ul>
+<li>可以和其他的系统通信</li>
+<li>由于在一个网段，可能造成IP冲突</li>
+</ul>
+</li>
+<li>NAT模式<ul>
+<li>在主机上除了自己本身的IP网段，还会多出来一个IP网段，多出来的IP网段是Linux可以使用的IP网段</li>
+<li>别的主机访问不到Linux，但是Linux可以通过主机访问到外网</li>
+</ul>
+</li>
+<li>主机模式<ul>
+<li>Linux是一个独立的主机，不能访问外网</li>
+</ul>
+</li>
+<li>一般情况下选择NAT模式</li>
+</ul>
+<h4 id="正式安装"><a href="#正式安装" class="headerlink" title="正式安装"></a>正式安装</h4><ol>
+<li>选择ISO镜像文件</li>
+<li>next</li>
+<li>在做开发时为主机设置根密码时，绝对不允许使用123456这种简单密码，很容易被破解。去自动生成随机密码。</li>
+<li>手动分区<ul>
+<li>boot分区：引导文件（200M）</li>
+<li>swap分区：交换分区，暂时替代的虚拟分区（2048M（分配物理内存的1-1.5倍））</li>
+<li>根分区L ：18231M</li>
+</ul>
+</li>
+<li>自定义安装桌面（尽量小）<ul>
+<li>兼容程序库</li>
+<li>调试工具</li>
+<li>互联网浏览器</li>
+<li>桌面保留</li>
+<li>语言中文</li>
+</ul>
+</li>
+<li>Kdump<ul>
+<li>内核崩溃转储机制。</li>
+</ul>
+</li>
+</ol>
+<h4 id="终端使用和联网"><a href="#终端使用和联网" class="headerlink" title="终端使用和联网"></a>终端使用和联网</h4><ul>
+<li>点击右上侧的两个计算机的图标，选择eth0，即可完成网络连接。</li>
+</ul>
+<h2 id="和主机共享文件"><a href="#和主机共享文件" class="headerlink" title="和主机共享文件"></a>和主机共享文件</h2><h3 id="安装VMware-Tools-工具"><a href="#安装VMware-Tools-工具" class="headerlink" title="安装VMware Tools 工具"></a>安装VMware Tools 工具</h3><ol>
+<li><p><img src="/111zx/111zx.github.io/2020/05/24/linux/C:%5CUsers%5C14914%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200608155511139.png" alt="image-20200608155511139"></p>
+</li>
+<li><p><img src="/111zx/111zx.github.io/2020/05/24/linux/C:%5CUsers%5C14914%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200608155629722.png" alt="image-20200608155629722"></p>
+</li>
+</ol>
+<ul>
+<li>将文件复制到桌面，解压这个压缩文件</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar -zxvf VMwareTools-10.3.10-13959562.tar.gz</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>进入root用户，配置vmwaretools</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">su </span><br><span class="line"></span><br><span class="line">./vmware-install.pl</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>重启</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">reboot</span><br></pre></td></tr></table></figure>
+
+<h3 id="设置共享文件"><a href="#设置共享文件" class="headerlink" title="设置共享文件"></a>设置共享文件</h3><ol>
+<li>随意创建一个文件</li>
+</ol>
+<p><img src="/111zx/111zx.github.io/2020/05/24/linux/C:%5CUsers%5C14914%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200608162304223.png" alt="image-20200608162304223"></p>
+<ol start="2">
+<li>在虚拟机设置共享文件</li>
+</ol>
+<p><img src="/111zx/111zx.github.io/2020/05/24/linux/C:%5CUsers%5C14914%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200608162425436.png" alt="image-20200608162425436"></p>
+<ol start="3">
+<li>找到刚才创建的文件</li>
+</ol>
+<p><img src="/111zx/111zx.github.io/2020/05/24/linux/C:%5CUsers%5C14914%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200608162509170.png" alt="image-20200608162509170"></p>
+<ol start="4">
+<li><p>点击确定 next 设置完成</p>
+</li>
+<li><p>在Centos7上 找mnt/hdfs里面会有共享文件</p>
+</li>
+</ol>
+<p><img src="/111zx/111zx.github.io/2020/05/24/linux/C:%5CUsers%5C14914%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200608164324116.png" alt="image-20200608164324116"></p>
+<h2 id="文件系统目录结构"><a href="#文件系统目录结构" class="headerlink" title="文件系统目录结构"></a>文件系统目录结构</h2><ul>
+<li><p>只有一个根目录“/”，是级层式的树结构</p>
+</li>
+<li><p>Linux世界里，一切皆文件</p>
+</li>
+<li><p>/dev 管理设备：里面有cpu，disk等</p>
+</li>
+<li><p>/media 媒体目录 u盘，光驱</p>
+</li>
+<li><p>/bin：最经常使用的命令</p>
+</li>
+<li><p>/sbin：系统管理员的管理程序</p>
+</li>
+<li><p>/home：普通用户的主目录</p>
+</li>
+<li><p>/lib：动态链接共享库</p>
+</li>
+<li><p>/etc：配置文件和子目录</p>
+</li>
+<li><p>/usr：用户安装的软件</p>
+</li>
+<li><p>/boot：引导系统</p>
+</li>
+<li><p>/mnt：临时挂载别的文件系统</p>
+</li>
+<li><p>/opt：安装软件所排放的目录</p>
+</li>
+<li><p>/usr/local：安装过后的目录</p>
+</li>
+<li><p>/var：日志文件和经常修改的文件</p>
+</li>
+</ul>
+<h1 id="第三章-Linux实操篇"><a href="#第三章-Linux实操篇" class="headerlink" title="第三章 Linux实操篇"></a>第三章 Linux实操篇</h1><h2 id="远程登陆到Linux服务器"><a href="#远程登陆到Linux服务器" class="headerlink" title="远程登陆到Linux服务器"></a>远程登陆到Linux服务器</h2><h3 id="为什么要远程登陆到Linux"><a href="#为什么要远程登陆到Linux" class="headerlink" title="为什么要远程登陆到Linux"></a>为什么要远程登陆到Linux</h3><ul>
+<li>Linux系统一般会放在专用的机房里，都需要远程操作</li>
+<li>XShell5：远程登陆的软件</li>
+<li>SFtp5：上传和下载文件的软件</li>
+</ul>
+<h3 id="Linux-Xshell5"><a href="#Linux-Xshell5" class="headerlink" title="Linux - Xshell5"></a>Linux - Xshell5</h3><ul>
+<li>目前最好的远程登陆到Linux的软件，完美地解决了中文乱码的问题</li>
+<li>支持SSH1,SSH2,以及Microsoft Windows平台的TELNET协议</li>
+</ul>
+<h4 id="安装Xshell5"><a href="#安装Xshell5" class="headerlink" title="安装Xshell5"></a>安装Xshell5</h4><ul>
+<li><p><strong>sshd是用来确定别人远程登陆的，必须要开启</strong>，该服务会监听22号端口。</p>
+<ul>
+<li>在终端输入setup</li>
+<li>系统服务</li>
+<li>找到sshd，显示*即为打开状态</li>
+</ul>
+</li>
+<li><p>安装过程（next）</p>
+</li>
+<li><p>配置过程</p>
+</li>
+</ul>
+<p><img src="/111zx/111zx.github.io/2020/05/24/linux/C:%5CUsers%5C14914%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200610202248908.png" alt="image-20200610202248908"></p>
+<ul>
+<li>输入Linux用户名</li>
+</ul>
+<p><img src="/111zx/111zx.github.io/2020/05/24/linux/C:%5CUsers%5C14914%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200610202601933.png" alt="image-20200610202601933"></p>
+<ul>
+<li>输入Linux密码</li>
+</ul>
+<p><img src="/111zx/111zx.github.io/2020/05/24/linux/C:%5CUsers%5C14914%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200610202636219.png" alt="image-20200610202636219"></p>
+<ul>
+<li>登陆成功</li>
+</ul>
+<p><img src="/111zx/111zx.github.io/2020/05/24/linux/C:%5CUsers%5C14914%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200610202658109.png" alt="image-20200610202658109"></p>
+<h4 id="安装XFTP5"><a href="#安装XFTP5" class="headerlink" title="安装XFTP5"></a>安装XFTP5</h4><ul>
+<li>配置</li>
+</ul>
+<p><img src="/111zx/111zx.github.io/2020/05/24/linux/C:%5CUsers%5C14914%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200610213851434.png" alt="image-20200610213851434"></p>
+<ul>
+<li>解决乱码问题</li>
+</ul>
+<p><img src="/111zx/111zx.github.io/2020/05/24/linux/C:%5CUsers%5C14914%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200610214207616.png" alt="image-20200610214207616"></p>
+<ul>
+<li>传输</li>
+</ul>
+<p><img src="/111zx/111zx.github.io/2020/05/24/linux/C:%5CUsers%5C14914%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200610214409901.png" alt="image-20200610214409901"></p>
+<h2 id="VIM编辑器"><a href="#VIM编辑器" class="headerlink" title="VIM编辑器"></a>VIM编辑器</h2><p><img src="/111zx/111zx.github.io/2020/05/24/linux/C:%5CUsers%5C14914%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200612105352068.png" alt="image-20200612105352068"></p>
+<h3 id="正常模式"><a href="#正常模式" class="headerlink" title="正常模式"></a>正常模式</h3><ul>
+<li>可以使用快捷键</li>
+</ul>
+<h3 id="插入模式"><a href="#插入模式" class="headerlink" title="插入模式"></a>插入模式</h3><ul>
+<li>可以输入内容 <ul>
+<li>输入i即可输入内容</li>
+<li>Esc退出插入模式:wq 保存并退出</li>
+<li>:q!不保存并退出</li>
+</ul>
+</li>
+</ul>
+<h3 id="命令行模式"><a href="#命令行模式" class="headerlink" title="命令行模式"></a>命令行模式</h3><ul>
+<li>提供相关指令的操作</li>
+</ul>
+<h3 id="vi和vim快捷键"><a href="#vi和vim快捷键" class="headerlink" title="vi和vim快捷键"></a>vi和vim快捷键</h3><ul>
+<li>复制当前光标所在行：yy（正常模式）</li>
+<li>复制包括当前光标所在行内往下5行的数据：5yy（正常模式）</li>
+<li>将粘贴板的内容插入到当前光标行下面：p（正常模式）</li>
+<li>删除当前光标所在行：dd（正常模式）</li>
+<li>删除包括当前光标所在行内往下5行的数据：5dd（正常模式）</li>
+<li>在文件中查找某些单词，命令行模式：/hello 回车即可查找（命令行模式）</li>
+<li>设置文件的行号:set nu，取消文件的行号:set nonu(命令行模式）</li>
+<li>移动到文件的最首行G和最末行gg(正常模式)</li>
+<li>撤销操作u(正常模式)</li>
+<li>移动到文件的第10行<ol>
+<li>显示行号</li>
+<li>输入10，回车</li>
+</ol>
+</li>
+</ul>
+<h2 id="开机，重启和用户注销"><a href="#开机，重启和用户注销" class="headerlink" title="开机，重启和用户注销"></a>开机，重启和用户注销</h2><h3 id="开机重启命令"><a href="#开机重启命令" class="headerlink" title="开机重启命令"></a>开机重启命令</h3><ul>
+<li>shutdown<ul>
+<li>shutdown -h now：立即关机</li>
+<li>shutdown -h 1：1分钟后关机</li>
+<li>shutdown -r now：立即重启</li>
+</ul>
+</li>
+<li>halt：关机命令</li>
+<li>reboot：重启</li>
+<li>sync：将内存的数据同步到磁盘上，<strong>在关机和重启之前最好使用sync</strong></li>
+</ul>
+<h3 id="用户登录和注销"><a href="#用户登录和注销" class="headerlink" title="用户登录和注销"></a>用户登录和注销</h3><ul>
+<li>尽量少使用root账号登陆，权限为最大，避免操作失误造成系统崩溃。一般以普通用户登录，然后用su登陆root</li>
+<li>logout注销账户，<strong>在远程登陆（运行级别3）上使用</strong>，在图形界面是无效的。</li>
+</ul>
+<h2 id="用户管理"><a href="#用户管理" class="headerlink" title="用户管理"></a>用户管理</h2><p><img src="/111zx/111zx.github.io/2020/05/24/linux/C:%5CUsers%5C14914%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200612113244241.png" alt="image-20200612113244241"></p>
+<ul>
+<li>Linux具有用户组<ul>
+<li>root组</li>
+<li>其他组</li>
+</ul>
+</li>
+<li>Linux具有用户家目录<ul>
+<li>根目录下的home目录下有各个用户对应的家目录，用户登录时会自动进入自己的家目录</li>
+</ul>
+</li>
+</ul>
+<h3 id="添加用户"><a href="#添加用户" class="headerlink" title="添加用户"></a>添加用户</h3><ul>
+<li><p>使用者要想使用系统必须要申请一个用户</p>
+</li>
+<li><p>useradd [可选] 用户名（root用户下执行）</p>
+<ul>
+<li>执行完后会在home目录下生成一个设置的用户名的家目录</li>
+<li>也可以指定目录进行创建useradd -d /home/zx zx1</li>
+</ul>
+</li>
+</ul>
+<h3 id="修改密码"><a href="#修改密码" class="headerlink" title="修改密码"></a>修改密码</h3><ul>
+<li>修改密码passwd zx1</li>
+</ul>
+<h3 id="删除用户"><a href="#删除用户" class="headerlink" title="删除用户"></a>删除用户</h3><ul>
+<li>保留家目录<ul>
+<li>userdel zx1</li>
+</ul>
+</li>
+<li>同时删除家目录<ul>
+<li>userdel -r zx1</li>
+</ul>
+</li>
+<li>实际使用时都会保留家目录</li>
+</ul>
+<h3 id="查询用户信息"><a href="#查询用户信息" class="headerlink" title="查询用户信息"></a>查询用户信息</h3><ul>
+<li><p>如果用户不存在，返回无此用户</p>
+</li>
+<li><p>id zx1</p>
+</li>
+</ul>
+<p><img src="/111zx/111zx.github.io/2020/05/24/linux/C:%5CUsers%5C14914%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200612163724707.png" alt="image-20200612163724707"></p>
+<h3 id="切换用户"><a href="#切换用户" class="headerlink" title="切换用户"></a>切换用户</h3><ul>
+<li><p>su zx1</p>
+<ul>
+<li>切换到zx1用户</li>
+</ul>
+</li>
+<li><p>高权限用户到低权限用户不需要密码</p>
+</li>
+<li><p>exit </p>
+<ul>
+<li>回到原来的用户，回到高等级用户不需要密码</li>
+</ul>
+</li>
+</ul>
+<h3 id="用户组"><a href="#用户组" class="headerlink" title="用户组"></a>用户组</h3><ul>
+<li>一个用户创建后会归属到一个用户组</li>
+<li>系统对有共性的用户进行统一的管理</li>
+</ul>
+<h4 id="增加用户组"><a href="#增加用户组" class="headerlink" title="增加用户组"></a>增加用户组</h4><ul>
+<li>groupadd zx</li>
+</ul>
+<h4 id="删除用户组"><a href="#删除用户组" class="headerlink" title="删除用户组"></a>删除用户组</h4><ul>
+<li>groupdel zx</li>
+</ul>
+<h4 id="增加用户时指定用户组"><a href="#增加用户时指定用户组" class="headerlink" title="增加用户时指定用户组"></a>增加用户时指定用户组</h4><ul>
+<li>useradd -g zx zx1</li>
+</ul>
+<h4 id="修改用户组"><a href="#修改用户组" class="headerlink" title="修改用户组"></a>修改用户组</h4><ul>
+<li>usermod -g zz zx1<ul>
+<li>将用户zx1修改到zz组</li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://github.com/111zx/111zx.github.io/2020/05/24/linux/" data-id="ckbbzdvsa0005t8ub70rr1j4u" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2020/05/26/%E5%B8%B8%E7%94%A8%E7%B1%BB/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          常用类
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2020/05/24/java%E5%9F%BA%E7%A1%80-%E5%BC%82%E5%B8%B8/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">java基础-异常</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/06/10/%E6%B3%9B%E5%9E%8B/">泛型</a>
+          </li>
+        
+          <li>
+            <a href="/2020/06/09/%E8%BD%AF%E4%BB%B6%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84%E8%AF%BE%E7%A8%8B%E6%8A%A5%E5%91%8A/">软件体系结构课程报告</a>
+          </li>
+        
+          <li>
+            <a href="/2020/06/01/%E6%9E%9A%E4%B8%BE%E7%B1%BB%E5%92%8C%E6%B3%A8%E8%A7%A3/">枚举类和注解</a>
+          </li>
+        
+          <li>
+            <a href="/2020/05/26/%E5%B8%B8%E7%94%A8%E7%B1%BB/">常用类</a>
+          </li>
+        
+          <li>
+            <a href="/2020/05/24/linux/">linux</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 zx<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

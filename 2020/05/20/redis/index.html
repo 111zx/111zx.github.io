@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>redis | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="NoSql入门和概述入门概述 互联网背景下的机遇，为什么用NoSql 数据量到达一定程度的时候速度会变得非常慢（500w是Mysql的一个限度） 缓存技术+垂直分布 Mysql主从读写分离 写的操作在主库 读的操作在从库   分表分库+水平拆分+mysql集群 常用的在一个库，不常用的在另一个；分多个库查询快 集群分开查询速度快   扩展性瓶颈，存储不了大的内容 使用NoSql原因总结：由于数据的">
+<meta property="og:type" content="article">
+<meta property="og:title" content="redis">
+<meta property="og:url" content="https://github.com/111zx/111zx.github.io/2020/05/20/redis/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="NoSql入门和概述入门概述 互联网背景下的机遇，为什么用NoSql 数据量到达一定程度的时候速度会变得非常慢（500w是Mysql的一个限度） 缓存技术+垂直分布 Mysql主从读写分离 写的操作在主库 读的操作在从库   分表分库+水平拆分+mysql集群 常用的在一个库，不常用的在另一个；分多个库查询快 集群分开查询速度快   扩展性瓶颈，存储不了大的内容 使用NoSql原因总结：由于数据的">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-05-20T02:10:40.000Z">
+<meta property="article:modified_time" content="2020-05-21T04:47:28.818Z">
+<meta property="article:author" content="zx">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://github.com/111zx/111zx.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-redis" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/05/20/redis/" class="article-date">
+  <time datetime="2020-05-20T02:10:40.000Z" itemprop="datePublished">2020-05-20</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      redis
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="NoSql入门和概述"><a href="#NoSql入门和概述" class="headerlink" title="NoSql入门和概述"></a>NoSql入门和概述</h1><h2 id="入门概述"><a href="#入门概述" class="headerlink" title="入门概述"></a>入门概述</h2><ol>
+<li>互联网背景下的机遇，为什么用NoSql<ul>
+<li>数据量到达一定程度的时候速度会变得非常慢（500w是Mysql的一个限度）</li>
+<li>缓存技术+垂直分布</li>
+<li>Mysql主从读写分离<ul>
+<li>写的操作在主库</li>
+<li>读的操作在从库</li>
+</ul>
+</li>
+<li>分表分库+水平拆分+mysql集群<ul>
+<li>常用的在一个库，不常用的在另一个；分多个库查询快</li>
+<li>集群分开查询速度快</li>
+</ul>
+</li>
+<li>扩展性瓶颈，存储不了大的内容</li>
+<li>使用NoSql原因总结：由于数据的爆炸增长，传统的关系型数据库不能支持业务</li>
+</ul>
+</li>
+<li>是什么<ul>
+<li>不仅仅是SQL，Not Only Sql</li>
+<li>NoSql数据不需要固定的模式，无需多于操作就可以横向扩展</li>
+</ul>
+</li>
+<li>能干什么<ul>
+<li>易扩展：去掉关系型数据库的关系型特性，数据之间没有关系，非常容易扩展</li>
+<li>高性能：读写性能非常优秀（1s读16w写8w）</li>
+<li>灵活的数据模型：存储自定义数据格式无需事先建立字段。</li>
+</ul>
+</li>
+<li>去哪下<ul>
+<li>Redis：功能丰富时优秀</li>
+<li>Memcache：单一的功能速度快</li>
+<li>Mongdb：功能丰富时优秀</li>
+</ul>
+</li>
+<li>怎么玩<ul>
+<li>KV</li>
+<li>Cache</li>
+<li>Persistence</li>
+<li>……</li>
+</ul>
+</li>
+</ol>
+<h2 id="3V-3高"><a href="#3V-3高" class="headerlink" title="3V + 3高"></a>3V + 3高</h2><h3 id="大数据时代的3V"><a href="#大数据时代的3V" class="headerlink" title="大数据时代的3V"></a>大数据时代的3V</h3><ol>
+<li>海量Volume<ul>
+<li>双11天猫</li>
+</ul>
+</li>
+<li>多样Variety<ul>
+<li>数据多余</li>
+</ul>
+</li>
+<li>实时Velocity<ul>
+<li>订票的实时更新</li>
+</ul>
+</li>
+</ol>
+<h3 id="互联网需求的三高"><a href="#互联网需求的三高" class="headerlink" title="互联网需求的三高"></a>互联网需求的三高</h3><ol>
+<li>高并发<ul>
+<li>挖红包，挖数据</li>
+</ul>
+</li>
+<li>高可扩<ul>
+<li>横向扩展（纵向扩展有极限）</li>
+</ul>
+</li>
+<li>高性能<ul>
+<li>单点故障，容灾备份</li>
+</ul>
+</li>
+</ol>
+<h2 id="NoSQL-的经典应用"><a href="#NoSQL-的经典应用" class="headerlink" title="NoSQL 的经典应用"></a>NoSQL 的经典应用</h2><ul>
+<li><p>当下的应用是sql和nosql一起使用</p>
+</li>
+<li><p>阿里巴巴中文网站架构发展</p>
+<ul>
+<li>1999第一代架构网站：Perl，CGI，Oracle</li>
+<li>2000进入JAVA时代：JAVA,servlet</li>
+<li>2004EJB时代：EJB</li>
+<li>Without EJB重构：去EJB重构</li>
+<li>海量数据：Hadoop，KV</li>
+<li>2010安全镜像</li>
+</ul>
+</li>
+<li><p>多数据源多数据类型的存储问题</p>
+</li>
+<li><p>视频，大的图片 </p>
+</li>
+<li><p>商品基本信息：去IOE化,MYSQL</p>
+</li>
+<li><p>商品描述，详情，评价信息：文档数据库MongDB</p>
+</li>
+<li><p>商品图片：分布式的文件系统淘宝的TFS，Google的GFS，Hadoop的HDFS</p>
+</li>
+<li><p>商品的关键字：Isearch，淘宝内用搜索引擎</p>
+</li>
+<li><p>商品波段性的热点高频信息：内存数据库Tair，Redis，Memache</p>
+</li>
+<li><p>商品的交易，价格计算，积分积累：外部系统，支付宝</p>
+</li>
+<li><p>总结大型互联网应用（大数据，高并发，多样数据类型）的难点和解决方案</p>
+<ul>
+<li>难点<ul>
+<li>数据类型多样性</li>
+<li>数据源多样性和变化重构</li>
+<li>数据源改造而数据服务平台不需要大面积重构</li>
+</ul>
+</li>
+<li>解决方案<ul>
+<li>EAI和统一数据平台服务层</li>
+<li>UDSL（阿里）统一数据平台服务层<ul>
+<li>映射，API,热点缓存</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="NoSQL模型"><a href="#NoSQL模型" class="headerlink" title="NoSQL模型"></a>NoSQL模型</h2>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://github.com/111zx/111zx.github.io/2020/05/20/redis/" data-id="ckbbzdvsg0008t8ubhn6257wt" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2020/05/20/spring/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          spring
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2020/05/20/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">数据结构</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/06/10/%E6%B3%9B%E5%9E%8B/">泛型</a>
+          </li>
+        
+          <li>
+            <a href="/2020/06/09/%E8%BD%AF%E4%BB%B6%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84%E8%AF%BE%E7%A8%8B%E6%8A%A5%E5%91%8A/">软件体系结构课程报告</a>
+          </li>
+        
+          <li>
+            <a href="/2020/06/01/%E6%9E%9A%E4%B8%BE%E7%B1%BB%E5%92%8C%E6%B3%A8%E8%A7%A3/">枚举类和注解</a>
+          </li>
+        
+          <li>
+            <a href="/2020/05/26/%E5%B8%B8%E7%94%A8%E7%B1%BB/">常用类</a>
+          </li>
+        
+          <li>
+            <a href="/2020/05/24/linux/">linux</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 zx<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

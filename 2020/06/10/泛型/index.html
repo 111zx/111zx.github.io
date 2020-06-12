@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>泛型 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="[TOC] 泛型概述 为什么需要泛型  jdk5.0之前ArrayList内什么都能放，而5.0之后有了泛型，可以规定存放数据的类型   使用泛型的好处  泛型不能是基本数据类型，要用包装类    1234567891011121314151617181920212223242526&#x2F;&#x2F;没有使用泛型ArrayList list &#x3D; new ArrayList();list.add(78);&#x2F;&#x2F;存放">
+<meta property="og:type" content="article">
+<meta property="og:title" content="泛型">
+<meta property="og:url" content="https://github.com/111zx/111zx.github.io/2020/06/10/%E6%B3%9B%E5%9E%8B/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="[TOC] 泛型概述 为什么需要泛型  jdk5.0之前ArrayList内什么都能放，而5.0之后有了泛型，可以规定存放数据的类型   使用泛型的好处  泛型不能是基本数据类型，要用包装类    1234567891011121314151617181920212223242526&#x2F;&#x2F;没有使用泛型ArrayList list &#x3D; new ArrayList();list.add(78);&#x2F;&#x2F;存放">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-06-10T03:05:18.791Z">
+<meta property="article:modified_time" content="2020-06-11T08:52:58.563Z">
+<meta property="article:author" content="zx">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://github.com/111zx/111zx.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-泛型" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/06/10/%E6%B3%9B%E5%9E%8B/" class="article-date">
+  <time datetime="2020-06-10T03:05:18.791Z" itemprop="datePublished">2020-06-10</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      泛型
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>[TOC]</p>
+<h1 id="泛型"><a href="#泛型" class="headerlink" title="泛型"></a>泛型</h1><h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><ul>
+<li><p>为什么需要泛型</p>
+<ul>
+<li>jdk5.0之前ArrayList内什么都能放，而5.0之后有了泛型，可以规定存放数据的类型</li>
+</ul>
+</li>
+<li><p>使用泛型的好处</p>
+<ul>
+<li><strong>泛型不能是基本数据类型，要用包装类</strong></li>
+</ul>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//没有使用泛型</span></span><br><span class="line">ArrayList list = <span class="keyword">new</span> ArrayList();</span><br><span class="line">list.add(<span class="number">78</span>);<span class="comment">//存放学生的成绩</span></span><br><span class="line">list.add(<span class="string">"Tom"</span>);<span class="comment">//问题1：检测不出来是不合法数据</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span>(Object score : list)&#123;</span><br><span class="line">    <span class="comment">//问题2：强转时可能出现ClassCastException'</span></span><br><span class="line">    <span class="keyword">int</span> stuScore = (Integer)score;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">//使用泛型</span></span><br><span class="line">ArrayList&lt;Integer&gt; list = <span class="keyword">new</span> ArrayList&lt;Integer&gt;();</span><br><span class="line">list.add(<span class="number">78</span>);<span class="comment">//存放学生的成绩</span></span><br><span class="line">list.add(<span class="string">"Tom"</span>);<span class="comment">//显示错误，不能存放此类元素</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span>(Object score : list)&#123;</span><br><span class="line">    <span class="comment">//避免了强转操作</span></span><br><span class="line">    <span class="keyword">int</span> stuScore = (Integer)score;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Iterator&lt;Integer&gt; iterator = list.iterator();</span><br><span class="line"><span class="keyword">while</span>(iterator.hasNext)&#123;</span><br><span class="line">    <span class="keyword">int</span> stuScore = iterator.next();</span><br><span class="line">  	sout(stuScore);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>集合中使用泛型<ul>
+<li>集合接口在jdk5.0之后被定义为有泛型的结构</li>
+<li>实例化集合时，可以指明具体的泛型类型</li>
+<li>指明完类型后，需要按照类型进行操作</li>
+<li>实例化时没有指明泛型，默认给java.lang.Object</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//泛型的嵌套使用</span></span><br><span class="line"></span><br><span class="line">Map&lt;String,Integer&gt; map = <span class="keyword">new</span> Map&lt;String,Integer&gt;();</span><br><span class="line">map.put(<span class="string">"Tom"</span>,<span class="number">1</span>);</span><br><span class="line"><span class="comment">//...</span></span><br><span class="line">Set&lt;Map.Entry&lt;String,Integer&gt;&gt; entry = map.entryset();</span><br><span class="line">Iterator&lt;Map.Entry&lt;String,Integer&gt;&gt; iterator = entry.iterator();</span><br><span class="line"><span class="keyword">while</span>(iterator.hasNext())&#123;</span><br><span class="line">	Map.Entry&lt;String,Integer&gt; e = iterator.next();</span><br><span class="line">    String key = e.getKey();</span><br><span class="line">    <span class="keyword">int</span> value = e.getValue();</span><br><span class="line">    sout(key+<span class="string">"---"</span> value);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="自定义泛型结构（泛型类，泛型接口，泛型方法）"><a href="#自定义泛型结构（泛型类，泛型接口，泛型方法）" class="headerlink" title="自定义泛型结构（泛型类，泛型接口，泛型方法）"></a>自定义泛型结构（泛型类，泛型接口，泛型方法）</h2><h3 id="自定义类"><a href="#自定义类" class="headerlink" title="自定义类"></a>自定义类</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Order</span>&lt;<span class="title">T</span>&gt;</span>&#123;</span><br><span class="line">	String orderName;</span><br><span class="line">    <span class="keyword">int</span> orderId;</span><br><span class="line">    </span><br><span class="line">    T orderT;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Order</span><span class="params">()</span></span>&#123;&#125;;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Order</span><span class="params">(String OrderName,<span class="keyword">int</span> orderId,T orderT)</span></span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.OrderName = OrderName;</span><br><span class="line">        <span class="keyword">this</span>.orderId = orderId;</span><br><span class="line">        <span class="keyword">this</span>.orderT = orderT;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> T <span class="title">getOrderT</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> orderT;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setOrderT</span><span class="params">(Y orderT)</span></span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.orderT = orderT;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//toString</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>测试类</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">test1</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test1</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="comment">//如果定义了泛型类，实例化没有指明类的泛型，则认为此泛型类型为Object类型</span></span><br><span class="line">        <span class="comment">//要求：最好使用带泛型的</span></span><br><span class="line">        Order order = <span class="keyword">new</span> Order();</span><br><span class="line">        order.setOrderT(<span class="number">123</span>);</span><br><span class="line">        order.setOrderT(<span class="string">"ABC"</span>);</span><br><span class="line">        </span><br><span class="line">        <span class="comment">//建议实例化时指明类的泛型</span></span><br><span class="line">        Order&lt;String&gt; order1 = <span class="keyword">new</span> Order&lt;String&gt;(<span class="string">"A"</span>,<span class="number">1001</span>,<span class="string">"order:A"</span>)</span><br><span class="line">        order1.setOrderT(<span class="string">"AA:hello"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>如果继承了一个具有泛型的类，那么自己在声明的时候不表明泛型也具有泛型的功能。保留泛型也可以，就会变成泛型类，可以指定自己的泛型，可以和父类不同。</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SubOrder</span> <span class="keyword">extends</span> <span class="title">order</span>&lt;<span class="title">Integer</span>&gt;</span>&#123;</span><br><span class="line">    <span class="comment">///...</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">test</span></span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test</span><span class="params">()</span></span>&#123;</span><br><span class="line">       SubOrder subOrder = <span class="keyword">new</span> SubOrder();</span><br><span class="line">       subOrder.setOrderT(<span class="number">1</span>);<span class="comment">//继承父类的方法，也是只能传入Integer类型</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://github.com/111zx/111zx.github.io/2020/06/10/%E6%B3%9B%E5%9E%8B/" data-id="ckbbzdvsw000ft8ub407c4k69" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2020/06/09/%E8%BD%AF%E4%BB%B6%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84%E8%AF%BE%E7%A8%8B%E6%8A%A5%E5%91%8A/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">软件体系结构课程报告</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/06/10/%E6%B3%9B%E5%9E%8B/">泛型</a>
+          </li>
+        
+          <li>
+            <a href="/2020/06/09/%E8%BD%AF%E4%BB%B6%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84%E8%AF%BE%E7%A8%8B%E6%8A%A5%E5%91%8A/">软件体系结构课程报告</a>
+          </li>
+        
+          <li>
+            <a href="/2020/06/01/%E6%9E%9A%E4%B8%BE%E7%B1%BB%E5%92%8C%E6%B3%A8%E8%A7%A3/">枚举类和注解</a>
+          </li>
+        
+          <li>
+            <a href="/2020/05/26/%E5%B8%B8%E7%94%A8%E7%B1%BB/">常用类</a>
+          </li>
+        
+          <li>
+            <a href="/2020/05/24/linux/">linux</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 zx<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

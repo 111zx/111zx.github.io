@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>leetcode | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="53. 最大序列和问题描述给定一个整数数组 nums ，找到一个具有最大和的连续子数组（子数组最少包含一个元素），返回其最大和。 示例: 输入: [-2,1,-3,4,-1,2,1,-5,4],输出: 6解释: 连续子数组 [4,-1,2,1] 的和最大，为 6。 来源：力扣（LeetCode）  1. 贪心算法思路分析 以 i - 1 下标的元素为结尾的最大序列和为正时，sum &#x3D; sum +">
+<meta property="og:type" content="article">
+<meta property="og:title" content="leetcode">
+<meta property="og:url" content="https://github.com/111zx/111zx.github.io/2020/05/12/leetcode/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="53. 最大序列和问题描述给定一个整数数组 nums ，找到一个具有最大和的连续子数组（子数组最少包含一个元素），返回其最大和。 示例: 输入: [-2,1,-3,4,-1,2,1,-5,4],输出: 6解释: 连续子数组 [4,-1,2,1] 的和最大，为 6。 来源：力扣（LeetCode）  1. 贪心算法思路分析 以 i - 1 下标的元素为结尾的最大序列和为正时，sum &#x3D; sum +">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-05-12T02:24:08.000Z">
+<meta property="article:modified_time" content="2020-05-16T02:41:08.844Z">
+<meta property="article:author" content="zx">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://github.com/111zx/111zx.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-leetcode" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/05/12/leetcode/" class="article-date">
+  <time datetime="2020-05-12T02:24:08.000Z" itemprop="datePublished">2020-05-12</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      leetcode
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="53-最大序列和"><a href="#53-最大序列和" class="headerlink" title="53. 最大序列和"></a>53. 最大序列和</h2><h5 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h5><p>给定一个整数数组 nums ，找到一个具有最大和的连续子数组（子数组最少包含一个元素），返回其最大和。</p>
+<p>示例:</p>
+<p>输入: [-2,1,-3,4,-1,2,1,-5,4],<br>输出: 6<br>解释: 连续子数组 [4,-1,2,1] 的和最大，为 6。</p>
+<p>来源：力扣（LeetCode）</p>
+<hr>
+<h5 id="1-贪心算法"><a href="#1-贪心算法" class="headerlink" title="1. 贪心算法"></a>1. 贪心算法</h5><h6 id="思路分析"><a href="#思路分析" class="headerlink" title="思路分析"></a>思路分析</h6><ul>
+<li>以 i - 1 下标的元素为结尾的最大序列和为正时，sum = sum + nums[i];以 i - 1 下标的元素为结尾的最大序列和为负时，sum = nums[i]</li>
+<li>每次得到序列和后和目前最大序列和比较，根据情况判断是否更新最大序列和的值</li>
+</ul>
+<h6 id="时间复杂度"><a href="#时间复杂度" class="headerlink" title="时间复杂度"></a>时间复杂度</h6><ul>
+<li>O(n)</li>
+</ul>
+<h6 id="空间复杂度"><a href="#空间复杂度" class="headerlink" title="空间复杂度"></a>空间复杂度</h6><ul>
+<li>O(1)</li>
+</ul>
+<h6 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h6><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">   贪心算法</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">method1</span><span class="params">(<span class="keyword">int</span>[] nums)</span></span>&#123;</span><br><span class="line">       <span class="keyword">int</span> max = nums[<span class="number">0</span>];</span><br><span class="line">       <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>,sum = <span class="number">0</span>; i &lt; nums.length; i++)</span><br><span class="line">           <span class="comment">/*</span></span><br><span class="line"><span class="comment">           计算以i下标结尾的最大序列和</span></span><br><span class="line"><span class="comment">           */</span></span><br><span class="line">           max = (sum = sum &lt; <span class="number">0</span> ? nums[i] : sum + 					nums[i]) &gt; max ? sum : max;</span><br><span class="line">       </span><br><span class="line">       <span class="keyword">return</span> max;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h5 id="2-动态规划"><a href="#2-动态规划" class="headerlink" title="2. 动态规划"></a>2. 动态规划</h5><h6 id="思路分析-1"><a href="#思路分析-1" class="headerlink" title="思路分析"></a>思路分析</h6><ul>
+<li>计算以每个下标为结尾的最大序列和</li>
+<li>转移方程：nums[i] = nums[i - 1] &gt; 0 ? nums[i] + nums[ i - 1] : nums[i]</li>
+<li>完成计算之后nums数组成为最大序列和数组</li>
+</ul>
+<h6 id="时间复杂度-1"><a href="#时间复杂度-1" class="headerlink" title="时间复杂度"></a>时间复杂度</h6><p>O(n)</p>
+<h6 id="空间复杂度-1"><a href="#空间复杂度-1" class="headerlink" title="空间复杂度"></a>空间复杂度</h6><p>O(1)</p>
+<h6 id="java代码实现"><a href="#java代码实现" class="headerlink" title="java代码实现"></a>java代码实现</h6><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">method2</span><span class="params">(<span class="keyword">int</span>[] nums)</span></span>&#123;</span><br><span class="line">        <span class="keyword">int</span> max = nums[<span class="number">0</span>];</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; nums.length &gt; <span class="number">1</span> &amp;&amp; i &lt; nums.length; i++) &#123;</span><br><span class="line">            </span><br><span class="line">            <span class="comment">//构造最大序列和数组（以每个下标为结尾的最大序列和的值）</span></span><br><span class="line">            <span class="keyword">if</span>(nums[i - <span class="number">1</span>] &gt; <span class="number">0</span>)&#123;</span><br><span class="line">                nums[i] = nums[i] + nums[i - <span class="number">1</span>];</span><br><span class="line">            &#125;</span><br><span class="line">            </span><br><span class="line">            max = Math.max(max,nums[i]);<span class="comment">//保存最大数据</span></span><br><span class="line">            </span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> max;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h5 id="3-分治算法"><a href="#3-分治算法" class="headerlink" title="3.*分治算法"></a>3.*分治算法</h5><h6 id="思路分析-2"><a href="#思路分析-2" class="headerlink" title="思路分析"></a>思路分析</h6><ul>
+<li><p>需要维护4个变量：</p>
+<ul>
+<li>lsum：前序列以做区间为端点的最大子段和</li>
+<li>rsum：当前序列以做区间为端点的最大子段和</li>
+<li>isum：区间和</li>
+<li>msum：当前序列的最大子段和（最后求出[0,nums.length - 1]的值即可）</li>
+</ul>
+</li>
+<li><p>每次合并4个变量的变更依据：</p>
+<ul>
+<li>新子段的lSum等于左区间的lSum或者左区间的 区间和 加上右区间的lSum</li>
+<li>新子段的rSum等于右区间的rSum或者右区间的 区间和 加上左区间的rSum</li>
+<li>新子段的区间和等于左右区间的区间和之和</li>
+<li><strong>新子段的最大子段和，其子段有可能穿过左右区间，或左区间，或右区间</strong></li>
+</ul>
+</li>
+</ul>
+<h6 id="时间复杂度-2"><a href="#时间复杂度-2" class="headerlink" title="时间复杂度"></a>时间复杂度</h6><p>O(n)</p>
+<h6 id="空间复杂度-2"><a href="#空间复杂度-2" class="headerlink" title="空间复杂度"></a>空间复杂度</h6><p>O(logn)</p>
+<h6 id="代码实现-1"><a href="#代码实现-1" class="headerlink" title="代码实现"></a>代码实现</h6><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">maxSubArray</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</span><br><span class="line">       <span class="comment">// 输入校验</span></span><br><span class="line">       <span class="keyword">if</span> (nums == <span class="keyword">null</span> || nums.length &lt;= <span class="number">0</span>)</span><br><span class="line">           <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">       <span class="keyword">int</span> len = nums.length;<span class="comment">// 获取输入长度</span></span><br><span class="line">       <span class="keyword">return</span> getInfo(nums, <span class="number">0</span>, len - <span class="number">1</span>).mSum;</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   <span class="class"><span class="keyword">class</span> <span class="title">wtevTree</span> </span>&#123;</span><br><span class="line">       <span class="keyword">int</span> lSum;<span class="comment">// 以左区间为端点的最大子段和</span></span><br><span class="line">       <span class="keyword">int</span> rSum;<span class="comment">// 以右区间为端点的最大子段和</span></span><br><span class="line">       <span class="keyword">int</span> iSum;<span class="comment">// 区间所有数的和</span></span><br><span class="line">       <span class="keyword">int</span> mSum;<span class="comment">// 该区间的最大子段和</span></span><br><span class="line"></span><br><span class="line">       <span class="comment">// 构造函数</span></span><br><span class="line">       wtevTree(<span class="keyword">int</span> l, <span class="keyword">int</span> r, <span class="keyword">int</span> i, <span class="keyword">int</span> m) &#123;</span><br><span class="line">           lSum = l;</span><br><span class="line">           rSum = r;</span><br><span class="line">           iSum = i;</span><br><span class="line">           mSum = m;</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   <span class="comment">// 通过既有的属性，计算上一层的属性,一步步往上返回,获得线段树</span></span><br><span class="line">   <span class="function">wtevTree <span class="title">pushUp</span><span class="params">(wtevTree leftT, wtevTree rightT)</span> </span>&#123;</span><br><span class="line">       <span class="comment">// 新子段的lSum等于左区间的lSum或者左区间的 区间和 加上右区间的lSum</span></span><br><span class="line">       <span class="keyword">int</span> l = Math.max(leftT.lSum, leftT.iSum + rightT.lSum);</span><br><span class="line">       <span class="comment">// 新子段的rSum等于右区间的rSum或者右区间的 区间和 加上左区间的rSum</span></span><br><span class="line">       <span class="keyword">int</span> r = Math.max(leftT.rSum + rightT.iSum, rightT.rSum);</span><br><span class="line">       <span class="comment">// 新子段的区间和等于左右区间的区间和之和</span></span><br><span class="line">       <span class="keyword">int</span> i = leftT.iSum + rightT.iSum;</span><br><span class="line">       <span class="comment">// 新子段的最大子段和，其子段有可能穿过左右区间，或左区间，或右区间</span></span><br><span class="line">       <span class="keyword">int</span> m = Math.max(leftT.rSum + rightT.lSum, Math.max(leftT.mSum, rightT.mSum));</span><br><span class="line">       <span class="keyword">return</span> <span class="keyword">new</span> wtevTree(l, r, i, m);</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   <span class="comment">// 递归建立和获得输入区间所有子段的结构</span></span><br><span class="line">   <span class="function">wtevTree <span class="title">getInfo</span><span class="params">(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> left, <span class="keyword">int</span> right)</span> </span>&#123;</span><br><span class="line">       <span class="comment">// 若区间长度为1，其四个子段均为其值</span></span><br><span class="line">       <span class="keyword">if</span> (left == right)</span><br><span class="line">           <span class="keyword">return</span> <span class="keyword">new</span> wtevTree(nums[left], nums[left], nums[left], nums[left]);</span><br><span class="line">       <span class="keyword">int</span> mid = (left + right) / <span class="number">2</span>;<span class="comment">// 获得中间点mid</span></span><br><span class="line">       wtevTree leftT = getInfo(nums, left, mid);</span><br><span class="line">       wtevTree rightT = getInfo(nums, mid + <span class="number">1</span>, right);<span class="comment">//mid+1,左右区间没有交集。</span></span><br><span class="line">       <span class="keyword">return</span> pushUp(leftT, rightT);</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="15-三数之和"><a href="#15-三数之和" class="headerlink" title="15. 三数之和"></a>15. 三数之和</h2><h6 id="问题描述-1"><a href="#问题描述-1" class="headerlink" title="问题描述"></a>问题描述</h6><p>给你一个包含 n 个整数的数组 nums，判断 nums 中是否存在三个元素 a，b，c ，使得 a + b + c = 0 ？请你找出所有满足条件且不重复的三元组。</p>
+<p>注意：答案中不可以包含重复的三元组。</p>
+<p> 示例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">给定数组 nums &#x3D; [-1, 0, 1, 2, -1, -4]，</span><br><span class="line"></span><br><span class="line">满足要求的三元组集合为：</span><br><span class="line">[</span><br><span class="line">  [-1, 0, 1],</span><br><span class="line">  [-1, -1, 2]</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+
+<p>来源：力扣（LeetCode）</p>
+<h6 id="思路分析-3"><a href="#思路分析-3" class="headerlink" title="思路分析"></a>思路分析</h6><ul>
+<li>和二数和比较 a + b = 9,三数和变为 a + b = -c.其中重要的一点是需要去重。为了去重可以<strong>先将数组排序</strong>，在遇到nums[i] == nums[i - 1]直接跳过就可以了</li>
+<li>最外层循环nums.length - 2次，循环过后不用考虑之前下标的元素，如果再考虑的话会出现重复</li>
+</ul>
+<h6 id="时间复杂度-3"><a href="#时间复杂度-3" class="headerlink" title="时间复杂度"></a>时间复杂度</h6><p>O(logn) +O(n^2)</p>
+<h6 id="空间复杂度-3"><a href="#空间复杂度-3" class="headerlink" title="空间复杂度"></a>空间复杂度</h6><p>O(n)</p>
+<h6 id="代码实现-2"><a href="#代码实现-2" class="headerlink" title="代码实现"></a>代码实现</h6><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span>  List&lt;List&lt;Integer&gt;&gt; threeSum(<span class="keyword">int</span>[] nums)&#123;</span><br><span class="line">       Arrays.sort(nums);</span><br><span class="line">       ArrayList&lt;List&lt;Integer&gt;&gt; list = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">       <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; nums.length - <span class="number">2</span>; i++) &#123;</span><br><span class="line">           </span><br><span class="line">           <span class="comment">//去重</span></span><br><span class="line">           <span class="keyword">if</span>(i &gt; <span class="number">0</span> &amp;&amp; nums[i] == nums[i - <span class="number">1</span>])&#123;</span><br><span class="line">               <span class="keyword">continue</span>;</span><br><span class="line">           &#125;</span><br><span class="line">           </span><br><span class="line">           <span class="keyword">int</span> k = i + <span class="number">1</span>,j = nums.length - <span class="number">1</span>;</span><br><span class="line">           <span class="keyword">while</span>(k &lt; j)&#123;</span><br><span class="line">               <span class="keyword">if</span>(nums[j] + nums[k] == -nums[i])&#123;</span><br><span class="line">                   ArrayList&lt;Integer&gt; set = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">                   set.add(nums[i]);</span><br><span class="line">                   set.add(nums[j]);</span><br><span class="line">                   set.add(nums[k]);</span><br><span class="line">                   list.add(set);</span><br><span class="line">                   k++;</span><br><span class="line">                   </span><br><span class="line">                   <span class="comment">//去重</span></span><br><span class="line">                   <span class="keyword">while</span>(k &lt; j &amp;&amp; nums[k -<span class="number">1</span>] == nums[k])&#123;</span><br><span class="line">                       k++;</span><br><span class="line">                   &#125;</span><br><span class="line">                   </span><br><span class="line">                   j--;</span><br><span class="line">                   </span><br><span class="line">                   <span class="comment">//去重</span></span><br><span class="line">                   <span class="keyword">while</span>(k &lt; j &amp;&amp; nums[j] == nums[k - <span class="number">1</span>])&#123;</span><br><span class="line">                       j--;</span><br><span class="line">                   &#125;</span><br><span class="line">                   </span><br><span class="line">               &#125;<span class="keyword">else</span> <span class="keyword">if</span>(nums[j] + nums[k] &lt; -nums[i])&#123;<span class="comment">//小于nums[i],左端的指针向右移动，寻找更大的组合</span></span><br><span class="line">                   k++;</span><br><span class="line">               &#125;<span class="keyword">else</span>&#123;<span class="comment">//大于nums[i],右端的指针向左移动，寻找更小的组合</span></span><br><span class="line">                   j--;</span><br><span class="line">               &#125;</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="keyword">return</span> list;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h1 id="最佳股票投资方案"><a href="#最佳股票投资方案" class="headerlink" title="最佳股票投资方案"></a>最佳股票投资方案</h1><h2 id="1-可购买1次"><a href="#1-可购买1次" class="headerlink" title="1.可购买1次"></a>1.可购买1次</h2><h4 id="问题描述-2"><a href="#问题描述-2" class="headerlink" title="问题描述"></a>问题描述</h4><p>给定一个数组，它的第 i 个元素是一支给定股票第 i 天的价格。</p>
+<p>如果你最多只允许完成一笔交易（即买入和卖出一支股票一次），设计一个算法来计算你所能获取的最大利润。</p>
+<p>注意：你不能在买入股票前卖出股票。</p>
+<p>示例 1:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">输入: [7,1,5,3,6,4]</span><br><span class="line">输出: 5</span><br><span class="line">解释: 在第 2 天（股票价格 &#x3D; 1）的时候买入，在第 5 天（股票价格 &#x3D; 6）的时候卖出，最大利润 &#x3D; 6-1 &#x3D; 5 。</span><br><span class="line">     注意利润不能是 7-1 &#x3D; 6, 因为卖出价格需要大于买入价格；同时，你不能在买入前卖出股票。</span><br><span class="line"></span><br><span class="line">来源：力扣（LeetCode）</span><br></pre></td></tr></table></figure>
+
+<h4 id="思路分析-4"><a href="#思路分析-4" class="headerlink" title="思路分析"></a>思路分析</h4><ul>
+<li>从第一天的股价开始，需要一个minprice记录最小股价和一个maxprofit记录最大利润</li>
+<li>循环n次，最后的maxprofit即是最大利润</li>
+</ul>
+<h4 id="复杂度分析"><a href="#复杂度分析" class="headerlink" title="复杂度分析"></a>复杂度分析</h4><ul>
+<li>时间复杂度O(n)</li>
+<li>空间复杂度O(1)</li>
+</ul>
+<h4 id="代码实现-3"><a href="#代码实现-3" class="headerlink" title="代码实现"></a>代码实现</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">method</span><span class="params">(<span class="keyword">int</span>[] prices)</span></span>&#123;</span><br><span class="line">        <span class="keyword">int</span> minprice = Integer.MAX_VALUE;</span><br><span class="line">        <span class="keyword">int</span> maxprofit = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; prices.length; i++) &#123;</span><br><span class="line">            </span><br><span class="line">            <span class="comment">//记录最小股价</span></span><br><span class="line">            <span class="keyword">if</span>(prices[i] &lt; minprice)&#123;</span><br><span class="line">                minprice = prices[i];</span><br><span class="line">            &#125;</span><br><span class="line">            </span><br><span class="line">            <span class="comment">//记录最大利润</span></span><br><span class="line">            <span class="keyword">if</span>(prices[i] - minprice &gt;maxprofit)&#123;</span><br><span class="line">                maxprofit = prices[i] - minprice;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> maxprofit;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="2-可购买任意次"><a href="#2-可购买任意次" class="headerlink" title="2. 可购买任意次"></a>2. 可购买任意次</h2><h4 id="问题描述-3"><a href="#问题描述-3" class="headerlink" title="问题描述"></a>问题描述</h4><p>给定一个数组，它的第 i 个元素是一支给定股票第 i 天的价格。</p>
+<p>设计一个算法来计算你所能获取的最大利润。你可以尽可能地完成更多的交易（多次买卖一支股票）。</p>
+<p>注意：你不能同时参与多笔交易（你必须在再次购买前出售掉之前的股票）。</p>
+<p>示例1：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">输入: [7,1,5,3,6,4]</span><br><span class="line">输出: 7</span><br><span class="line">解释: 在第 2 天（股票价格 &#x3D; 1）的时候买入，在第 3 天（股票价格 &#x3D; 5）的时候卖出, 这笔交易所能获得利润 &#x3D; 5-1 &#x3D; 4 。</span><br><span class="line">     随后，在第 4 天（股票价格 &#x3D; 3）的时候买入，在第 5 天（股票价格 &#x3D; 6）的时候卖出, 这笔交易所能获得利润 &#x3D; 6-3 &#x3D; 3 。</span><br><span class="line"></span><br><span class="line">来源：力扣（LeetCode）</span><br></pre></td></tr></table></figure>
+
+<h4 id="思路分析-5"><a href="#思路分析-5" class="headerlink" title="思路分析"></a>思路分析</h4><ul>
+<li><p>两个状态变量</p>
+<ul>
+<li>cash：不持有股票的最大利润</li>
+<li>hold：持有股票的最大利润</li>
+</ul>
+</li>
+<li><p>状态转移方程：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cash = Math.max(cash, hold + prices[i]);</span><br><span class="line">hold = Math.max(hold, cash - prices[i]);</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><strong>两个方程先后顺序可以互换，cash和hold只能有一个发生变化，所以不需要临时变量<br>比如cash变为hold + prices[i] - fee，cash - prices[i] = hold + prices[i] - fee - prices[i] = hold -fee，永远小于 hold</strong></li>
+</ul>
+</li>
+<li><p><strong>为什么不用临时变量</strong></p>
+</li>
+</ul>
+<h4 id="复杂度分析-1"><a href="#复杂度分析-1" class="headerlink" title="复杂度分析"></a>复杂度分析</h4><ul>
+<li>时间复杂度O(n)</li>
+<li>空间复杂度O(1)</li>
+</ul>
+<h4 id="代码实现-4"><a href="#代码实现-4" class="headerlink" title="代码实现"></a>代码实现</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">method6</span><span class="params">(<span class="keyword">int</span>[] prices)</span></span>&#123;</span><br><span class="line">        <span class="keyword">int</span> cash = <span class="number">0</span>, hold = -prices[<span class="number">0</span>];</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; prices.length; i++) &#123;</span><br><span class="line">            </span><br><span class="line">            <span class="comment">//cash只能有一个发生变化，所以不需要临时变量</span></span><br><span class="line">            cash = Math.max(cash, hold + prices[i]);</span><br><span class="line">            hold = Math.max(hold, cash - prices[i]);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> cash;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<hr>
+<h2 id="3-可购买任意次（冷冻期）"><a href="#3-可购买任意次（冷冻期）" class="headerlink" title="3. 可购买任意次（冷冻期）"></a>3. 可购买任意次（冷冻期）</h2><h4 id="问题描述-4"><a href="#问题描述-4" class="headerlink" title="问题描述"></a>问题描述</h4><p>给定一个数组，它的第 i 个元素是一支给定股票第 i 天的价格。</p>
+<p>如果你最多只允许完成一笔交易（即买入和卖出一支股票一次），设计一个算法来计算你所能获取的最大利润。</p>
+<p>注意：你不能在买入股票前卖出股票。</p>
+<p>示例 1:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">输入: [7,1,5,3,6,4]</span><br><span class="line">输出: 5</span><br><span class="line">解释: 在第 2 天（股票价格 &#x3D; 1）的时候买入，在第 5 天（股票价格 &#x3D; 6）的时候卖出，最大利润 &#x3D; 6-1 &#x3D; 5 。</span><br><span class="line">     注意利润不能是 7-1 &#x3D; 6, 因为卖出价格需要大于买入价格；同时，你不能在买入前卖出股票。</span><br><span class="line"></span><br><span class="line">来源：力扣（LeetCode）</span><br></pre></td></tr></table></figure>
+
+<h4 id="思路分析-6"><a href="#思路分析-6" class="headerlink" title="思路分析"></a>思路分析</h4><ul>
+<li><strong>为什么不用临时变量和用临时变量</strong></li>
+<li>添加一个变量<ul>
+<li>cool：记录冷冻期的最大利润</li>
+</ul>
+</li>
+<li>和上面第二个问题的区别：在不持有股票的时候<strong>不再是从上一次持有股票的时候</strong>减去今天的股价，而<strong>是从上一个冷冻期</strong>减去今天的股价。</li>
+</ul>
+<h4 id="复杂度分析-2"><a href="#复杂度分析-2" class="headerlink" title="复杂度分析"></a>复杂度分析</h4><ul>
+<li>时间复杂度O(n)</li>
+<li>空间复杂度O(1)</li>
+</ul>
+<h4 id="代码实现-5"><a href="#代码实现-5" class="headerlink" title="代码实现"></a>代码实现</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">没用临时变量</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">method3</span><span class="params">(<span class="keyword">int</span>[] prices)</span></span>&#123;</span><br><span class="line">        <span class="keyword">int</span> cash = <span class="number">0</span>, hold = -prices[<span class="number">0</span>],cool = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; prices.length; i++) &#123;</span><br><span class="line">            cash = Math.max(cash, cool + prices[i]);</span><br><span class="line">            cool = Math.max(cash,cool);</span><br><span class="line">            hold = Math.max(hold, cash - prices[i]);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> cash;</span><br><span class="line">    &#125;</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">用临时变量之后</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">maxProfit</span><span class="params">(<span class="keyword">int</span>[] prices)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(prices.length == <span class="number">0</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span> cash = <span class="number">0</span>, hold = -prices[<span class="number">0</span>],cool = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> cash2 = <span class="number">0</span>, hold2 = -prices[<span class="number">0</span>],cool2 = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; prices.length; i++) &#123;</span><br><span class="line">            </span><br><span class="line">            <span class="comment">//重点在这三个表达式顺序，有没有依赖关系，在这个问题有，最好加上临时变量，或者按照method3的顺序，再只含有cash 和 hold的没有依赖关系，所以不用临时变量</span></span><br><span class="line">            hold = Math.max(hold2, cool2 - prices[i]);</span><br><span class="line">            cool = Math.max(cash2,cool2);</span><br><span class="line">            cash = Math.max(cash2, hold2 + prices[i]);</span><br><span class="line">            </span><br><span class="line">            hold2 = hold;</span><br><span class="line">            cool2 = cool;</span><br><span class="line">            cash2 = cash;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> cash;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="4-可购买任意次（手续费）"><a href="#4-可购买任意次（手续费）" class="headerlink" title="4. 可购买任意次（手续费）"></a>4. 可购买任意次（手续费）</h2><h4 id="问题描述-5"><a href="#问题描述-5" class="headerlink" title="问题描述"></a>问题描述</h4><p>给定一个数组，它的第 i 个元素是一支给定股票第 i 天的价格。</p>
+<p>设计一个算法来计算你所能获取的最大利润。你可以尽可能地完成更多的交易（多次买卖一支股票）。</p>
+<p>注意：你不能同时参与多笔交易（你必须在再次购买前出售掉之前的股票）。</p>
+<p>示例1：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">输入: [7,1,5,3,6,4]</span><br><span class="line">输出: 7</span><br><span class="line">解释: 在第 2 天（股票价格 &#x3D; 1）的时候买入，在第 3 天（股票价格 &#x3D; 5）的时候卖出, 这笔交易所能获得利润 &#x3D; 5-1 &#x3D; 4 。</span><br><span class="line">     随后，在第 4 天（股票价格 &#x3D; 3）的时候买入，在第 5 天（股票价格 &#x3D; 6）的时候卖出, 这笔交易所能获得利润 &#x3D; 6-3 &#x3D; 3 。</span><br><span class="line"></span><br><span class="line">来源：力扣（LeetCode）</span><br></pre></td></tr></table></figure>
+
+<h4 id="思路分析-7"><a href="#思路分析-7" class="headerlink" title="思路分析"></a>思路分析</h4><ul>
+<li>和第二个问题区别：再不持有股票有可能<strong>发生卖股票的活动时</strong>，需要减去fee</li>
+</ul>
+<h4 id="复杂度分析-3"><a href="#复杂度分析-3" class="headerlink" title="复杂度分析"></a>复杂度分析</h4><ul>
+<li>时间复杂度O(n)</li>
+<li>空间复杂度O(1)</li>
+</ul>
+<h4 id="代码实现-6"><a href="#代码实现-6" class="headerlink" title="代码实现"></a>代码实现</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">method6</span><span class="params">(<span class="keyword">int</span>[] prices,<span class="keyword">int</span> fee)</span></span>&#123;</span><br><span class="line">        <span class="keyword">int</span> cash = <span class="number">0</span>, hold = -prices[<span class="number">0</span>];</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; prices.length; i++) &#123;</span><br><span class="line">            </span><br><span class="line">            <span class="comment">//cash和hold只能有一个发生变化，所以不需要临时变量</span></span><br><span class="line">            <span class="comment">//比如cash变为hold + prices[i] - fee，cash - prices[i] = hold + prices[i] - fee - prices[i] = hold -fee，永远小于 hold</span></span><br><span class="line">            cash = Math.max(cash, hold + prices[i] - fee);</span><br><span class="line">            hold = Math.max(hold, cash - prices[i]);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> cash;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="5-可购买2次"><a href="#5-可购买2次" class="headerlink" title="5. 可购买2次"></a>5. 可购买2次</h2><h4 id="问题描述-6"><a href="#问题描述-6" class="headerlink" title="问题描述"></a>问题描述</h4><p>给定一个数组，它的第 i 个元素是一支给定股票第 i 天的价格。</p>
+<p>如果你最多只允许完成一笔交易（即买入和卖出一支股票一次），设计一个算法来计算你所能获取的最大利润。</p>
+<p>注意：你不能在买入股票前卖出股票。</p>
+<p>示例 1:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">输入: [7,1,5,3,6,4]</span><br><span class="line">输出: 5</span><br><span class="line">解释: 在第 2 天（股票价格 &#x3D; 1）的时候买入，在第 5 天（股票价格 &#x3D; 6）的时候卖出，最大利润 &#x3D; 6-1 &#x3D; 5 。</span><br><span class="line">     注意利润不能是 7-1 &#x3D; 6, 因为卖出价格需要大于买入价格；同时，你不能在买入前卖出股票。</span><br><span class="line"></span><br><span class="line">来源：力扣（LeetCode）</span><br></pre></td></tr></table></figure>
+
+<h4 id="思路分析-8"><a href="#思路分析-8" class="headerlink" title="思路分析"></a>思路分析</h4><ol>
+<li><p>判断数组的长度和是否为空</p>
+</li>
+<li><p>确定两个状态数组</p>
+<ul>
+<li>dp0: 不持有股票时的最大利润</li>
+<li>dp1: 持有股票后的最大利润</li>
+</ul>
+</li>
+<li><p>初始化：dp0 全部位0；dp1根据股价变化</p>
+</li>
+<li><p><strong>状态转移方程</strong></p>
+<ul>
+<li><p><strong>为什么dp0是j-1，而dp1是j？</strong></p>
+<p>因为dp0表示的是不持有股票，如果需要买的话，肯定是上一次卖玩后买所以是j-1次；</p>
+<p>而dp1是持有股票，需要卖的话一定是这次不持有股票（买或者不买）的数据，j次。</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">dp0[i][j] &#x3D; Math.max(dp0[i-1][j],dp1[i-1][j-1] + prices[i]);</span><br><span class="line">dp1[i][j] &#x3D; Math.max(dp1[i-1][j],dp0[i-1][j] - prices[i]);</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h4 id="复杂度分析-4"><a href="#复杂度分析-4" class="headerlink" title="复杂度分析"></a>复杂度分析</h4><ul>
+<li>时间复杂度：O(n)</li>
+<li>空间复杂度：O(n),可优化，第6个问题即优化后的版本</li>
+</ul>
+<h4 id="代码实现-7"><a href="#代码实现-7" class="headerlink" title="代码实现"></a>代码实现</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">method4</span><span class="params">(<span class="keyword">int</span>[] prices)</span></span>&#123;</span><br><span class="line">            <span class="keyword">if</span>(prices.length == <span class="number">0</span> &amp;&amp; prices == <span class="keyword">null</span>)&#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">int</span> max = <span class="number">0</span>,k = <span class="number">2</span>;</span><br><span class="line">            <span class="keyword">int</span> days = prices.length;</span><br><span class="line">            <span class="keyword">int</span>[][] dp0 = <span class="keyword">new</span> <span class="keyword">int</span>[days][k + <span class="number">1</span>];<span class="comment">//不持有股票时的最大利润</span></span><br><span class="line">            <span class="keyword">int</span>[][] dp1 = <span class="keyword">new</span> <span class="keyword">int</span>[days][k + <span class="number">1</span>]; <span class="comment">//持有股票后的最大利润</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">//初始化dp数组:dp0不持有即全部为0，自动初始化即可完成;dp1在第一天持有股票最大利润只能是-prices[0]</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; k + <span class="number">1</span>; i++) &#123;</span><br><span class="line">            dp1[<span class="number">0</span>][i] = -prices[<span class="number">0</span>];</span><br><span class="line">        &#125;</span><br><span class="line">    <span class="comment">//第二天到最后一天最大利润要根据当天股价决定</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; days; i++) &#123;</span><br><span class="line">            dp1[i][<span class="number">0</span>] = Math.max(dp1[i - <span class="number">1</span>][<span class="number">0</span>],-prices[i]);</span><br><span class="line">        &#125;</span><br><span class="line">    </span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; days; i++) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt; k + <span class="number">1</span>; j++) &#123;</span><br><span class="line">                dp0[i][j] = Math.max(dp0[i-<span class="number">1</span>][j],dp1[i-<span class="number">1</span>][j-<span class="number">1</span>] + prices[i]);</span><br><span class="line">                dp1[i][j] = Math.max(dp1[i-<span class="number">1</span>][j],dp0[i-<span class="number">1</span>][j] - prices[i]);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; k + <span class="number">1</span>; i++) &#123;</span><br><span class="line">            max = Math.max(dp0[days - <span class="number">1</span>][i],max);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> max;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="6-可购买k次"><a href="#6-可购买k次" class="headerlink" title="6. 可购买k次"></a>6. 可购买k次</h2><h4 id="问题描述-7"><a href="#问题描述-7" class="headerlink" title="问题描述"></a>问题描述</h4><p>给定一个数组，它的第 i 个元素是一支给定股票第 i 天的价格。</p>
+<p>如果你最多只允许完成一笔交易（即买入和卖出一支股票一次），设计一个算法来计算你所能获取的最大利润。</p>
+<p>注意：你不能在买入股票前卖出股票。</p>
+<p>示例 1:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">输入: [7,1,5,3,6,4]</span><br><span class="line">输出: 5</span><br><span class="line">解释: 在第 2 天（股票价格 &#x3D; 1）的时候买入，在第 5 天（股票价格 &#x3D; 6）的时候卖出，最大利润 &#x3D; 6-1 &#x3D; 5 。</span><br><span class="line">     注意利润不能是 7-1 &#x3D; 6, 因为卖出价格需要大于买入价格；同时，你不能在买入前卖出股票。</span><br><span class="line"></span><br><span class="line">来源：力扣（LeetCode）</span><br></pre></td></tr></table></figure>
+
+<h4 id="思路分析-9"><a href="#思路分析-9" class="headerlink" title="思路分析"></a>思路分析</h4><ol>
+<li><p>判断数组的长度和是否为空</p>
+</li>
+<li><p>确定两个状态数组</p>
+<ol>
+<li>dp0: 不持有股票时的最大利润</li>
+<li>dp1: 持有股票后的最大利润</li>
+</ol>
+</li>
+<li><p>初始化：dp0 全部位0；dp1根据股价变化</p>
+</li>
+<li><p>状态转移方程</p>
+<ul>
+<li><strong>为什么dp0是j-1，而dp1是j？</strong></li>
+</ul>
+<p>因为dp0表示的是不持有股票，如果需要买的话，肯定是上一次卖玩后买所以是j-1次；</p>
+<p>而dp1是持有股票，需要卖的话一定是这次不持有股票（买或者不买）的数据，j次。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">dp0[j] &#x3D; Math.max(dp0[j],dp1[j-1] + prices[i]);</span><br><span class="line">dp1[j] &#x3D; Math.max(dp1[j],dp0[j] - prices[i]);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>在购买days / 2 次以上时，会出现错误，因为最多days / 2次即可完成所有情况，超过即可看作没有规定购买次数，回到第2个问题，要分类讨论</strong></p>
+</li>
+</ol>
+<h4 id="复杂度分析-5"><a href="#复杂度分析-5" class="headerlink" title="复杂度分析"></a>复杂度分析</h4><ul>
+<li>时间复杂度：O(n)</li>
+<li>空间复杂度：O(1)</li>
+</ul>
+<h4 id="代码实现-8"><a href="#代码实现-8" class="headerlink" title="代码实现"></a>代码实现</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">method5</span><span class="params">(<span class="keyword">int</span> k,<span class="keyword">int</span>[] prices)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(prices.length == <span class="number">0</span> &amp;&amp; prices == <span class="keyword">null</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span> max = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> days = prices.length;</span><br><span class="line">    </span><br><span class="line">    	<span class="comment">//最多购卖 days / 2次，如果超出，按照无限制处理，回到了任意次</span></span><br><span class="line">        <span class="keyword">if</span>(k &gt; days / <span class="number">2</span>)&#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; days; i++) &#123;</span><br><span class="line">                max += Math.max(prices[i+<span class="number">1</span>] - prices[i],<span class="number">0</span>);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> max;</span><br><span class="line">        &#125;</span><br><span class="line">    </span><br><span class="line">        <span class="keyword">int</span>[] dp0 = <span class="keyword">new</span> <span class="keyword">int</span>[k + <span class="number">1</span>];<span class="comment">//不持有股票时的最大利润</span></span><br><span class="line">        <span class="keyword">int</span>[] dp1 = <span class="keyword">new</span> <span class="keyword">int</span>[k + <span class="number">1</span>]; <span class="comment">//持有股票后的最大利润</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">//初始化</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; k + <span class="number">1</span>; i++) &#123;</span><br><span class="line">            dp1[i] = -prices[<span class="number">0</span>];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; days - <span class="number">1</span>; i++) &#123;</span><br><span class="line">            dp1[<span class="number">0</span>] = Math.max(dp1[<span class="number">0</span>], - prices[i]);<span class="comment">//初始化，db1[0]即上次</span></span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt; k + <span class="number">1</span>; j++) &#123;</span><br><span class="line">                dp0[j] = Math.max(dp0[j],dp1[j-<span class="number">1</span>] + prices[i]);</span><br><span class="line">                dp1[j] = Math.max(dp1[j],dp0[j] - prices[i]);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; k + <span class="number">1</span>; i++) &#123;</span><br><span class="line">            max = Math.max(dp0[i],max);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> max;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="523-连续的子数组和"><a href="#523-连续的子数组和" class="headerlink" title="523. 连续的子数组和"></a>523. 连续的子数组和</h1><h6 id="问题描述-8"><a href="#问题描述-8" class="headerlink" title="问题描述"></a>问题描述</h6><p>给定一个包含非负数的数组和一个目标整数 k，编写一个函数来判断该数组是否含有连续的子数组，其大小至少为 2，总和为 k 的倍数，即总和为 n*k，其中 n 也是一个整数。</p>
+<p>示例 1:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入: [23,2,4,6,7], k &#x3D; 6</span><br><span class="line">输出: True</span><br><span class="line">解释: [2,4] 是一个大小为 2 的子数组，并且和为 6。</span><br></pre></td></tr></table></figure>
+
+<p>来源：力扣（LeetCode）</p>
+<h6 id="思路分析-10"><a href="#思路分析-10" class="headerlink" title="思路分析"></a>思路分析</h6><ul>
+<li>利用Hashmap</li>
+</ul>
+<h6 id="时间复杂度-4"><a href="#时间复杂度-4" class="headerlink" title="时间复杂度"></a>时间复杂度</h6><h6 id="空间复杂度-4"><a href="#空间复杂度-4" class="headerlink" title="空间复杂度"></a>空间复杂度</h6><h6 id="代码实现-9"><a href="#代码实现-9" class="headerlink" title="代码实现"></a>代码实现</h6><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<hr>
+<h1 id><a href="#" class="headerlink" title></a></h1>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://github.com/111zx/111zx.github.io/2020/05/12/leetcode/" data-id="ckbbzdvs80004t8ubdpgh1t35" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2020/05/12/tips/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          tips
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2020/03/31/%E9%9B%86%E5%90%88/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">集合</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/06/10/%E6%B3%9B%E5%9E%8B/">泛型</a>
+          </li>
+        
+          <li>
+            <a href="/2020/06/09/%E8%BD%AF%E4%BB%B6%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84%E8%AF%BE%E7%A8%8B%E6%8A%A5%E5%91%8A/">软件体系结构课程报告</a>
+          </li>
+        
+          <li>
+            <a href="/2020/06/01/%E6%9E%9A%E4%B8%BE%E7%B1%BB%E5%92%8C%E6%B3%A8%E8%A7%A3/">枚举类和注解</a>
+          </li>
+        
+          <li>
+            <a href="/2020/05/26/%E5%B8%B8%E7%94%A8%E7%B1%BB/">常用类</a>
+          </li>
+        
+          <li>
+            <a href="/2020/05/24/linux/">linux</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 zx<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

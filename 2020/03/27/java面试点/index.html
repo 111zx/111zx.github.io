@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>java面试点 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="JVM 说说JVM内存模型。 线程的程序计数器是干什么用的？ 说说堆里面的垃圾回收算法？为什么新生代用复制算法，老年代用标记整理、标记压缩？ 了解CMS这个垃圾回收器吗？说说它的工作流程？ CMS在并发标记的时候，用户线程也会不停的产生一些大对象，Remark再次标记的时候可能会花上很多时间，说说你的优化方案？  .java - javac -&gt;class - JVM - &gt;各种操作系">
+<meta property="og:type" content="article">
+<meta property="og:title" content="java面试点">
+<meta property="og:url" content="https://github.com/111zx/111zx.github.io/2020/03/27/java%E9%9D%A2%E8%AF%95%E7%82%B9/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="JVM 说说JVM内存模型。 线程的程序计数器是干什么用的？ 说说堆里面的垃圾回收算法？为什么新生代用复制算法，老年代用标记整理、标记压缩？ 了解CMS这个垃圾回收器吗？说说它的工作流程？ CMS在并发标记的时候，用户线程也会不停的产生一些大对象，Remark再次标记的时候可能会花上很多时间，说说你的优化方案？  .java - javac -&gt;class - JVM - &gt;各种操作系">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-03-27T09:31:58.000Z">
+<meta property="article:modified_time" content="2020-03-28T08:42:18.668Z">
+<meta property="article:author" content="zx">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://github.com/111zx/111zx.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-java面试点" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/03/27/java%E9%9D%A2%E8%AF%95%E7%82%B9/" class="article-date">
+  <time datetime="2020-03-27T09:31:58.000Z" itemprop="datePublished">2020-03-27</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      java面试点
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="JVM"><a href="#JVM" class="headerlink" title="JVM"></a>JVM</h2><ol>
+<li>说说JVM内存模型。</li>
+<li>线程的程序计数器是干什么用的？</li>
+<li>说说堆里面的垃圾回收算法？为什么新生代用复制算法，老年代用标记整理、标记压缩？</li>
+<li>了解CMS这个垃圾回收器吗？说说它的工作流程？</li>
+<li>CMS在并发标记的时候，用户线程也会不停的产生一些大对象，Remark再次标记的时候可能会花上很多时间，说说你的优化方案？</li>
+</ol>
+<p>.java - javac -&gt;class - JVM - &gt;各种操作系统的机器码</p>
+<p>.class 会通过类装载子系统加载到 运行时数据区 最后由字节码执行引擎来执行</p>
+<h2 id="线程池"><a href="#线程池" class="headerlink" title="线程池"></a>线程池</h2><ol>
+<li>tcp time_wait和close_wait区别以及产生原因，过多的话处理方法？ </li>
+</ol>
+<h2 id="springboot"><a href="#springboot" class="headerlink" title="springboot"></a>springboot</h2><h2 id="数据库"><a href="#数据库" class="headerlink" title="数据库"></a>数据库</h2><ol>
+<li><p>数据库的锁</p>
+</li>
+<li><p>索引方面<br>索引是帮助MySQL高校获取数据的排好序的数据结构<br>索引数据结构<br> 二叉排序树</p>
+<pre><code>缺点：若是非递增序列，则变成线性的链表，查询效率低下</code></pre><p> 红黑树</p>
+<pre><code>二叉平衡：差距大于2时平衡
+    缺点：数据量很大时，树高度也很大，效率很低</code></pre><p> Hash表<br> B-Tree叶节点具有相同的深度，叶结点指针为空</p>
+<pre><code>所有索引元素不重复
+节点中的数据索引从左到右递增排列</code></pre><p> B+Tree（叶子节点间双向指针）（MySQL索引）</p>
+<pre><code>每次从磁盘拿来一个索引 在内存中查找（速度比磁盘io快很多）
+MySQL 一个节点16KB
+非叶子节点不存储data，只存储索引，叶子节点用指针连接，提高区间访问的性能
+非叶子节点不存储data的原因;让一个节点的索引更多，提高查询效率。</code></pre><p> 存储引擎是形容数据表的<br> InnoiDB</p>
+<pre><code>索引和数据存储在一起
+聚集索引
+    数据和索引放在一起
+非聚集索引
+    数据和索引分开
+为什么InnoDB表必须要主键，并且推荐用整型的自增主键？
+    没有主键就没有什么作为索引形成索引的B+树结构，如果没有设置索引，MYsql会自动设置一个主键。整型的存储空间更小，更好比较。自增是因为
+
+为什么hash快但是不用hash用B+树
+    ：hash只能单点查找，而B+树可以范围查找。</code></pre><p> 联合索引的底层存储结构长什么样子</p>
+</li>
+</ol>
+<pre><code>MyISAM
+    索引文件和数据文件是分离的</code></pre><ol start="3">
+<li>为啥索引用b+树，比较其他数据结构，他的优点是啥</li>
+<li>查询语句走不走索引</li>
+<li>sql语句执行慢的可能原因</li>
+</ol>
+<h2 id="redis"><a href="#redis" class="headerlink" title="redis"></a>redis</h2><ol start="6">
+<li>redis基本数据结构 </li>
+</ol>
+<h2 id="计算机网络"><a href="#计算机网络" class="headerlink" title="计算机网络"></a>计算机网络</h2><ol>
+<li>三次握手，四次挥手</li>
+<li>https概念</li>
+</ol>
+<p>##java SE<br>3. 数组和arraylist的区别<br>4. Hashmap<br>5. Hashset<br>6. 并发模块：两个关键字<br>7. 接口和抽象类</p>
+<h2 id="自增变量"><a href="#自增变量" class="headerlink" title="自增变量"></a>自增变量</h2><h2 id="操作系统"><a href="#操作系统" class="headerlink" title="操作系统"></a>操作系统</h2><ol start="11">
+<li>进程和线程，为什么需要线程程</li>
+<li>保证线程安全的方法。Lock加锁复习，synchronized优化复习</li>
+<li>Linux内核，操作系统？C++</li>
+<li>Linux查找那个线程使用CPU最大</li>
+<li>消息队列原理</li>
+</ol>
+<h2 id="spring-mvc"><a href="#spring-mvc" class="headerlink" title="spring mvc"></a>spring mvc</h2>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://github.com/111zx/111zx.github.io/2020/03/27/java%E9%9D%A2%E8%AF%95%E7%82%B9/" data-id="ckbbzdvst000dt8ube5xyd1ky" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2020/03/31/%E9%9B%86%E5%90%88/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          集合
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2020/03/26/%E8%BD%AF%E4%BB%B6%E8%BF%87%E7%A8%8B%E7%AE%A1%E7%90%86/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">软件过程管理</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/06/10/%E6%B3%9B%E5%9E%8B/">泛型</a>
+          </li>
+        
+          <li>
+            <a href="/2020/06/09/%E8%BD%AF%E4%BB%B6%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84%E8%AF%BE%E7%A8%8B%E6%8A%A5%E5%91%8A/">软件体系结构课程报告</a>
+          </li>
+        
+          <li>
+            <a href="/2020/06/01/%E6%9E%9A%E4%B8%BE%E7%B1%BB%E5%92%8C%E6%B3%A8%E8%A7%A3/">枚举类和注解</a>
+          </li>
+        
+          <li>
+            <a href="/2020/05/26/%E5%B8%B8%E7%94%A8%E7%B1%BB/">常用类</a>
+          </li>
+        
+          <li>
+            <a href="/2020/05/24/linux/">linux</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 zx<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

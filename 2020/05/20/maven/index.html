@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>maven | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="概述依赖管理的概念 maven开发的crm项目，jar包不在项目中，在jar包仓库，项目中存了jar包的坐标。 传统的Web工程crmjar包在项目中，虽然一个项目浪费不了磁盘空间，但是多个项目使用同一个jar包，每次都要存储一个jar包，就会浪费空间 依赖管理：maven工程对jar包的管理过程  项目的一件构建 本地安装：编译，测试，运行，打包，安装和部署 maven：一件构建  maven安">
+<meta property="og:type" content="article">
+<meta property="og:title" content="maven">
+<meta property="og:url" content="https://github.com/111zx/111zx.github.io/2020/05/20/maven/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="概述依赖管理的概念 maven开发的crm项目，jar包不在项目中，在jar包仓库，项目中存了jar包的坐标。 传统的Web工程crmjar包在项目中，虽然一个项目浪费不了磁盘空间，但是多个项目使用同一个jar包，每次都要存储一个jar包，就会浪费空间 依赖管理：maven工程对jar包的管理过程  项目的一件构建 本地安装：编译，测试，运行，打包，安装和部署 maven：一件构建  maven安">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://github.com/111zx/111zx.github.io/2020/05/20/maven/C:%5CUsers%5C14914%5CDesktop%5C%E5%9B%BE%E7%89%87%E4%B8%AD%E8%BD%AC%E7%AB%99%5CMaven%5C%E6%A8%A1%E5%9E%8B.png">
+<meta property="og:image" content="https://github.com/111zx/111zx.github.io/2020/05/20/maven/C:%5CUsers%5C14914%5CDesktop%5C%E5%9B%BE%E7%89%87%E4%B8%AD%E8%BD%AC%E7%AB%99%5CMaven%5Cmaven_web.png">
+<meta property="article:published_time" content="2020-05-19T23:45:56.000Z">
+<meta property="article:modified_time" content="2020-05-28T10:32:36.511Z">
+<meta property="article:author" content="zx">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://github.com/111zx/111zx.github.io/2020/05/20/maven/C:%5CUsers%5C14914%5CDesktop%5C%E5%9B%BE%E7%89%87%E4%B8%AD%E8%BD%AC%E7%AB%99%5CMaven%5C%E6%A8%A1%E5%9E%8B.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://github.com/111zx/111zx.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-maven" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/05/20/maven/" class="article-date">
+  <time datetime="2020-05-19T23:45:56.000Z" itemprop="datePublished">2020-05-20</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      maven
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><h2 id="依赖管理的概念"><a href="#依赖管理的概念" class="headerlink" title="依赖管理的概念"></a>依赖管理的概念</h2><ul>
+<li>maven开发的crm项目，jar包不在项目中，在jar包仓库，项目中存了jar包的坐标。</li>
+<li>传统的Web工程crmjar包在项目中，虽然一个项目浪费不了磁盘空间，但是多个项目使用同一个jar包，每次都要存储一个jar包，就会浪费空间</li>
+<li>依赖管理：maven工程对jar包的管理过程</li>
+</ul>
+<h2 id="项目的一件构建"><a href="#项目的一件构建" class="headerlink" title="项目的一件构建"></a>项目的一件构建</h2><ul>
+<li>本地安装：编译，测试，运行，打包，安装和部署</li>
+<li>maven：一件构建</li>
+</ul>
+<h2 id="maven安装"><a href="#maven安装" class="headerlink" title="maven安装"></a>maven安装</h2><ul>
+<li>最好安装路径不要有中文</li>
+<li>bin包直接解压在没有中文的路径</li>
+</ul>
+<h2 id="仓库的种类和彼此的关系"><a href="#仓库的种类和彼此的关系" class="headerlink" title="仓库的种类和彼此的关系"></a>仓库的种类和彼此的关系</h2><ul>
+<li><p>maven工程会根据jar包的坐标先去本地仓库找jar包，如果本地仓库没有jar包，则去中央仓库下载（要联网），也可以在本地上传。没有联网直接报错。</p>
+</li>
+<li><p>中央仓库几乎放了所有的jar包</p>
+</li>
+<li><p>远程仓库（私服）：只要自己的电脑和远程仓库在一个局域网，直接从远程仓库下载</p>
+</li>
+<li><p>重新指定本地仓库的路径：D:\maven\apache-maven-3.5.2\conf\settings</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">  &lt;localRepository&gt;/path/to/local/repo&lt;/localRepository&gt;</span><br><span class="line"><span class="comment">//改成下面即可只要是没有中文的路径就可以，里面存jar包</span></span><br><span class="line"> &lt;localRepository&gt;D:\maven\localcangku&lt;/localRepository&gt;</span><br></pre></td></tr></table></figure>
+
+
+</li>
+</ul>
+<h2 id="maven-标准目录结构"><a href="#maven-标准目录结构" class="headerlink" title="maven 标准目录结构"></a>maven 标准目录结构</h2><ul>
+<li><p>一个项目的内容</p>
+<ul>
+<li>核心代码部分</li>
+<li>配置文件部分</li>
+<li>测试代码部分</li>
+<li>测试配置文件</li>
+</ul>
+</li>
+<li><p>maven项目标准目录结构</p>
+<ul>
+<li>src/main/java: 核心代码部分</li>
+<li>src/main/resources:配置文件部分</li>
+<li>src/test/java：测试代码部分</li>
+<li>src/test/resources:测试配置文件</li>
+<li>（Web开发才有）src/main/webapp:Web工程的页面资源，js，css，图片等</li>
+</ul>
+</li>
+</ul>
+<h1 id="Maven常用的命令"><a href="#Maven常用的命令" class="headerlink" title="Maven常用的命令"></a>Maven常用的命令</h1><h2 id="mvn-clean"><a href="#mvn-clean" class="headerlink" title="mvn clean"></a>mvn clean</h2><ul>
+<li>删除所有编译信息（target目录）</li>
+</ul>
+<h2 id="mvn-compile"><a href="#mvn-compile" class="headerlink" title="mvn compile"></a>mvn compile</h2><ul>
+<li>src/main下代码进行编译，放在target目录下</li>
+</ul>
+<h2 id="mvn-test"><a href="#mvn-test" class="headerlink" title="mvn test"></a>mvn test</h2><ul>
+<li>不仅仅编译了src/test下代码，而且编译了src/main下代码</li>
+</ul>
+<h2 id="mvn-package"><a href="#mvn-package" class="headerlink" title="mvn package"></a>mvn package</h2><ul>
+<li>不仅仅编译了src/test和src/main下代码，并且把项目打包，打包的格式在<strong>pom.xml</strong>中配置</li>
+</ul>
+<h2 id="mvn-install"><a href="#mvn-install" class="headerlink" title="mvn install"></a>mvn install</h2><ul>
+<li>不仅仅编译了src/test和src/main下代码，打包项目，而且将项目打成包放到本地仓库</li>
+</ul>
+<h1 id="Maven生命周期"><a href="#Maven生命周期" class="headerlink" title="Maven生命周期"></a>Maven生命周期</h1><h2 id="自动构建步骤（默认生命周期）"><a href="#自动构建步骤（默认生命周期）" class="headerlink" title="自动构建步骤（默认生命周期）"></a>自动构建步骤（默认生命周期）</h2><ul>
+<li><p>编译</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mvn compile</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>测试</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mvn test</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>打包</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mvn package</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>安装</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mvn install</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>发布(会把前面4个执行一遍)</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mvn deploy</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h2 id="清理生命周期"><a href="#清理生命周期" class="headerlink" title="清理生命周期"></a>清理生命周期</h2><ul>
+<li><p>清除项目编译信息</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mvn clean</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h2 id="站点生命周期"><a href="#站点生命周期" class="headerlink" title="站点生命周期"></a>站点生命周期</h2><ul>
+<li>……</li>
+</ul>
+<h1 id="Maven概念模型"><a href="#Maven概念模型" class="headerlink" title="Maven概念模型"></a>Maven概念模型</h1><p><img src="/111zx/111zx.github.io/2020/05/20/maven/C:%5CUsers%5C14914%5CDesktop%5C%E5%9B%BE%E7%89%87%E4%B8%AD%E8%BD%AC%E7%AB%99%5CMaven%5C%E6%A8%A1%E5%9E%8B.png" alt></p>
+<h2 id="项目对象模型POM"><a href="#项目对象模型POM" class="headerlink" title="项目对象模型POM"></a>项目对象模型POM</h2><ul>
+<li>项目自身信息</li>
+<li>项目所运行依赖的jar包信息</li>
+<li>项目运行环境信息，jdk，tomact等</li>
+</ul>
+<h2 id="依赖管理模型"><a href="#依赖管理模型" class="headerlink" title="依赖管理模型"></a>依赖管理模型</h2><ul>
+<li><p>放置的是jar包的坐标</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;groupId&gt;mysql&lt;/groupId&gt;</span><br><span class="line">         &lt;artifactId&gt;mysql-connector-java&lt;/artifactId&gt;</span><br><span class="line">         &lt;version&gt;5.1.6&lt;/version&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>有三个箭头指向三个仓库</p>
+<ul>
+<li>local</li>
+<li>b2b（远程仓库）</li>
+<li>center（联网下载）</li>
+</ul>
+</li>
+</ul>
+<h2 id="构建生命周期"><a href="#构建生命周期" class="headerlink" title="构建生命周期"></a>构建生命周期</h2><ul>
+<li><p>每一个构建项目的命令都对应了maven底层的一个插件</p>
+</li>
+<li><p>一键构建</p>
+</li>
+</ul>
+<h2 id="idea集成Maven插件"><a href="#idea集成Maven插件" class="headerlink" title="idea集成Maven插件"></a>idea集成Maven插件</h2><h3 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h3><ul>
+<li><p>mavenweb工程的目录</p>
+<p><img src="/111zx/111zx.github.io/2020/05/20/maven/C:%5CUsers%5C14914%5CDesktop%5C%E5%9B%BE%E7%89%87%E4%B8%AD%E8%BD%AC%E7%AB%99%5CMaven%5Cmaven_web.png" alt></p>
+</li>
+<li><p>运行Tomcat7</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tomacat7:run</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>bug,端口号重复，需要关掉一个服务器</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">严重: Failed to initialize end point associated with ProtocolHandler [&quot;http-bio-8080&quot;]</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://github.com/111zx/111zx.github.io/2020/05/20/maven/" data-id="ckbbzdvsc0006t8ubdaosfies" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2020/05/20/tomcat/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          tomact
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2020/05/20/Git/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Git</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/06/10/%E6%B3%9B%E5%9E%8B/">泛型</a>
+          </li>
+        
+          <li>
+            <a href="/2020/06/09/%E8%BD%AF%E4%BB%B6%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84%E8%AF%BE%E7%A8%8B%E6%8A%A5%E5%91%8A/">软件体系结构课程报告</a>
+          </li>
+        
+          <li>
+            <a href="/2020/06/01/%E6%9E%9A%E4%B8%BE%E7%B1%BB%E5%92%8C%E6%B3%A8%E8%A7%A3/">枚举类和注解</a>
+          </li>
+        
+          <li>
+            <a href="/2020/05/26/%E5%B8%B8%E7%94%A8%E7%B1%BB/">常用类</a>
+          </li>
+        
+          <li>
+            <a href="/2020/05/24/linux/">linux</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 zx<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>
