@@ -7,17 +7,26 @@
   
   <title>tomact | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="第一章 Tomcat概念1-1 Web概念1-1-1 架构 C&#x2F;S：客户端&#x2F;服务器端。&#x3D;&#x3D;》QQ…… B&#x2F;S：浏览器&#x2F;服务器端。&#x3D;&#x3D;》京东，网易官网  1-1-2 资源 静态资源：所有用户访问得到的页面都是一样的。  html,css,jpg,javascript   动态资源：每个用户访问相同资源，得到的结果是不一样的。  servlet&#x2F;jsp,php,ssp  浏览器解析不了动态资源，动态资">
+  <meta name="description" content="[TOC] 第一章 Tomcat概念1-1 Web概念1-1-1 架构 C&#x2F;S：客户端&#x2F;服务器端。QQ…… B&#x2F;S：浏览器&#x2F;服务器端。京东，网易官网  1-1-2 资源 静态资源：所有用户访问得到的页面都是一样的。  html,css,jpg,javascript   动态资源：每个用户访问相同资源，得到的结果是不一样的。  servlet&#x2F;jsp,php,ssp  浏览器解析不了动态资源，动态资">
 <meta property="og:type" content="article">
 <meta property="og:title" content="tomact">
 <meta property="og:url" content="https://github.com/111zx/111zx.github.io/2020/05/20/tomcat/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="第一章 Tomcat概念1-1 Web概念1-1-1 架构 C&#x2F;S：客户端&#x2F;服务器端。&#x3D;&#x3D;》QQ…… B&#x2F;S：浏览器&#x2F;服务器端。&#x3D;&#x3D;》京东，网易官网  1-1-2 资源 静态资源：所有用户访问得到的页面都是一样的。  html,css,jpg,javascript   动态资源：每个用户访问相同资源，得到的结果是不一样的。  servlet&#x2F;jsp,php,ssp  浏览器解析不了动态资源，动态资">
+<meta property="og:description" content="[TOC] 第一章 Tomcat概念1-1 Web概念1-1-1 架构 C&#x2F;S：客户端&#x2F;服务器端。QQ…… B&#x2F;S：浏览器&#x2F;服务器端。京东，网易官网  1-1-2 资源 静态资源：所有用户访问得到的页面都是一样的。  html,css,jpg,javascript   动态资源：每个用户访问相同资源，得到的结果是不一样的。  servlet&#x2F;jsp,php,ssp  浏览器解析不了动态资源，动态资">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://github.com/111zx/111zx.github.io/2020/05/20/tomcat/C:%5CUsers%5C14914%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200620103403719.png">
+<meta property="og:image" content="https://github.com/111zx/111zx.github.io/2020/05/20/tomcat/Users/14914/AppData/Roaming/Typora/typora-user-images/image-20200620120336627.png">
+<meta property="og:image" content="https://github.com/111zx/111zx.github.io/2020/05/20/tomcat/C:%5CUsers%5C14914%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200620120628494.png">
+<meta property="og:image" content="https://github.com/111zx/111zx.github.io/2020/05/20/tomcat/Users/14914/AppData/Roaming/Typora/typora-user-images/image-20200620121054164.png">
+<meta property="og:image" content="https://github.com/111zx/111zx.github.io/2020/05/20/tomcat/C:%5CUsers%5C14914%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200621161537992.png">
+<meta property="og:image" content="https://github.com/111zx/111zx.github.io/2020/05/20/tomcat/C:%5CUsers%5C14914%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200621162607297.png">
+<meta property="og:image" content="https://github.com/111zx/111zx.github.io/2020/05/20/tomcat/C:%5CUsers%5C14914%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200621171938033.png">
+<meta property="og:image" content="https://github.com/111zx/111zx.github.io/2020/05/20/tomcat/C:%5CUsers%5C14914%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200621173228668.png">
 <meta property="article:published_time" content="2020-05-19T23:46:11.000Z">
-<meta property="article:modified_time" content="2020-05-24T08:16:06.695Z">
+<meta property="article:modified_time" content="2020-06-21T10:18:20.205Z">
 <meta property="article:author" content="zx">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://github.com/111zx/111zx.github.io/2020/05/20/tomcat/C:%5CUsers%5C14914%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200620103403719.png">
   
     <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -88,9 +97,10 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="第一章-Tomcat概念"><a href="#第一章-Tomcat概念" class="headerlink" title="第一章 Tomcat概念"></a>第一章 Tomcat概念</h1><h2 id="1-1-Web概念"><a href="#1-1-Web概念" class="headerlink" title="1-1 Web概念"></a>1-1 Web概念</h2><h3 id="1-1-1-架构"><a href="#1-1-1-架构" class="headerlink" title="1-1-1 架构"></a>1-1-1 架构</h3><ul>
-<li>C/S：客户端/服务器端。==》QQ……</li>
-<li>B/S：浏览器/服务器端。==》京东，网易官网</li>
+        <p>[TOC]</p>
+<h1 id="第一章-Tomcat概念"><a href="#第一章-Tomcat概念" class="headerlink" title="第一章 Tomcat概念"></a>第一章 Tomcat概念</h1><h2 id="1-1-Web概念"><a href="#1-1-Web概念" class="headerlink" title="1-1 Web概念"></a>1-1 Web概念</h2><h3 id="1-1-1-架构"><a href="#1-1-1-架构" class="headerlink" title="1-1-1 架构"></a>1-1-1 架构</h3><ul>
+<li>C/S：客户端/服务器端。QQ……</li>
+<li>B/S：浏览器/服务器端。京东，网易官网</li>
 </ul>
 <h3 id="1-1-2-资源"><a href="#1-1-2-资源" class="headerlink" title="1-1-2 资源"></a>1-1-2 资源</h3><ul>
 <li><p>静态资源：所有用户访问得到的页面都是一样的。</p>
@@ -188,7 +198,98 @@
 <li><p>停止：执行shutdown.dat，或者关闭前台窗口</p>
 </li>
 </ul>
-<h1 id="4"><a href="#4" class="headerlink" title="4"></a>4</h1>
+<h2 id="1-6-tomcat源码"><a href="#1-6-tomcat源码" class="headerlink" title="1-6 tomcat源码"></a>1-6 tomcat源码</h2><ul>
+<li><p>下载地址：<a href="https://tomcat.apache.org/download-80.cgi#8.5.56" target="_blank" rel="noopener">https://tomcat.apache.org/download-80.cgi#8.5.56</a></p>
+<p><img src="/111zx/111zx.github.io/2020/05/20/tomcat/C:%5CUsers%5C14914%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200620103403719.png" alt="image-20200620103403719"></p>
+</li>
+<li><p>运行tomcat源码</p>
+<ol>
+<li><p>在idea创建一个空项目，将源码压缩包放到项目中</p>
+</li>
+<li><p>进入解压目录，创建一个home目录，将conf，webapps目录移入到home目录当中</p>
+</li>
+<li><p>在当前目录下创建一个pom.xml文件,复制粘贴依赖信息。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version&#x3D;&quot;1.0&quot; encoding&#x3D;&quot;UTF-8&quot;?&gt;</span><br><span class="line">&lt;project xmlns&#x3D;&quot;http:&#x2F;&#x2F;maven.apache.org&#x2F;POM&#x2F;4.0.0&quot;</span><br><span class="line">         xmlns:xsi&#x3D;&quot;http:&#x2F;&#x2F;www.w3.org&#x2F;2001&#x2F;XMLSchema-instance&quot;</span><br><span class="line">         xsi:schemaLocation&#x3D;&quot;http:&#x2F;&#x2F;maven.apache.org&#x2F;POM&#x2F;4.0.0 http:&#x2F;&#x2F;maven.apache.org&#x2F;xsd&#x2F;maven-4.0.0.xsd&quot;&gt;</span><br><span class="line"> </span><br><span class="line">    &lt;modelVersion&gt;4.0.0&lt;&#x2F;modelVersion&gt;</span><br><span class="line">    &lt;groupId&gt;org.apache.tomcat&lt;&#x2F;groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;Tomcat8.5&lt;&#x2F;artifactId&gt;</span><br><span class="line">    &lt;name&gt;Tomcat8.5&lt;&#x2F;name&gt;</span><br><span class="line">    &lt;version&gt;8.5&lt;&#x2F;version&gt;</span><br><span class="line"> </span><br><span class="line">    &lt;build&gt;</span><br><span class="line">        &lt;finalName&gt;Tomcat8.5&lt;&#x2F;finalName&gt;</span><br><span class="line">        &lt;sourceDirectory&gt;java&lt;&#x2F;sourceDirectory&gt;</span><br><span class="line">        &lt;testSourceDirectory&gt;test&lt;&#x2F;testSourceDirectory&gt;</span><br><span class="line">        &lt;resources&gt;</span><br><span class="line">            &lt;resource&gt;</span><br><span class="line">                &lt;directory&gt;java&lt;&#x2F;directory&gt;</span><br><span class="line">            &lt;&#x2F;resource&gt;</span><br><span class="line">        &lt;&#x2F;resources&gt;</span><br><span class="line">        &lt;testResources&gt;</span><br><span class="line">           &lt;testResource&gt;</span><br><span class="line">                &lt;directory&gt;test&lt;&#x2F;directory&gt;</span><br><span class="line">           &lt;&#x2F;testResource&gt;</span><br><span class="line">        &lt;&#x2F;testResources&gt;</span><br><span class="line">        &lt;plugins&gt;</span><br><span class="line">            &lt;plugin&gt;</span><br><span class="line">                &lt;groupId&gt;org.apache.maven.plugins&lt;&#x2F;groupId&gt;</span><br><span class="line">                &lt;artifactId&gt;maven-compiler-plugin&lt;&#x2F;artifactId&gt;</span><br><span class="line">                &lt;version&gt;2.3&lt;&#x2F;version&gt;</span><br><span class="line">                &lt;configuration&gt;</span><br><span class="line">                    &lt;encoding&gt;UTF-8&lt;&#x2F;encoding&gt;</span><br><span class="line">                    &lt;source&gt;1.8&lt;&#x2F;source&gt;</span><br><span class="line">                    &lt;target&gt;1.8&lt;&#x2F;target&gt;</span><br><span class="line">                &lt;&#x2F;configuration&gt;</span><br><span class="line">            &lt;&#x2F;plugin&gt;</span><br><span class="line">        &lt;&#x2F;plugins&gt;</span><br><span class="line">    &lt;&#x2F;build&gt;</span><br><span class="line"> </span><br><span class="line">    &lt;dependencies&gt;</span><br><span class="line">        &lt;dependency&gt;</span><br><span class="line">            &lt;groupId&gt;junit&lt;&#x2F;groupId&gt;</span><br><span class="line">            &lt;artifactId&gt;junit&lt;&#x2F;artifactId&gt;</span><br><span class="line">            &lt;version&gt;4.12&lt;&#x2F;version&gt;</span><br><span class="line">            &lt;scope&gt;test&lt;&#x2F;scope&gt;</span><br><span class="line">        &lt;&#x2F;dependency&gt;</span><br><span class="line">        &lt;dependency&gt;</span><br><span class="line">            &lt;groupId&gt;org.easymock&lt;&#x2F;groupId&gt;</span><br><span class="line">            &lt;artifactId&gt;easymock&lt;&#x2F;artifactId&gt;</span><br><span class="line">            &lt;version&gt;3.4&lt;&#x2F;version&gt;</span><br><span class="line">        &lt;&#x2F;dependency&gt;</span><br><span class="line">        &lt;dependency&gt;</span><br><span class="line">            &lt;groupId&gt;ant&lt;&#x2F;groupId&gt;</span><br><span class="line">            &lt;artifactId&gt;ant&lt;&#x2F;artifactId&gt;</span><br><span class="line">            &lt;version&gt;1.7.0&lt;&#x2F;version&gt;</span><br><span class="line">        &lt;&#x2F;dependency&gt;</span><br><span class="line">        &lt;dependency&gt;</span><br><span class="line">            &lt;groupId&gt;wsdl4j&lt;&#x2F;groupId&gt;</span><br><span class="line">            &lt;artifactId&gt;wsdl4j&lt;&#x2F;artifactId&gt;</span><br><span class="line">            &lt;version&gt;1.6.2&lt;&#x2F;version&gt;</span><br><span class="line">        &lt;&#x2F;dependency&gt;</span><br><span class="line">        &lt;dependency&gt;</span><br><span class="line">            &lt;groupId&gt;javax.xml&lt;&#x2F;groupId&gt;</span><br><span class="line">            &lt;artifactId&gt;jaxrpc&lt;&#x2F;artifactId&gt;</span><br><span class="line">            &lt;version&gt;1.1&lt;&#x2F;version&gt;</span><br><span class="line">        &lt;&#x2F;dependency&gt;</span><br><span class="line">        &lt;dependency&gt;</span><br><span class="line">            &lt;groupId&gt;org.eclipse.jdt.core.compiler&lt;&#x2F;groupId&gt;</span><br><span class="line">            &lt;artifactId&gt;ecj&lt;&#x2F;artifactId&gt;</span><br><span class="line">            &lt;version&gt;4.5.1&lt;&#x2F;version&gt;</span><br><span class="line">        &lt;&#x2F;dependency&gt;</span><br><span class="line">       </span><br><span class="line">    &lt;&#x2F;dependencies&gt;</span><br><span class="line">&lt;&#x2F;project&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在idea中，导入该工程。</p>
+<img src="/111zx/111zx.github.io/2020/05/20/tomcat/Users\14914\AppData\Roaming\Typora\typora-user-images\image-20200620120336627.png" alt="image-20200620120336627" style="zoom:50%;">
+</li>
+</ol>
+</li>
+</ul>
+<ol start="5">
+<li><p>配置IDEA运行项目</p>
+<p><img src="/111zx/111zx.github.io/2020/05/20/tomcat/C:%5CUsers%5C14914%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200620120628494.png" alt="image-20200620120628494"></p>
+<ul>
+<li><p>虚拟机选项的相关配置</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">-Dcatalina.home&#x3D;E:&#x2F;firefox下载&#x2F;itcast_project_tomcat&#x2F;apache-tomcat-8.5.56-src&#x2F;home</span><br><span class="line">-Dcatalina.base&#x3D;E:&#x2F;firefox下载&#x2F;itcast_project_tomcat&#x2F;apache-tomcat-8.5.56-src&#x2F;home</span><br><span class="line">-Djava.util.logging.manager&#x3D;org.apache.juli.ClassLoaderLogManager</span><br><span class="line">-Djava.util.logging.config.fileE:&#x2F;firefox下载&#x2F;itcast_project_tomcat&#x2F;apache-tomcat-8.5.56-src&#x2F;home&#x2F;conf&#x2F;logging.properties</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>注意：如果编译build的时候出现Test测试代码报错，注释该代码即可。本文中的Tomcat源码util.TestCookieFilter类会报错，将其注释即可</strong></p>
+</li>
+</ul>
+</li>
+</ol>
+<ol start="6">
+<li><p><strong>加载org.apache.jasper.servlet.JasperInitializer</strong>，否则无法编译jsp</p>
+<ul>
+<li><p>解决办法是在tomcat的源码org.apache.catalina.startup.ContextConfig中的configureStart函数中手动将JSP解析器初始化：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">synchronized</span> <span class="keyword">void</span> <span class="title">configureStart</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="comment">// Called from StandardContext.start()</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (log.isDebugEnabled()) &#123;</span><br><span class="line">            log.debug(sm.getString(<span class="string">"contextConfig.start"</span>));</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (log.isDebugEnabled()) &#123;</span><br><span class="line">            log.debug(sm.getString(<span class="string">"contextConfig.xmlSettings"</span>,</span><br><span class="line">                    context.getName(),</span><br><span class="line">                    Boolean.valueOf(context.getXmlValidation()),</span><br><span class="line">                    Boolean.valueOf(context.getXmlNamespaceAware())));</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        webConfig();</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">此处加入 context.addServletContainerInitializer(new JasperInitializer(), null);</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line">        context.addServletContainerInitializer(<span class="keyword">new</span> JasperInitializer(), <span class="keyword">null</span>);</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span> (!context.getIgnoreAnnotations()) &#123;</span><br><span class="line">            applicationAnnotationsConfig();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (ok) &#123;</span><br><span class="line">            validateSecurityRoles();</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// Configure an authenticator if we need one</span></span><br><span class="line">        <span class="keyword">if</span> (ok) &#123;</span><br><span class="line">            authenticatorConfig();</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// Dump the contents of this pipeline if requested</span></span><br><span class="line">        <span class="keyword">if</span> (log.isDebugEnabled()) &#123;</span><br><span class="line">            log.debug(<span class="string">"Pipeline Configuration:"</span>);</span><br><span class="line">            Pipeline pipeline = context.getPipeline();</span><br><span class="line">            Valve valves[] = <span class="keyword">null</span>;</span><br><span class="line">            <span class="keyword">if</span> (pipeline != <span class="keyword">null</span>) &#123;</span><br><span class="line">                valves = pipeline.getValves();</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (valves != <span class="keyword">null</span>) &#123;</span><br><span class="line">                <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; valves.length; i++) &#123;</span><br><span class="line">                    log.debug(<span class="string">"  "</span> + valves[i].getClass().getName());</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            log.debug(<span class="string">"======================"</span>);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// Make our application available if no problems were encountered</span></span><br><span class="line">        <span class="keyword">if</span> (ok) &#123;</span><br><span class="line">            context.setConfigured(<span class="keyword">true</span>);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            log.error(sm.getString(<span class="string">"contextConfig.unavailable"</span>));</span><br><span class="line">            context.setConfigured(<span class="keyword">false</span>);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>启动tomcat，访问http:localhost:8080</p>
+<img src="/111zx/111zx.github.io/2020/05/20/tomcat/Users\14914\AppData\Roaming\Typora\typora-user-images\image-20200620121054164.png" alt="image-20200620121054164" style="zoom:50%;">
+
+</li>
+</ol>
+<h1 id="第二章-Tomcat架构"><a href="#第二章-Tomcat架构" class="headerlink" title="第二章 Tomcat架构"></a>第二章 Tomcat架构</h1><h2 id="2-1-http工作原理"><a href="#2-1-http工作原理" class="headerlink" title="2-1 http工作原理"></a>2-1 http工作原理</h2><ul>
+<li><p>http协议是浏览器和服务器之间的数据传送协议。作为应用层协议，http是基于TCP/IP协议来传递数据的，HTTP协议不涉及数据包传输，主要规定了客户端和服务器之间的通信格式。</p>
+<p><img src="/111zx/111zx.github.io/2020/05/20/tomcat/C:%5CUsers%5C14914%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200621161537992.png" alt="image-20200621161537992"></p>
+</li>
+<li><p>主要过程：</p>
+<ol>
+<li>用户通过浏览器进行了一个操作，比如输入网址并回车，或者是点击连接，接着浏览器获取了整个事件。</li>
+<li>浏览器像服务端发出TCP连接</li>
+<li>服务程序接收浏览器的连接请求，并经过TCP三次握手建立连接</li>
+<li>浏览器将请求数据打包成一个HTTP协议格式的数据包</li>
+<li>浏览器将数据包推入网络，数据包经过网络传输，最终达到服务程序</li>
+<li>服务端程序拿到这个数据包后，同样以HTTP协议格式解包，获取到客户端的意图。</li>
+<li>得知客户端意图后进行处理，比如提供静态文件或者调用服务端程序获得动态结果。</li>
+<li>服务器将响应结果按照HTTP协议格式打包</li>
+<li>服务器将响应数据包推入网络，数据包经过网络传输最终达到浏览器。</li>
+<li>浏览器拿到数据包后，以http协议的格式解包，然后解析数据，假设这里的数据是html</li>
+<li>浏览器将HTML文件展示在页面上</li>
+</ol>
+<p>Tomcat作为一个HTTP服务器，主要是接受链接，解析请求数据，处理请求和发送响应这个几个步骤。</p>
+</li>
+</ul>
+<h2 id="2-2-Tomcat整体架构"><a href="#2-2-Tomcat整体架构" class="headerlink" title="2-2 Tomcat整体架构"></a>2-2 Tomcat整体架构</h2><h3 id="2-2-1-Http服务器去请求处理"><a href="#2-2-1-Http服务器去请求处理" class="headerlink" title="2-2-1 Http服务器去请求处理"></a>2-2-1 Http服务器去请求处理</h3><p>浏览器发给服务端的是一个HTTP格式的请求，HTTP服务器收到这个请求后，需要调用服务端程序来处理，所谓服务端程序就是你写的Java类，一般来说不同请求需要不同的Java类来处理。</p>
+<p><img src="/111zx/111zx.github.io/2020/05/20/tomcat/C:%5CUsers%5C14914%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200621162607297.png" alt="image-20200621162607297"></p>
+<ul>
+<li>图1：表示HTTP服务器直接调用具体业务类，他们是<strong>紧耦合</strong>的。</li>
+<li>图2：HTTP服务器不直接调用业务类，而是把请求交给容器来处理，容器通过Servlet接口调用业务类。因此Servlet接口和Servlet容器的出现，达到了HTTP服务器和业务类解耦的目的，而Servelt接口和Servlet容器这一整套规范叫做Servelt规范。Tmcat按照Servlet规范要求实现了Servlet容器，同时他们也具有HTTP服务器的功能。作为Java程序员，如果我们要实现新的业务类功能，只需要实现一个Servelt，并把它注册到Tomcat（Servlet容器）中，剩下的事情就由Tomcat帮我们处理了。</li>
+</ul>
+<h3 id="2-2-2-Servlet容器工作流程"><a href="#2-2-2-Servlet容器工作流程" class="headerlink" title="2-2-2 Servlet容器工作流程"></a>2-2-2 Servlet容器工作流程</h3><ul>
+<li><p>为了解耦，HTTP服务器不用直接调用Servlet，而是把请求交给Servlet来处理，那Servlet又是怎么工作的呢？</p>
+<p>当客户请求某个资源时，HTTO服务器会用一个ServletRequest对象把客户的请求信息封装起来，然后调用Servlet容器的service方法，Servlet容器拿到请求后，根据请求的URL和Servlet的映射关系，找到相应的Servlet，如果Servlet还没有被加载，就用反射机制创建这个Servlet，并调用Servlet的init方法来完成初始化，接着调用Servlet的service方法来处理请求，把ServletResponse对象返回给HTTP服务器，HTTP服务器会把相应发送给客户端</p>
+<p><img src="/111zx/111zx.github.io/2020/05/20/tomcat/C:%5CUsers%5C14914%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200621171938033.png" alt="image-20200621171938033"></p>
+</li>
+</ul>
+<h3 id="2-2-3-Tomcat整体架构"><a href="#2-2-3-Tomcat整体架构" class="headerlink" title="2-2-3 Tomcat整体架构"></a>2-2-3 Tomcat整体架构</h3><ul>
+<li><p>Tomcat具有两个核心功能：</p>
+<ol>
+<li>处理Socket连接，负责网络字节流与Request和Response对象的转化。</li>
+<li>加载和管理Servlet，以及具体处理Request请求</li>
+</ol>
+<p>为了实现上述核心功能，Tomcat设计了两个核心组件：Connector和Container分别来做这两件事。</p>
+<ul>
+<li>Connector:接收请求，转化成ServletRequest对象发送给容器。Connector收到Container发送来的ServletResponse对象会先解析，再给TCP一个响应。</li>
+<li>Container:拿到ServletRequest接下来定位容器中的Servlet，如果没有加载，先加载Servlet，再调用Servlet中的具体方法来执行。执行完毕后，会返回给Connector一个ServletResponse。</li>
+</ul>
+</li>
+</ul>
+<p><img src="/111zx/111zx.github.io/2020/05/20/tomcat/C:%5CUsers%5C14914%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200621173228668.png" alt="image-20200621173228668"></p>
+
       
     </div>
     <footer class="article-footer">
@@ -237,7 +338,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">July 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a></li></ul>
     </div>
   </div>
 
@@ -250,23 +351,23 @@
       <ul>
         
           <li>
+            <a href="/2020/07/06/%E6%96%87%E4%BB%B6%E4%BC%A0%E8%BE%93%E7%B3%BB%E7%BB%9F/">文件传输系统</a>
+          </li>
+        
+          <li>
+            <a href="/2020/07/05/1.%20%E7%82%B9%E5%87%BB%E6%96%87%E4%BB%B6%E6%A0%91%E6%98%BE%E7%A4%BA%E6%96%87%E4%BB%B6%E5%88%97%E8%A1%A8/">1. 点击文件树显示文件列表</a>
+          </li>
+        
+          <li>
+            <a href="/2020/06/22/IO%E6%B5%81/">IO流</a>
+          </li>
+        
+          <li>
             <a href="/2020/06/10/%E6%B3%9B%E5%9E%8B/">泛型</a>
           </li>
         
           <li>
             <a href="/2020/06/09/%E8%BD%AF%E4%BB%B6%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84%E8%AF%BE%E7%A8%8B%E6%8A%A5%E5%91%8A/">软件体系结构课程报告</a>
-          </li>
-        
-          <li>
-            <a href="/2020/06/01/%E6%9E%9A%E4%B8%BE%E7%B1%BB%E5%92%8C%E6%B3%A8%E8%A7%A3/">枚举类和注解</a>
-          </li>
-        
-          <li>
-            <a href="/2020/05/26/%E5%B8%B8%E7%94%A8%E7%B1%BB/">常用类</a>
-          </li>
-        
-          <li>
-            <a href="/2020/05/24/linux/">linux</a>
           </li>
         
       </ul>

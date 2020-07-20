@@ -64,6 +64,1147 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-系统分析与设计" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/03/24/%E7%B3%BB%E7%BB%9F%E5%88%86%E6%9E%90%E4%B8%8E%E8%AE%BE%E8%AE%A1/" class="article-date">
+  <time datetime="2020-03-24T03:02:32.000Z" itemprop="datePublished">2020-03-24</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/03/24/%E7%B3%BB%E7%BB%9F%E5%88%86%E6%9E%90%E4%B8%8E%E8%AE%BE%E8%AE%A1/">系统分析与设计</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="第三章-信息系统构建模块"><a href="#第三章-信息系统构建模块" class="headerlink" title="第三章 信息系统构建模块"></a>第三章 信息系统构建模块</h2><h4 id="前提："><a href="#前提：" class="headerlink" title="前提："></a>前提：</h4><p>利益相关人：</p>
+<ul>
+<li>用户和业主是业务人员</li>
+<li>设计人员，构建人员是技术人员。</li>
+</ul>
+<hr>
+<h4 id="五种不同的信息系统"><a href="#五种不同的信息系统" class="headerlink" title="五种不同的信息系统"></a>五种不同的信息系统</h4><ul>
+<li>交易处理系统：侧重于业务过程</li>
+<li>管理信息系统：侧重于存储和展示数据</li>
+<li>决策信息系统（DSS）：帮助用户提供原始数据和素材，提供选择的方案（杀毒软件会推荐你删除不安全的文件）。其中会使用到数据仓库。<ul>
+<li>数据仓库：在系统构建过程中，有不同的没有联系的数据库（工资信息和学生信息），在需要不同数据库的数据时，可以全部采集到数据仓库里，面对不同的需求，建造不同的视图。ETL技术可以将数据存储在一起</li>
+</ul>
+</li>
+<li>专家系统：直接帮助做出决策</li>
+<li>办公自动化系统（OA）：主要是不同位置的人员会有交流，强调信息流。<br>现实的系统会结合各种信息系统来构建</li>
+</ul>
+<hr>
+<h4 id="描述系统的框架"><a href="#描述系统的框架" class="headerlink" title="描述系统的框架"></a>描述系统的框架</h4><h5 id="Zachman-Framework"><a href="#Zachman-Framework" class="headerlink" title="Zachman Framework"></a>Zachman Framework</h5><p>有处理过程，核心数据，对外交互三个核心内容。</p>
+<ol>
+<li>数据：分为存储（分为临时和持久的）和流动的数据。</li>
+<li>加工：一系列的活动组织成特定的流程完成特定的任务。（例如取款活动的步骤）</li>
+<li>对外交互：和人的交互：界面；和机器交互：接口。</li>
+</ol>
+<hr>
+<h5 id="从数据，过程，接口和物理位置分析干系人的工作"><a href="#从数据，过程，接口和物理位置分析干系人的工作" class="headerlink" title="从数据，过程，接口和物理位置分析干系人的工作"></a>从数据，过程，接口和物理位置分析干系人的工作</h5><p>对于数据而言：</p>
+<ul>
+<li>业主：只需要知道信息系统能干什么，关注业务领域知识</li>
+<li>用户：最了解数据需求，数据的属性，联系，属性和规则（逻辑数据模型）</li>
+<li>设计人员：数据库模式（物理技术模型）<br><em>模型驱动开发（MDA）：分为PSM（平台相关模型，物理模型）PIM（平台无关模型，逻辑模型）</em></li>
+<li>构建人员：完成SQL语句</li>
+</ul>
+<p>对于过程而言：</p>
+<ul>
+<li>业主：关注去处理什么事情</li>
+<li>用户：怎么样处理事情，关注处理的细节</li>
+<li>设计人员：在技术上怎么样实现用户的处理细节，输出技术说明规格书</li>
+<li>构建人员：根据技术规格书代码实现处理细节（或者原型开发）</li>
+</ul>
+<p>对于接口而言：</p>
+<ul>
+<li>业主：谁去用，在什么时候去用，关注人用什么样的方式去交互（语音或者文字）</li>
+<li>用户：具体怎么样用<br>设计人员：UI设计</li>
+<li>构建人员：把设计人员的界面用代码实现</li>
+</ul>
+<p>对于物理位置分布：</p>
+<ul>
+<li>业主：系统部署在什么地方</li>
+<li>用户：不同位置的通信（远程传输）如何实现，批处理（发快递），实时处理（）收快递</li>
+<li>设计人员：交互需求，多长时间交互一次</li>
+<li>构建人员：购买硬件设备并且部署和连接网络系统满足需求。</li>
+</ul>
+<hr>
+<h5 id="各个干系人负责工作总结："><a href="#各个干系人负责工作总结：" class="headerlink" title="各个干系人负责工作总结："></a>各个干系人负责工作总结：</h5><ul>
+<li>业主：业务知识，业务功能，物理位置分布状态</li>
+<li>用户：数据需求，交互需求，处理需求</li>
+<li>设计人员：数据库设计，设计说明书，UI设计</li>
+<li>构建人员：数据库代码，程序实现代码，界面</li>
+</ul>
+<hr>
+<h2 id="第三章-信息系统开发过程"><a href="#第三章-信息系统开发过程" class="headerlink" title="第三章 信息系统开发过程"></a>第三章 信息系统开发过程</h2><h4 id="信息系统开发过程要素"><a href="#信息系统开发过程要素" class="headerlink" title="信息系统开发过程要素"></a>信息系统开发过程要素</h4><ul>
+<li>流程 ，方法论，方法，工具</li>
+</ul>
+<h5 id="系统开发过程概述"><a href="#系统开发过程概述" class="headerlink" title="系统开发过程概述"></a>系统开发过程概述</h5><p>不同的角色利用特定的工具完成系统开发中的一些活动，在完成活动可以采用特定的方法和最佳实践（套路，模式）</p>
+<hr>
+<h4 id="CMM成熟度模型"><a href="#CMM成熟度模型" class="headerlink" title="CMM成熟度模型"></a>CMM成熟度模型</h4><ul>
+<li><p>初始级：小作坊式生产，没有固定套路和方法</p>
+</li>
+<li><p>可重复级：有特定的一些方法支撑</p>
+</li>
+<li><p>已定义级：严格定义规则，有严格的方法论</p>
+</li>
+<li><p>已管理级：对将来产出的目标有一个度量，在开发前能计算出质量</p>
+</li>
+<li><p>优化级：在开发过程中可以根据项目难度自动进行优化</p>
+<p>初始级-&gt;优化级：风险越来越小，竞争力越来越强</p>
+</li>
+</ul>
+<hr>
+<h4 id="系统生存周期"><a href="#系统生存周期" class="headerlink" title="系统生存周期"></a>系统生存周期</h4><p>两个阶段：系统开发和系统维护。可细分为开发，维护，升级，报废。</p>
+<hr>
+<h4 id="系统开发方法论"><a href="#系统开发方法论" class="headerlink" title="系统开发方法论"></a>系统开发方法论</h4><p>已经定义好的具有活动，方法，最佳实践，可交付成果和自动化工具的精确和正式的系统开发方法</p>
+<hr>
+<h4 id="系统开发的原则"><a href="#系统开发的原则" class="headerlink" title="系统开发的原则"></a>系统开发的原则</h4><ul>
+<li>以人为本：让用户业主尽量参与，可以减少风险，保证问题理解正确</li>
+<li>有理有据：要有标准解决问题的步骤，提高开发效率</li>
+<li>分步实施：每个阶段之间会有重叠关系，问题分析，需求分析会重叠，并发</li>
+<li>建立标准：文档，质量，工具，信息开发技术</li>
+<li>最优决策：成本效益分析：平衡权益和风险风险管理</li>
+<li>悬崖勒马：不恰当时停下来，每一步进行评估，不合格即不恰当</li>
+<li>分而治之：简化问题，每一步设定标准</li>
+<li>高瞻远瞩：系统能量不断增加，只有在一开始设计好才能让代价付出最小</li>
+</ul>
+<p><em>系统熵：修改系统付出的代价，越小越好。</em></p>
+<hr>
+<h4 id="系统开发方法论-1"><a href="#系统开发方法论-1" class="headerlink" title="系统开发方法论"></a>系统开发方法论</h4><h5 id="促使开发软件的原因"><a href="#促使开发软件的原因" class="headerlink" title="促使开发软件的原因"></a>促使开发软件的原因</h5><p>业务中遇到问题；有机会改正业务效率；规章制度发生变化</p>
+<h5 id="PIECES问题解决框架"><a href="#PIECES问题解决框架" class="headerlink" title="PIECES问题解决框架"></a>PIECES问题解决框架</h5><ul>
+<li>性能</li>
+<li>信息</li>
+<li>经济性</li>
+<li>可控制程度或安全</li>
+<li>效率</li>
+<li>服务质量</li>
+</ul>
+<h5 id="FAST（Framework-for-the-Application-of-Systems-Techniques）"><a href="#FAST（Framework-for-the-Application-of-Systems-Techniques）" class="headerlink" title="FAST（Framework for the Application of Systems Techniques）"></a>FAST（Framework for the Application of Systems Techniques）</h5><p><strong>不是指快速开发一个系统或者只使用原型方法</strong></p>
+<h6 id="规定了开发过程的7个阶段"><a href="#规定了开发过程的7个阶段" class="headerlink" title="规定了开发过程的7个阶段"></a>规定了开发过程的7个阶段</h6><ul>
+<li>初始调查研究：核心要确定项目的范围</li>
+<li>问题分析：要解决的问题是什么</li>
+<li>需求分析：要解决问题需要达到什么目标，数据，加工，接口</li>
+<li>决策分析：选方案，技术可行性，操作可行性，经济可行性，<br>设计：业务需求转换为软件需求，系统体系结构（包括各个业务的功能实现）</li>
+<li>构件：开发出来各个模块并测试（采购的话要学习用户手册）</li>
+<li>实现：在真实的环境中部署软件，在进行用户可接触测试</li>
+<li>运营和维护：维护，修改bug</li>
+</ul>
+<h5 id="跨生命周期活动（重叠或者跨整个生命周期进行）"><a href="#跨生命周期活动（重叠或者跨整个生命周期进行）" class="headerlink" title="跨生命周期活动（重叠或者跨整个生命周期进行）"></a>跨生命周期活动（重叠或者跨整个生命周期进行）</h5><p>事实调查：是否能在实际环境中进行<br>文档和汇报：要有交付成果<br>可行性分析<br>过程管理</p>
+<hr>
+<h4 id="知识库"><a href="#知识库" class="headerlink" title="知识库"></a>知识库</h4><p>需要共享的资料，工具，说明书。</p>
+<hr>
+<h2 id="第四章-项目管理"><a href="#第四章-项目管理" class="headerlink" title="第四章 项目管理"></a>第四章 项目管理</h2><h3 id="什么是项目管理？"><a href="#什么是项目管理？" class="headerlink" title="什么是项目管理？"></a>什么是项目管理？</h3><p>项目：为了完成特定的目标将一系列相互关联的活动组织起来</p>
+<p>​    活动特点：每个活动的特点是唯一的；具有复杂性</p>
+<p>​    活动受限：预算，时间，特定要求</p>
+<p>项目管理：人力，预算，控制，范围，计划，指挥</p>
+<h3 id="项目管理和过程管理的区别"><a href="#项目管理和过程管理的区别" class="headerlink" title="项目管理和过程管理的区别"></a>项目管理和过程管理的区别</h3><ul>
+<li>项目管理：目标是项目中用到的资源</li>
+<li>过程管理：目标是开发的系统</li>
+</ul>
+<h3 id="项目管理的因素"><a href="#项目管理的因素" class="headerlink" title="项目管理的因素"></a>项目管理的因素</h3><ul>
+<li>客户接受：需求满足</li>
+<li>成本合理</li>
+<li>及时交付</li>
+<li>平稳过渡：要对用户的适应性加以考虑，不要变化太大</li>
+</ul>
+<h3 id="项目失败的原因"><a href="#项目失败的原因" class="headerlink" title="项目失败的原因"></a>项目失败的原因</h3><ul>
+<li>改变了项目的需求</li>
+<li>需求没有满足</li>
+<li>预算，时间和人员出了问题，在开发商偷工减料</li>
+<li>对项目的期望随着时间改变，最后导致超出预算和时间</li>
+<li>预算和时间表没有慎重分析</li>
+<li>没有采用科学方法估计项目指标</li>
+<li>开始出现的问题没有及时解决，到后期解决代价变大</li>
+<li>不一定人越多越好</li>
+<li>责任分配不明显</li>
+</ul>
+<h3 id="好的管理人员需要的资质"><a href="#好的管理人员需要的资质" class="headerlink" title="好的管理人员需要的资质"></a>好的管理人员需要的资质</h3><ul>
+<li>业务认知和理解能力<ul>
+<li>例如：开发一个业务系统，卖给多家需要此业务的卖家，需要充分考虑业务前景</li>
+</ul>
+</li>
+<li>始终与业主和用户合作</li>
+<li>对质量能够做出承诺</li>
+<li>主动性</li>
+<li>获取信息的能力</li>
+<li>分析能力</li>
+<li>理性思维</li>
+<li>对人际关心</li>
+<li>对结构的预期能力</li>
+<li>鼓励和团结团队人员</li>
+<li>抗压能力</li>
+<li>诚信</li>
+<li>自信不自负</li>
+<li>有效的交流</li>
+<li>对项目进展的控制能力</li>
+<li>有原则的灵活性</li>
+</ul>
+<h3 id="项目管理方法"><a href="#项目管理方法" class="headerlink" title="项目管理方法"></a>项目管理方法</h3><ul>
+<li>确定项目的边界</li>
+<li>认定需要完成的任务</li>
+<li>评估所需的资源</li>
+<li>任务进度安排</li>
+<li>确保人员理解角色和职责</li>
+<li>只会项目组成员的活动</li>
+<li>控制项目开发过程</li>
+<li>总结经验和教训</li>
+</ul>
+<h3 id="管理项目的技术"><a href="#管理项目的技术" class="headerlink" title="管理项目的技术"></a>管理项目的技术</h3><h4 id="1-PERT-chart"><a href="#1-PERT-chart" class="headerlink" title="1. PERT chart"></a>1. PERT chart</h4><ul>
+<li>PERT图是一种图形化的网络模型，它描述了项目的任务以及这些任务之间的关系。PERT是为了在计划项目任务之前明确项目任务之间的<strong>相互依赖</strong>而开发的。</li>
+</ul>
+<h4 id="2-Gantt-chart"><a href="#2-Gantt-chart" class="headerlink" title="2. Gantt chart"></a>2. Gantt chart</h4><ul>
+<li><p>甘特图是一个简单的水平条形图，描述了历程上的项目任务。每个条表示一个命名的项目任务。左侧列垂直列出了这些任务。</p>
+<p>横轴是历程时间轴。甘特图提供了清晰地显示<strong>重叠任务</strong>的优势</p>
+</li>
+</ul>
+<h3 id="项目管理生命周期"><a href="#项目管理生命周期" class="headerlink" title="项目管理生命周期"></a>项目管理生命周期</h3><h4 id="1-协商范围"><a href="#1-协商范围" class="headerlink" title="1. 协商范围"></a>1. 协商范围</h4><ul>
+<li><p>范围定义了项目的边界——业务的哪些部分需要研究、分析、设计、构造、实现和最终改进?</p>
+</li>
+<li><p>五个基本问题的答案会影响项目范围的谈判:</p>
+<ul>
+<li><p>产品——你想要什么?</p>
+</li>
+<li><p>质量多好你想要吗?</p>
+</li>
+<li><p>时间——当你想要它吗?</p>
+</li>
+<li><p>成本——你愿意支付多少钱?</p>
+</li>
+<li><p>资源——你愿意或者能够带来什么资源表吗?</p>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="2-确定任务"><a href="#2-确定任务" class="headerlink" title="2. 确定任务"></a>2. 确定任务</h4><ul>
+<li>工作分解结构(WBS)是将项目分解为阶段、活动和任务的层次结构</li>
+<li>里程碑事件,表示完成或完成的主要可交付成果(可向下一阶段或活动交付的结果)一个项目。</li>
+</ul>
+<h4 id="3-估计任务持续时间"><a href="#3-估计任务持续时间" class="headerlink" title="3. 估计任务持续时间"></a>3. 估计任务持续时间</h4><ul>
+<li><p>乐观的持续期：估计完成任务所需的最少时间。我们称之为乐观持续时间(OD)</p>
+</li>
+<li><p>悲观的持续期：估计执行任务所需的最大时间量。我们将其称为悲观持续时间(PD)</p>
+</li>
+<li><p>期望的持续期：估计执行任务所需的预期持续时间(ED)</p>
+</li>
+<li><p>计算最可能的持续时间(D)(最有希望的持续期)如下:</p>
+<p>D =(1×OD) +(4×ED) +(1×PD) / 6</p>
+</li>
+</ul>
+<h4 id="4-指定任务之间的依赖关系"><a href="#4-指定任务之间的依赖关系" class="headerlink" title="4. 指定任务之间的依赖关系"></a>4. 指定任务之间的依赖关系</h4><ul>
+<li><p>FS——完成一个任务的触发另一个任务的开始。</p>
+</li>
+<li><p>SS——开始一个任务触发另一个任务的开始。</p>
+</li>
+<li><p>FF——两个任务必须在同一时间完成。</p>
+</li>
+<li><p>SF——开始一个任务——另一个任务的完成。</p>
+</li>
+<li><p>调度策略</p>
+<ul>
+<li>正向调度：从开始时间计算项目最早完成时间</li>
+<li>反向调度：从截止时间算最晚开始时间</li>
+</ul>
+</li>
+</ul>
+<h4 id="5-资源分配"><a href="#5-资源分配" class="headerlink" title="5. 资源分配"></a>5. 资源分配</h4><ul>
+<li>资源种类<ul>
+<li>人力资源</li>
+<li>服务</li>
+<li>设备</li>
+<li>原材料</li>
+<li>资金</li>
+</ul>
+</li>
+<li>资源使用超出时的调平策略<ul>
+<li>任务延迟</li>
+<li>任务分解（并行改串行）</li>
+</ul>
+</li>
+<li>关键路径<ul>
+<li>关键路径一般不要延迟，会延误工期</li>
+</ul>
+</li>
+<li>松弛时间</li>
+</ul>
+<h4 id="6-团队管理"><a href="#6-团队管理" class="headerlink" title="6. 团队管理"></a>6. 团队管理</h4><ul>
+<li><p>监督资源</p>
+<ul>
+<li>最后期限</li>
+<li>一分钟经理</li>
+</ul>
+</li>
+<li><p>项目领导的10个提示</p>
+<ul>
+<li><p>言行一致的</p>
+</li>
+<li><p>提供支持</p>
+</li>
+<li><p>别下你无法遵守的承诺</p>
+</li>
+<li><p>在公共场合表扬,私下批评</p>
+</li>
+<li><p>培养员工士气</p>
+</li>
+<li><p>——设定一个现实的最后期限</p>
+</li>
+<li><p>设定可感知的目标</p>
+</li>
+<li><p>多引导员工</p>
+</li>
+<li><p>不要仅仅依赖(状态报告)</p>
+</li>
+<li><p>鼓励良好的团队精神</p>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="7-监管和控制过程"><a href="#7-监管和控制过程" class="headerlink" title="7. *监管和控制过程"></a>7. *监管和控制过程</h4><ul>
+<li><p>进展报告</p>
+</li>
+<li><p>变更管理</p>
+</li>
+<li><p>预期管理</p>
+<ul>
+<li><p>预期管理矩阵</p>
+<table>
+<thead>
+<tr>
+<th>优先级    衡量指标</th>
+<th>Max or Min</th>
+<th>Constrain</th>
+<th>Accept</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>cost</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>schedule</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>scope or quality</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+</li>
+</ul>
+</li>
+<li><p>进度调整-<strong>关键路径分析</strong></p>
+<ul>
+<li>选择最长的一条路作为关键路径</li>
+<li>算出非关键任务的延迟时间</li>
+</ul>
+</li>
+</ul>
+<h4 id="8-评估项目结果和经验"><a href="#8-评估项目结果和经验" class="headerlink" title="8. 评估项目结果和经验"></a>8. 评估项目结果和经验</h4><hr>
+<h2 id="第五章-系统分析阶段"><a href="#第五章-系统分析阶段" class="headerlink" title="第五章 系统分析阶段"></a>第五章 系统分析阶段</h2><p>业务领域由功能划分成不同的的业务模块，再划分成软件模块，最后继承成软件系统</p>
+<p>每一阶段的主要工作，业务成果，参与者</p>
+<p>一阶段：初始的调查研究<br>    目标：找问题<br>    输出：列出问题<br>    参与：业主</p>
+<p>二阶段：问题分析（由症状分析病因）<br>    目标：现有系统的分析（有可能是业务系统，也有可能是技术系统）<br>    输出：确定需要达到什么样的目标<br>    需要业主和用户的参与</p>
+<p>三阶段：需求分析<br>    逻辑系统模型-业务<br>        what<br>    物理系统模型-技术<br>        how<br>    目标：确定系统需求<br>    输出：业务需求陈述<br>        功能性需求和非功能性需求<br>    参与：用户，系统分析员</p>
+<p>四阶段：决策分析<br>    目标：怎么去选择一个最好的方案（可行性分析）<br>        技术可行性（效率与是非会用），操作可行性（是否可以满足所有需求），经济可行性（成本效益），进度可行性（是否在规定事件可做完）<br>        权重计算表<br>    输出：方案建议书<br>    参与：分析与系统设计师<br>目标：做一个信息系统</p>
+<p>系统分析方法：<br>    1. 模型驱动的分析方法<br>    2. 加速分析方法 </p>
+<p>模型驱动：强调给系统建模<br>    结构化分析：注重业务处理过程，重点强调交互过程<br>        采用DFD（数据流图）描述结构化分析的业务逻辑<br>    信息工程：以数据为核心<br>        采用ERDs(实体联系图)<br>    面向对象分析：以对象为中心<br>        采用UML图（和类图的区别）<br>快速分析：<br>    发现原型方法：<br>        给出一个提供用户修改的原型框架（更多的是一种向用户展示的作用）</p>
+<p>敏捷开发方法：<br>    在实际开发方法没有固定的体系，在不同的阶段根据需要用不同的方法</p>
+<h2 id="需求获取"><a href="#需求获取" class="headerlink" title="需求获取"></a>需求获取</h2><pre><code>需求发现：针对目标系统的发现
+问题分析：分析发现问题分析的原因（因果分析方法）
+系统需求：
+    功能性需求（取款 转账）
+        能干什么（v.+n.）
+    非功能性需求（网上银行自动办公举例）
+        P性能 
+            吞吐率
+            响应时间（客户端发起请求到得到服务器的请求回应）
+        I信息 
+            内容 时效性 精确性 格式
+        E经济
+            减少开支或增加收入 
+        C控制
+            安全性
+        E效率
+            以最低的成本输出较好的成果
+        S服务
+            用户给出的反馈
+
+
+
+    不明确的需求
+    错误的需求的结果：
+        开销大
+        用户不满意
+        开发者声誉变坏
+
+    正确需求的特点
+        一致的
+        完整的
+        可行的
+        所需的
+        准确的
+        可追踪的
+        可验证的    
+
+    需求发现的过程：
+        发现问题和分析
+        需求发现
+            fact-finding 七种方法
+        需求验证 validation
+            有可能出现各种错误
+        需求管理
+            如果有问题，则更改
+
+    SOP 标准操作规程
+
+    抽样调查（数量太多，不能普查）
+    simple size = 0.25（x/x）*2
+
+    观察
+        1. 观察六要素
+        2. 征求领导人同意
+        3. 提前预约，不要突然袭击
+        4. 保持低调
+        5. 及时记录和观察
+        6. 别讨人嫌
+        7. 抓重点
+        8. 不要先入为主做假设
+
+    调查问卷：
+        根据目的设计不同的调查问卷
+            multiple-choice questions：从    多个选项中选一个，不是选多个
+            rating question
+
+            ranking question
+
+    面谈：
+        有结构面谈
+            HR面试，有问题清单
+        无结构面谈
+            技术面谈自我发挥
+
+    Ishikawa diagram雨果图
+
+    JRP
+        准时
+        强调关键
+        解决冲突
+        需要休息
+        团队形成一致意见
+        形式：
+            brainstorming，头脑风暴。
+        优势：
+            用户和管理员都能参与，可以更好地实现需求分析
+
+    Fact-Finding 
+    Use case
+        如何使用和使用的场景
+
+    问题发现得越早，越容易解决
+    需求时需要去发现的，是需要采用社和的手段去实现的
+    系统分析员要掌握与人交流的技能和工具</code></pre><h2 id="需求实体"><a href="#需求实体" class="headerlink" title="需求实体"></a>需求实体</h2><pre><code>实体的名字 数据分为流动的和静态的
+动词 功能 架构和行为
+逻辑模型是为了消除系统分析人员和架构人员对于技术的偏见
+
+业务分析通过分析的到PIM（平台无关模型，是逻辑模型）再设计得到PSM（平台相关模型）最后实现得到系统模型
+
+由PIM可以确定出多个PSM（一种逻辑多种平台实现）技术方案
+
+数据建模：核心是了解数据架构。
+
+现代系统的空间相比时间更加廉价，利用非关系型数据库牺牲空间节省时间。
+
+ERD Entity Relationship Diagram 
+
+数据建模：通过ER图描述，实体属性和联系等元素
+数据库设计：实体：表；属性：字段；联系：外键
+
+关键字：
+组合关键字
+候选关键字
+主关键字
+备用关键字
+子集准则（按民族划分）
+
+联系：
+基数：针对一个实体的一个实例，和他有关系的实例可以有多少个。1...N  0...N
+度：在一个联系中有多少个实体参与进来
+
+泛化
+超类型实体：
+子类型实体：与超类型实体的主键是一样的，依赖以超类型实体而存在
+
+关系型数据库的数据建模：建立实体之间的联系
+
+    上下文数据模型
+
+    构造数据模型的步骤
+        1.构造上下文模型（只有实体和联系没有属性）
+        2.基于关键字的数据模型
+        3.添加非关键字，构成全属性数据模型
+        4.进行规范化，减少数据冗余，数据需要灵活性
+
+    1NF：消除多值属性
+    2NF：消除部分依赖
+    3NF：消除传递依赖
+
+    反规范化：
+        数据分区，分表以加快查询的效率</code></pre><h2 id="可行性"><a href="#可行性" class="headerlink" title="可行性"></a>可行性</h2><pre><code>操作，技术，时间，文化，合法，经济可行性。
+操作可行性：
+    问题是否值得去研究
+时间可行性:deadline
+经济可行性：
+
+成本效益分析方法
+    固定成本：软件的租借费用，按比例分摊的工资
+    可变成本：计算机消费（促销时期和平时不一样）
+有形收益：降低成本，增加收入（可以用金钱衡量）
+无形收益：团队，经验，文化。
+
+可行性分析：偿还分析，投资回报率，净现值
+    货币时间价值：货币会随着时间贬值
+偿还分析：在自然增长的收益赶上自然增长的持续付出的成本之前的一段时间，为偿还期
+净现值：PV = 1 / （1 + i）^n
+    n年以后的价值
+投资回报率
+    全生存期收益率：（全生存周期的收入-成本）/成本
+Candidate Systems Matrix
+Feasibility Analysis Matrix
+
+The System Proposal
+    主要元素
+        主要关注的元素
+    次要元素
+        支撑主要元素的部分
+
+    报告的风格    
+        事实风格
+            按照逻辑关系分析（按照分析给结论）
+        管理风格
+            先给出不同方案的介绍和最佳方案的结果（直接给结论）
+        消除废话
+        明确主题</code></pre><h2 id="系统设计过程"><a href="#系统设计过程" class="headerlink" title="系统设计过程"></a>系统设计过程</h2><pre><code>应用架构设计：和系统的应用环境结合在一起
+    、</code></pre><p>##数据库设计</p>
+<p>###存储方式<br>1.文件存储<br>2.关系型数据库<br>3.非关系型数据库</p>
+<p>备份（2-3份）要有纸质备份</p>
+<p>要有回退功能</p>
+<p>####数据库架构</p>
+<p>DBMS：设计一个数据库引擎</p>
+<p>数据库设计目标：<br>1.目标：<br>    提出最有效的增删改查功能<br>    安全的，可信赖的<br>    拓展性良好<br>2.由逻辑数据模型转换到物理数据模型：<br>    要确定每个属性的字段类型<br>        定长字符串，面长字符串等<br>    每一个矩形表示一张表，有标准的命名方式<br>数据库设计过程：<br>1.复习逻辑设计模型<br>2.每个实体建一个表<br>3.每个属性创建一个字段<br>4.主键和候选键创建索引<br>5.构造子集判据构造索引<br>6.设计外键<br>7.设计每个字段的约束<br>8.父表和子表<br>9.检查数据库的完整性<br>    关键字完整性<br>    定义域完整性<br>    参照完整性*</p>
+<p>数据库分析：<br>集中式存储<br>水平分布按列<br>垂直分布按行<br>复制分布</p>
+<p>核心：确定以什么样的方式来存储</p>
+<h2 id="第七章-数据建模和分析"><a href="#第七章-数据建模和分析" class="headerlink" title="第七章 数据建模和分析"></a>第七章 数据建模和分析</h2><h3 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h3><ul>
+<li>逻辑建模（ER图和关系模式）</li>
+<li>数据建模（关系数据库设计）</li>
+</ul>
+<h3 id="系统模型介绍"><a href="#系统模型介绍" class="headerlink" title="系统模型介绍"></a>系统模型介绍</h3><h4 id="逻辑模型"><a href="#逻辑模型" class="headerlink" title="逻辑模型"></a>逻辑模型</h4><ul>
+<li>定义：逻辑模型显示系统是什么或做什么。它们是独立于实现的;也就是说，它们描述了独立于任何技术实现的系统。因此，逻辑模型说明了系统的本质</li>
+</ul>
+<h5 id="使用逻辑模型的原因"><a href="#使用逻辑模型的原因" class="headerlink" title="使用逻辑模型的原因"></a>使用逻辑模型的原因</h5><ul>
+<li>可以让系统脱离现实的技术实现细节，专注系统的业务需求，减少需求确实的风险</li>
+<li>由于脱离了技术可以和客户轻松交流</li>
+</ul>
+<h4 id="物理模型"><a href="#物理模型" class="headerlink" title="物理模型"></a>物理模型</h4><ul>
+<li>定义：物理模型不仅显示系统是什么或做什么，而且还显示系统在物理上和技术上是如何实现的。</li>
+<li>它们依赖于实现，因为它们反映了技术选择和这些技术选择的局限性</li>
+</ul>
+<h4 id="数据建模"><a href="#数据建模" class="headerlink" title="数据建模"></a>数据建模</h4><ul>
+<li>数据建模(数据建模)是一种技术来组织和记录系统的数据。</li>
+<li>实际模型通常称为实体关系图(ERD)，因为它根据数据所描述的实体和关系来描述数据。</li>
+<li>实体<ul>
+<li>强实体：圆角矩形</li>
+<li>弱实体：必须要以来一个其他的实体，主键和以来的实体一样。圆角矩形+一个框</li>
+<li>关联实体：帮助我们解决非确定性关系（实体和实体之间的多对多联系）。菱形</li>
+</ul>
+</li>
+</ul>
+<h3 id="数据建模的系统概念"><a href="#数据建模的系统概念" class="headerlink" title="数据建模的系统概念"></a>数据建模的系统概念</h3><h4 id="实体"><a href="#实体" class="headerlink" title="实体"></a>实体</h4><h5 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h5><ul>
+<li>一个实体(实体)是一类人,地方,对象,事件,或我们需要捕获和存储数据的概念。</li>
+<li>圆角矩形表示</li>
+</ul>
+<h5 id="实体的实例"><a href="#实体的实例" class="headerlink" title="实体的实例"></a>实体的实例</h5><ul>
+<li>对应数据库的表的一行记录</li>
+</ul>
+<h4 id="属性"><a href="#属性" class="headerlink" title="属性"></a>属性</h4><h5 id="概念-1"><a href="#概念-1" class="headerlink" title="概念"></a>概念</h5><ul>
+<li>用来描述实体的特征</li>
+</ul>
+<h5 id="复合属性"><a href="#复合属性" class="headerlink" title="复合属性"></a>复合属性</h5><ul>
+<li>多个源自属性组合起来表示一种属性</li>
+</ul>
+<h5 id="约束"><a href="#约束" class="headerlink" title="约束"></a>约束</h5><ul>
+<li>数据类型：什么类型的数据可以存储在属性里</li>
+<li>定义域：属性值是否合理和游戏哎</li>
+<li>缺省值：用户没有指定时用一个默认值</li>
+</ul>
+<h5 id="标识符"><a href="#标识符" class="headerlink" title="标识符"></a>标识符</h5><ul>
+<li>关键字</li>
+<li>组合关键字</li>
+<li>候选关键字</li>
+<li>主关键字</li>
+<li>备用关键字</li>
+<li>子集准则</li>
+</ul>
+<h4 id="联系"><a href="#联系" class="headerlink" title="联系"></a>联系</h4><h5 id="概念-2"><a href="#概念-2" class="headerlink" title="概念"></a>概念</h5><ul>
+<li>一个或者多个实体之间的关联</li>
+<li>联系之间是有方向的</li>
+</ul>
+<h5 id="基数"><a href="#基数" class="headerlink" title="基数"></a>基数</h5><ul>
+<li>一个实体的实例能够最少和最多对应另外一个实体的个数</li>
+<li>离得近的联系基数时别人一个对应自己多少个</li>
+</ul>
+<h4 id="递归联系"><a href="#递归联系" class="headerlink" title="递归联系"></a>递归联系</h4><ul>
+<li>递归关系(递归联系)(度= 1)是一种关系,相同实体不同实例之间存在的联系。</li>
+</ul>
+<h5 id="关联实体"><a href="#关联实体" class="headerlink" title="关联实体"></a>关联实体</h5><ul>
+<li>主键是由联系起来的所有属性的主键构成。</li>
+<li>由几个实体联系起来，度(degree)就是几。</li>
+</ul>
+<h4 id="外键"><a href="#外键" class="headerlink" title="外键"></a>外键</h4><ul>
+<li>依赖于别人的主键</li>
+</ul>
+<h5 id="非限定性联系"><a href="#非限定性联系" class="headerlink" title="非限定性联系"></a>非限定性联系</h5><ul>
+<li>属性之间没有任何关系</li>
+</ul>
+<h5 id="限定性联系"><a href="#限定性联系" class="headerlink" title="限定性联系"></a>限定性联系</h5><ul>
+<li>属性之间有关系</li>
+</ul>
+<h4 id="非特定性联系"><a href="#非特定性联系" class="headerlink" title="非特定性联系"></a>非特定性联系</h4><ul>
+<li><p>多对多联系</p>
+</li>
+<li><p>一个实体的实例不能唯一确定另外一个实体的实例</p>
+</li>
+<li><p>引入关联实体解决不确定性</p>
+</li>
+</ul>
+<h4 id="泛化"><a href="#泛化" class="headerlink" title="泛化"></a>泛化</h4><ul>
+<li>泛化：多个实体具有相同的特征，可以构造出一个超类型实体，对比面向对象</li>
+<li>超类型实体：对比面向对象父类</li>
+<li>子类型实体：对比面向对象子类</li>
+</ul>
+<h3 id="建立逻辑数据模型的过程"><a href="#建立逻辑数据模型的过程" class="headerlink" title="建立逻辑数据模型的过程"></a>建立逻辑数据模型的过程</h3><ul>
+<li><strong>上下文数据模型</strong>：只包括实体和联系，没有属性。</li>
+</ul>
+<h4 id="数据建模过程"><a href="#数据建模过程" class="headerlink" title="数据建模过程"></a>数据建模过程</h4><ol>
+<li>构造上下文数据模型</li>
+<li>构造基于关键字的数据模型（为每一个实体确定候选关键字）</li>
+<li>为每一个实体识别非关键字属性</li>
+<li>规范化减少冗余（大多数是三范式）</li>
+</ol>
+<h3 id="怎么样构建数据模型"><a href="#怎么样构建数据模型" class="headerlink" title="怎么样构建数据模型"></a>怎么样构建数据模型</h3><h4 id="识别实体"><a href="#识别实体" class="headerlink" title="识别实体"></a>识别实体</h4><ul>
+<li>从用例中文本的描述确定那些是实体，那些是联系。</li>
+<li>在与系统所有者和用户的访谈或JRP会议中，注意他们讨论中的关键词。</li>
+<li>从表格，文件或者报告中得到</li>
+<li>从已有的数据库中时别实体</li>
+</ul>
+<h3 id="分析数据模型"><a href="#分析数据模型" class="headerlink" title="分析数据模型"></a>分析数据模型</h3><ol>
+<li>列出实体和相关描述</li>
+<li>上下文数据模型（实体和联系）</li>
+<li>确定主关键字和候选关键字，关联属性等。</li>
+<li>泛化<ul>
+<li>父类和子类</li>
+</ul>
+</li>
+<li>加入非标志性属性</li>
+</ol>
+<h3 id="优化数据模型"><a href="#优化数据模型" class="headerlink" title="优化数据模型"></a>优化数据模型</h3><h4 id="好的数据模型"><a href="#好的数据模型" class="headerlink" title="好的数据模型"></a>好的数据模型</h4><ol>
+<li>简单</li>
+<li>少冗余</li>
+<li>延展性和灵活性高</li>
+</ol>
+<h4 id="规范化"><a href="#规范化" class="headerlink" title="规范化"></a>规范化</h4><ul>
+<li>牺牲时间换空间</li>
+</ul>
+<h5 id="1-NF"><a href="#1-NF" class="headerlink" title="1 NF"></a>1 NF</h5><ul>
+<li>消除多值依赖</li>
+<li>例如：<ul>
+<li>{身份证号，姓名，联系方式}</li>
+<li>属性”联系方式里面包含了电话和电子邮箱”，发生了多值依赖，分解成两个属性即可</li>
+<li>{身份证号，姓名,电话,电子邮箱}</li>
+</ul>
+</li>
+</ul>
+<h5 id="2-NF"><a href="#2-NF" class="headerlink" title="2 NF"></a>2 NF</h5><ul>
+<li>1 NF +消除部分依赖</li>
+<li>例如：<ul>
+<li>{(a,b),c,d,e}</li>
+<li>其中(a,b)是主键，但是b可以唯一确定d，就发生了部份依赖，可以分表解决</li>
+<li>{(a,b),c,e}  {b,d}</li>
+</ul>
+</li>
+</ul>
+<h5 id="3-NF"><a href="#3-NF" class="headerlink" title="3 NF"></a>3 NF</h5><ul>
+<li>2 NF +消除传递依赖<ul>
+<li>例如：<ul>
+<li>{(a,b),c,d,e}</li>
+<li>其中(a,b)是主键，但是c可以唯一确定d，就发生了传递依赖，可以分表解决</li>
+<li>{(a,b),c,e}  {c,d}</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="反规范化"><a href="#反规范化" class="headerlink" title="反规范化"></a>反规范化</h4><ul>
+<li>牺牲空间换时间</li>
+</ul>
+<h2 id="第十一章-输入设计原型化"><a href="#第十一章-输入设计原型化" class="headerlink" title="第十一章 输入设计原型化"></a>第十一章 输入设计原型化</h2><h3 id="概述-1"><a href="#概述-1" class="headerlink" title="概述"></a>概述</h3><ul>
+<li>正确的输入，正确的输出</li>
+</ul>
+<h3 id="输入设计包含两方面"><a href="#输入设计包含两方面" class="headerlink" title="输入设计包含两方面"></a>输入设计包含两方面</h3><ul>
+<li><p>数据的捕获，输入和处理</p>
+<ul>
+<li><p>数据捕获是对新数据的识别和获取</p>
+<p>(源头)。源文档是用来记录商业交易形式描述这些交易的数据</p>
+</li>
+<li><p>数据输入是将源数据或文档(以上)转换成计算机可读格式的过程</p>
+</li>
+<li><p>数据处理是在数据从机器可读的形式输入之后对其进行的所有处理。</p>
+<ol>
+<li>批处理：存在缓存区，满足一定要求后一起处理</li>
+<li>在线处理：输入信息立即处理</li>
+<li>远程处理：通过互联网终端进行远程处理</li>
+</ol>
+</li>
+</ul>
+</li>
+<li><p>捕获并输入数据使用的方法和技术</p>
+<ul>
+<li>键盘</li>
+<li>鼠标</li>
+<li>触摸屏</li>
+<li>销售点终端</li>
+<li>声音和讲话</li>
+<li>自动数据采集</li>
+</ul>
+</li>
+<li><p>自动识别条形码</p>
+</li>
+</ul>
+<h3 id="输入设计的指导"><a href="#输入设计的指导" class="headerlink" title="输入设计的指导"></a>输入设计的指导</h3><ul>
+<li><p>只捕获可变数据。</p>
+</li>
+<li><p>不要捕获可以在计算机中计算出来的数据。</p>
+</li>
+<li><p>为适当的属性使用业务编码。</p>
+</li>
+</ul>
+<h3 id="原文档的设计规则"><a href="#原文档的设计规则" class="headerlink" title="原文档的设计规则"></a>原文档的设计规则</h3><ul>
+<li>包括填写表格的说明。</li>
+<li>尽量减少手写的数量。</li>
+<li>要输入的数据(键控)应该进行排序，这样它就可以像一本书一样阅读，也就是说，<strong>从上到下，从左到右</strong>。</li>
+<li>尽可能使用常规（和人们日常思维习惯相同）的设计<ul>
+<li>更利于用户的操作，符合人的习惯</li>
+</ul>
+</li>
+</ul>
+<h3 id="输入的内部控制"><a href="#输入的内部控制" class="headerlink" title="输入的内部控制"></a>输入的内部控制</h3><ul>
+<li>应该监视每个输入，以及输入的总数(以最小化丢失事务的风险)<ul>
+<li>对批处理<ul>
+<li>使用批控制记录单</li>
+<li>使用一个对一个核对后处理细节报告（目前在哪，下一步到哪）</li>
+</ul>
+</li>
+<li>在线系统<ul>
+<li>记录每一笔交易的发生（找出哪一步出错）</li>
+<li>为每笔交易分配一个确认号码(在网上交易系统中很常见)</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>验证所有数据<ul>
+<li>存在检查,确定所有必需字段的输入实际上已经进入了。</li>
+<li>数据类型检查,确保正确的类型的数据输入。身份证不能输入字母</li>
+<li>域检查,确定每个字段属于合法的输入数据集或为该字段定义的值的范围。身份证的月份</li>
+<li>关联检查,确定是否一个已知的两个字段之间的关系是有效的。身份证和姓名有关联</li>
+<li>自检数字,确定主键数据输入错误。(对主关键字进行基于校验位的检查)</li>
+<li>输入格式检查，比较数据与已知的格式使用</li>
+</ul>
+</li>
+</ul>
+<h3 id="输入设计的GUI控件"><a href="#输入设计的GUI控件" class="headerlink" title="输入设计的GUI控件"></a>输入设计的GUI控件</h3><h4 id="常见的GUI空间"><a href="#常见的GUI空间" class="headerlink" title="常见的GUI空间"></a>常见的GUI空间</h4><ul>
+<li>文本框——当输入数据值的范围不受限制，分析人员无法向用户提供有意义的值列表，用户可以从中进行选择时。</li>
+<li>单选按钮,当输入数据有限组预定义的互斥(互斥)值。</li>
+<li>复选框——当用户需要输入一个数据字段，该字段的值集由一个简单的yes或no值组成</li>
+<li>列表框-作为单选按钮，但当更多的值需要选择，因为滚动条正在使用。</li>
+<li>下拉列表-作为列表框，除了隐藏列表</li>
+<li>组合框-组合一个文本框和一个列表框。</li>
+<li>按钮-允许用户提交所有要处理的数据，或取消事务，或获得帮助。</li>
+</ul>
+<h4 id="高级的GUI空间"><a href="#高级的GUI空间" class="headerlink" title="高级的GUI空间"></a>高级的GUI空间</h4><ul>
+<li>下拉日历</li>
+<li>滑块(滑块)编辑控件，选择值的非数字方式。</li>
+<li>蒙面编辑控件-采取格式检查。</li>
+<li>省略号(省略号)控制——被用于一个字段,由几个部分组成。</li>
+</ul>
+<h3 id="怎么样进行输入设计"><a href="#怎么样进行输入设计" class="headerlink" title="怎么样进行输入设计"></a>怎么样进行输入设计</h3><h4 id="输入设计过程"><a href="#输入设计过程" class="headerlink" title="输入设计过程"></a>输入设计过程</h4><ul>
+<li><p>识别系统输入并检查逻辑需求。</p>
+</li>
+<li><p>选择适当的输入组件/控制。</p>
+</li>
+<li><p>设计、验证和测试输入使用的组合:</p>
+<ul>
+<li>布局工具(例如,草图,间距图表,或CASE工具。</li>
+<li>原型工具(如电子表格、PC DBMS, 4GL)</li>
+</ul>
+</li>
+<li><p>根据需要,设计任何源文件。</p>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://github.com/111zx/111zx.github.io/2020/03/24/%E7%B3%BB%E7%BB%9F%E5%88%86%E6%9E%90%E4%B8%8E%E8%AE%BE%E8%AE%A1/" data-id="ck88at6vg000914ub3xnealwp" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-构件与中间件技术" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/03/22/%E6%9E%84%E4%BB%B6%E4%B8%8E%E4%B8%AD%E9%97%B4%E4%BB%B6%E6%8A%80%E6%9C%AF/" class="article-date">
+  <time datetime="2020-03-22T11:25:53.000Z" itemprop="datePublished">2020-03-22</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/03/22/%E6%9E%84%E4%BB%B6%E4%B8%8E%E4%B8%AD%E9%97%B4%E4%BB%B6%E6%8A%80%E6%9C%AF/">构件与中间件技术</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="第二章-CORBA基本原理"><a href="#第二章-CORBA基本原理" class="headerlink" title="第二章 CORBA基本原理"></a>第二章 CORBA基本原理</h2><pre><code>对象管理体系结构
+CORBA体系结构
+对象的客户操作性
+CORBA规范和产品
+
+对象管理组织OMG
+    OMG主要规范
+        UML(Unified Model Language)：是面向对象分析与设计阶段的表示技术规范
+        CORBA：（Common Object Request Broker Architecture）
+
+对象管理体系结构OMA：
+Object Management Architecture是CORBA所给予的概念框架，他描述了一个较高层次的分布式计算环境
+    核心内容是对象模型和参考模型
+        对象模型：定义了外部可见特征的，独立于具体实现的语义
+        参考模型：标识和刻画了组成OMA的组件，接口和协议
+
+组成：
+
+    对象请求代理(ORB): 连接对象服务（功能），靠接口来实现功能（应用程序接口，领域接口，公共设施）。
+        是OMA参考模型的核心
+        提供了分布式对象之间透明的发送和接受响应的基本机制
+
+
+    对象服务（需要完成的功能）：
+        对象服务是一种通用的服务
+        对象服务的本质是将覆盖对象整个生存期的对象管理任务标准化：
+            例如，对象的创建，对象的访问控制，并发和安全性等
+            可导致不同应用程序的一致性，提高开发的效率
+            COSS：包括对象命名，事件，等的规范
+
+    公共设施：包括分布式文档设施，打印社是，数据库设施，电子邮件设施等
+        同样具有自己的规范
+
+    领域接口：
+        与应用领域有关的接口
+        例如，金融，医疗，电子商务等
+        不同领域有不同的规范
+        标准划主要是指针对接口的标准化
+
+    应用程序的接口：
+        应用程序对象是终端用户执行的任务
+        不是OMG标准划的内容，是构成整个OMA模型的最上层</code></pre><h3 id="CORBA体系结构"><a href="#CORBA体系结构" class="headerlink" title="CORBA体系结构"></a>CORBA体系结构</h3><pre><code>对象模型
+    对象模型描述了对象外部特征的标准语义
+    对象，类型，操作属性等语义和Java等OO语言十分相近
+    但同时具有组件/构件的特征
+    分布式对象
+客户程序与对象实现之间的界面是对象的接口定义
+    接口
+        客户程序所看到的对象接口完全独立于
+            对象所处的位置
+            实现对象的程序设计语言
+            对象接口中未反映的其他特性
+    这种独立性是独立于ORB来保证
+对象接口采用接口定义语言IDL定义
+
+OMG请求可携带的信息：
+    操作
+    提供服务的目标对象引用
+    实际参数
+    一个可选的上下文
+    请求表
+
+对象的创建和撤销
+    从客户的角度看，没有特别的机之用于创建和撤销对象
+
+ORB结构
+    客户程序与动态调用接口，IDL Stub，ORB接口交互
+    对象实现与ORB接口，静态IDLSkeleton，动态框架，对象适配器交互
+
+ORB接口：
+    客户程序只能通过对象的接口定义掌握对象的逻辑结构，客户程序不会知道对象具体的实现方式，也不必知道哪个对象适配器以及需要哪个ORB访问该对象实现
+    对象实现可以用多种方式实现
+        独立的服务程序，程序库每个方法用一个程序实现
+        通过附加的程序适配器，ORB事实上可以支持所有风格的对象实现
+
+Stub/Skeleton机制
+    采用Stub/Skeleton机制支持客户端和服务端的交互
+    stub桩的调用方式：静态调用
+        静态调用借助于客户程序桩完成
+        桩与框架再编译时创建并且在运行时不再改变，所以这些接口成为SII（Static Invocation Interface）
+        IDL桩负责客户程序的实现语言与ORB内核之间的映射
+        客户程序需要在编译之前知道操作的名字，方式等
+    IDL skeleton：静态请求分派方式
+        静态方式通过由IDL生成的框架完成
+        ORB通过IDL框架查找合适的实现代码，传送参数，并将控制传送给对象实现
+        对象实现执行请求时可以通过对象适配器OA获取ORB的某些服务，请求完成后控制与结果返回客户程序
+
+    动态调用接口（DII）
+        客户程序使用DII时不许生成一个请求，其中包括对象引用，操作以及参数表
+        使用DII的应用程序访问对象实现提供的服务时，不必包含由IDL编译器生成的桩，只需在运行时间访问ANY对象
+        代价：程序员必须用DII接口指定操作和每个操作的类型和值，并由我们自己解决类型检查
+        延迟同步调用：
+            用户程序提交请求后不必等候答复，还必须轮询，可以利用CORBA的异步消息服务来实现纯异步
+        DII较SII更适合的场合：
+            编写CORBA服务的浏览器
+            应用程序浏览器
+            转换协议的桥接
+            访问大量不同的接口
+            应用程序的监控
+            同意对象测试程序等
+
+    动态框架接口（DSI）
+        动态方式使用DSI
+        不必包含IDL产生的框架
+        需要手工编程必须检查类型的安全性
+        DIS优于静态的场合：
+            类似DII
+
+    对象适配器
+        对象实现与ORB内核之间的通信由对象适配器完成（客户程序不需要与ORB内核交互）
+            对象适配器负责与对象有关的一系列操作，包括
+                对象引用的生成与解释，方法调用，交互的安全性，对象实现的激活与冻结等
+            为满足特定的系统，不同的系统又不同的适配器
+
+CORBA的可操作性
+    ORB对于可操作性的支持
+        ORB可以支持同一厂家ORB上的客户端与服务端方便的交互
+        不同的ORB产品之间的互操作性
+        影响互操作性的因素    
+            实现方面的差异
+            安全性
+    域：支持开发人员根据自己实现因素或者管理原因将对象划分为不同的集合
+        不同域的对象之间需要桥接机制才可以彼此交互
+    域之间的桥接
+        直接桥接
+            需交互的元素直接转换为两个域的内部表示
+            效率高通用性不好
+        简介桥接
+            需交互元素在域的内部表现形式和各个域认可的另一种表现形式之间互相转换
+    不同平台域语言之间的互操作性
+        IDL标准和IDL到程序语言的映射
+    不同厂商的ORB产品之间的互操作性
+        靠FIOP和IIOP的协议实现</code></pre><h2 id="第三章-CORBA应用程序的开发"><a href="#第三章-CORBA应用程序的开发" class="headerlink" title="第三章 CORBA应用程序的开发"></a>第三章 CORBA应用程序的开发</h2><h3 id="CORBA平台架构"><a href="#CORBA平台架构" class="headerlink" title="CORBA平台架构"></a>CORBA平台架构</h3><pre><code>建议使用OO语言实现CORBA
+    IDL是OO风格的
+
+CORBA运行平台
+网络传输
+消息传递
+    同步方式
+        ORB默认的通信方式    
+    异步方式（延迟同步方式）
+    单向通信
+        监控
+    不同场合使用：
+        所申请的服务只需要很短时间就可以完成（同步）
+        所申请的服务需要较长的时间才可以完成（异步）
+        客户端无需获取请求已完成的确认信息（单向）
+资源优化
+
+CORBA应用程序开发过程
+    面向对象分析与设计
+    用IDL编写对象接口
+    编译IDL文件生成装与框架
+    编写客户端/服务程序代码
+    编译客户端/服务程序
+    部署应用程序
+    运行应用程序
+
+银行账户管理案例：
+    定义接口对象：</code></pre><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">// 银行帐户管理系统的对象接口定义</span><br><span class="line">module Bank &#123;</span><br><span class="line">    // 帐户</span><br><span class="line">    interface Account &#123;</span><br><span class="line">        // 存款</span><br><span class="line">        void deposit(<span class="keyword">in</span> <span class="built_in">float</span> amount);</span><br><span class="line">        // 取款</span><br><span class="line">        boolean withdraw(<span class="keyword">in</span> <span class="built_in">float</span> amount);</span><br><span class="line">        // 查询余额</span><br><span class="line">        <span class="built_in">float</span> getBalance();</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    // 帐户管理员</span><br><span class="line">    interface AccountManager &#123;</span><br><span class="line">        // 查询指定名字的帐户，查无则新开帐户</span><br><span class="line">        Account open(<span class="keyword">in</span> string name);</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<pre><code>    定义结构定义对象为了生成stub与skeleton
+        账户对象Account：
+
+            AccountOperations.java ：
+            Account.java
+            _AccountStub.java ：客户端存根（stub），是Account再客户端的桩代码，它实现的Account接口
+                程序员编写的客户程序代码一般不调用这个类中的方法
+                VisiBroker for java生成了另外的辅助类AccountHelper
+                    该类提供了一个narrow方法，用于返回一个Account接口的指针
+                    实际上该方法实例化了一个_AccountStub对象，所以客户端通过返回的接口指针实际调用了桩对象的代码
+                    由桩对象完成具体的和服务端的通信
+            AccountPOA.java ：服务端框架（skeletion），是Account对象的服务器框架代码，功能：
+                解开in类型的参数，并将参数传递给对象实现
+                打包返回值与所有out类型的参数
+                    打包：java的数据类型转化为CORBA的ⅡOP流格式
+                    解包：从ⅡOP流格式转换为依赖于JAVA的数据结构
+                编写对象实现的最简单途径是继承这些POA类
+                    即把他们作为对象的基类
+    生成的纽带机制类：
+        AccountPOAtIE.java用于采用纽带机制实现服务端的Account对象
+            AccountPOATie是Account接口的委托方的实现
+            应为java语言的单重继承限制，所以引入了纽带机制
+            每一个AccountTie对象必须关联一个真正的实现类
+            真正的实现类必须实现AccountOperations接口
+    生成的辅助工具类：
+        AccountHelper.java声明AccountHelper类
+            该类为Account接口定义了许多实用功能和支持功能的静态方法
+            绑定对象与类型转换操作
+            从输入/输出流读写对象
+    生成的对象传递支撑类：
+        AccountHolder.java声明的AccountHeolder类为传递对象提供支持
+            IDL由三种传递参数的方式：in，out，inout
+            in类型的参数以及返回结构与java类型参数传递与返回结构完全相同
+            out和inout两种类型的参数允许参数具有返回结果的能力，无法直接映射到java语言的参数传递机制
+            这是AccountHolder类为参数传递out和inout参数提供了一个托架
+账户对象实现：</code></pre><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">public class AccountImpl</span><br><span class="line">	extends Bank.AccountPOA</span><br><span class="line">&#123;</span><br><span class="line">	protected <span class="built_in">float</span> balance;//定义余额属性</span><br><span class="line">	</span><br><span class="line">	public AccountImpl(<span class="built_in">float</span> bal)</span><br><span class="line">	//构造方法，按照传递的余额（bal）创建新的账户</span><br><span class="line">	&#123;</span><br><span class="line">		balance = bal;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	public void deposit(<span class="built_in">float</span> amount)</span><br><span class="line">	//存款 </span><br><span class="line">	&#123;</span><br><span class="line">		balance += amount;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	public boolean withdraw(<span class="built_in">float</span> amount)</span><br><span class="line">	//取款，如果不够返回<span class="literal">false</span></span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span>(balance &lt; amount)</span><br><span class="line">			<span class="built_in">return</span> <span class="literal">false</span>;</span><br><span class="line">		<span class="keyword">else</span>&#123;</span><br><span class="line">			balance -= amount;</span><br><span class="line">			<span class="built_in">return</span> <span class="literal">true</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	public <span class="built_in">float</span> getBalance()</span><br><span class="line">	//查询余额</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">return</span> balance;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code>账户管理员对象实现：</code></pre><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">import java.util.*;</span><br><span class="line">import org.omg.PortableServer.*;</span><br><span class="line"></span><br><span class="line">public class AccountManagerImpl</span><br><span class="line">	extends Bank.AccountManagerPOA</span><br><span class="line">&#123;</span><br><span class="line">	protected Hashtable accountList;//该账户管理员所负责的账户清单</span><br><span class="line">	public AccountManagerImpl()</span><br><span class="line">	//构造方法，创建一个管理员对象</span><br><span class="line">	&#123;</span><br><span class="line">		accountList = new Hashtable();</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	public synchronized Bank.Account open(String name)</span><br><span class="line">	//给用户开户</span><br><span class="line">	&#123;</span><br><span class="line">		Bank.Account account = (Bank.Account)accountList.get(name);</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">if</span>(account == null)</span><br><span class="line">		//如果该name对应的账户不存在，则新开一个账户，初始余额为0</span><br><span class="line">			&#123;			</span><br><span class="line">			<span class="built_in">float</span> balance = 0;</span><br><span class="line">			AccountImpl accountServant = new AccountImpl(balance);</span><br><span class="line">			try&#123;</span><br><span class="line">				//用缺省的POA激活对象，这里缺省的POA就是根POA</span><br><span class="line">				org.omg.CORBA.Object obj = </span><br><span class="line">					_default_POA().servant_to_reference(accountServant);</span><br><span class="line">				//将对象引用窄化为Account类型</span><br><span class="line">				account = Bank.AccountHelper.narrow(obj);</span><br><span class="line">			&#125;catch(Exception exc)&#123;</span><br><span class="line">				exc.printStackTrace();</span><br><span class="line">			&#125;</span><br><span class="line">			</span><br><span class="line">			accountList.put(name, account);</span><br><span class="line">			System.out.println(<span class="string">"新开账户："</span> + name);</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		<span class="built_in">return</span> account;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code>编写服务程序：
+    初始化ORB
+    创建一个对象适配器
+    创建提供服务的伺服对象
+    激活私服对象
+    激活POA管理器
+    等待客户程序发来请求
+服务程序：</code></pre><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">import org.omg.PortableServer.*;</span><br><span class="line"></span><br><span class="line">public class Server</span><br><span class="line">&#123;</span><br><span class="line">	public static void main(String[] args)</span><br><span class="line">	&#123;</span><br><span class="line">		try&#123;</span><br><span class="line">			//初始化ORB</span><br><span class="line">			org.omg.CORBA.ORB orb = org.omg.CORBA.ORB.init(args, null);</span><br><span class="line">			//获取根POA的引用</span><br><span class="line">			POA rootPOA = POAHelper.narrow(</span><br><span class="line">				orb.resolve_initial_references(<span class="string">"RootPOA"</span>));</span><br><span class="line">			//创建持久POA的策略</span><br><span class="line">			org.omg.CORBA.Policy[] policies = &#123;</span><br><span class="line">				rootPOA.create_lifespan_policy(LifespanPolicyValue.PERSISTENT),</span><br><span class="line">				//rootPOA.create_id_assignment_policy(IdAssignmentPolicyValue.USER_ID)</span><br><span class="line">			&#125;;</span><br><span class="line">			//用新定义的策略创建myPOA</span><br><span class="line">			POA myPOA = rootPOA.create_POA(<span class="string">"BankPOA"</span>, rootPOA.the_POAManager(), policies);</span><br><span class="line">			//创建伺服对象</span><br><span class="line">			AccountManagerImpl managerServant = new AccountManagerImpl();</span><br><span class="line">			//在myPOA上用标识<span class="string">"BankManager"</span>激活伺服对象</span><br><span class="line">			myPOA.activate_object_with_id(<span class="string">"BankManager"</span>.getBytes(), managerServant);</span><br><span class="line">			//激活POA管理器</span><br><span class="line">			rootPOA.the_POAManager().activate();</span><br><span class="line">			//等待处理客户程序的请求</span><br><span class="line">			System.out.println(<span class="string">"账户管理员BankManager已就绪...\n"</span>);</span><br><span class="line">			orb.run();</span><br><span class="line">		&#125;catch(Exception exc)&#123;</span><br><span class="line">			exc.printStackTrace();</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code>客户程序：</code></pre><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">public class Client</span><br><span class="line">&#123;</span><br><span class="line">	public static void main(String[] args)</span><br><span class="line">	&#123;</span><br><span class="line">		//初始化ORB</span><br><span class="line">		org.omg.CORBA.ORB orb = org.omg.CORBA.ORB.init(args, null);</span><br><span class="line">		//利用POA全称与对象标识<span class="string">"BankManager"</span>查找账户管理员</span><br><span class="line">		Bank.AccountManager manager = Bank.AccountManagerHelper.bind(</span><br><span class="line">			orb, <span class="string">"/BankPOA"</span>, <span class="string">"BankManager"</span>.getBytes());//,<span class="string">"192.168.118.3"</span>, new com.inprise.vbroker.CORBA.BindOptions());</span><br><span class="line">		String name = args.length &gt; 0? args[0]:<span class="string">"SHLSong"</span>;</span><br><span class="line">		Bank.Account account = manager.open(name);</span><br><span class="line">		</span><br><span class="line">		System.out.println(name + <span class="string">"的账户余额为"</span> + account.getBalance() + <span class="string">"元"</span>);</span><br><span class="line">		account.deposit(400);</span><br><span class="line">		System.out.println(<span class="string">"存款400元后，余额为"</span> + account.getBalance() + <span class="string">"元"</span>);</span><br><span class="line">		<span class="keyword">if</span>(account.withdraw(500))&#123;</span><br><span class="line">			System.out.println(<span class="string">"取款500元后，余额为"</span> + account.getBalance() + <span class="string">"元"</span>);</span><br><span class="line">		&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">			System.out.println(<span class="string">"余额不足500元，取款失败，余额保持不变"</span>);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code>编译应用程序
+    利用VisiBroker for java提供的编译器vbjc完成这一工作：</code></pre><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">vbjc Server.java</span><br><span class="line">vbjc Client.java</span><br></pre></td></tr></table></figure>
+<pre><code>    vbjc十几张封装了JDK提供的Java编译器
+    Holder类和POATie需要指定额外的参数才会下生成
+按一定的顺序启动应用程序
+    1. 启动智能代理
+        运行CORBA应用程序之前，网络之中必须至少有一台主机上启动了智能代理osagent
+        这是VisiBroker特有的分布式位置服务守护进程，网络中多个智能代理可写作查找合适的对象实现</code></pre><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">osagent</span><br></pre></td></tr></table></figure>
+<pre><code>2. 启动服务程序</code></pre><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">start vbj Server</span><br></pre></td></tr></table></figure>
+<pre><code>3. 启动客户程序</code></pre><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vbj Client</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://github.com/111zx/111zx.github.io/2020/03/22/%E6%9E%84%E4%BB%B6%E4%B8%8E%E4%B8%AD%E9%97%B4%E4%BB%B6%E6%8A%80%E6%9C%AF/" data-id="ck88at6vd000714ubh0pkb3z4" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Web工程" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/03/21/Web%E5%B7%A5%E7%A8%8B/" class="article-date">
+  <time datetime="2020-03-21T06:42:35.000Z" itemprop="datePublished">2020-03-21</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/03/21/Web%E5%B7%A5%E7%A8%8B/">Web工程</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="软件架构"><a href="#软件架构" class="headerlink" title="软件架构"></a>软件架构</h2><p>软件架构能够体现出动态的特性</p>
+<p>Web架构：</p>
+<p>设计模式：<br>各个组件之间如何联系以及怎么设计<br>三个不同的抽象层次：<br>    架构模式：<br>        系统的结构解决方案；<br>        子系统的架构没职责和相互作用<br>    设计模式：<br>        特定情况下。。。<br>    编程模式：<br>        …<br>MVC （model-view-controller）<br>框架：一组组件的综合，对相关的应用提供可重用的框架结构<br>    可以进行实例化<br>    特定领域的基本蓝图<br>    通用的功能已经类实现的可复用软件系统</p>
+<p>Struts：</p>
+<p>框架的优点：<br>    简单重用框架的架构和功能<br>缺点：<br>    需要专业知识<br>    不同的框架之间没有联系<br>    商业产品太过依赖架构<br>层次特性：<br>    分而治之：<br>数据特性：<br>    结构化还是非结构化<br>分布特性：<br>    分布对象中间件<br>    虚拟共享内存<br>    面向消息中间件<br>    P2P<br>    面向服务的中间件<br>Web应用架构特性<br>    Web基础架构<br>    WPA<br>    不同的系统是使得更难评估和维护各种质量需求<br>    技术架构的异构性和不成熟<br>    国际化<br>通用的包含的组件<br>    那些事Web端，那些事服务端<br>    客户端（浏览器和外部应用）<br>    防火墙<br>    Web服务器</p>
+<p>层次架构:<br>    Web应用的两层架构<br>         客户端只有客户<br>        服务端：数据库，业务逻辑等等<br>    Web应用的三层架构<br>        展示层：封装用户和其他系统的交互<br>        逻辑层：业务逻辑<br>        数据层：相关数据<br>    Ruby on Rauls应用架构<br>     ASP.NET应用架构:三层架构<br>     Web应用的N曾架构<br>         业务层的扩展，其他和三层差不多的</p>
+<pre><code>后端：三层五共享架构
+...
+JAVA EE应用架构
+    客户层
+    Web层
+    业务层
+    数据层
+JSP-Model-2：html代码镶嵌上JAVA代码
+jsp不需要编译过后再运行，在应用服务器可以直接运行
+JSP运行模式：先回转成JAVA代码，而HTML会翻译成字符串（后来的开发工具已经解决）
+JSP-Model 实现 in Struts
+    Web-Server包括 Serverlet -Container
+Websphere
+SPA:四层
+    view
+    应用服务
+    存储
+    。。。
+单体架构
+    打包成一个包，部署和测试会更容易
+多层应用的优点：
+    重用：
+        扩展性好
+        代码好维护
+缺点：
+    切割复杂
+    故障点</code></pre><p> 层次架构的设计：<br>     …<br> 集成架构：<br>     展示层面<br>     应用逻辑层面<br>     服务层<br> 门户（Poetal）：针对具体用户或者社区的应用平台<br>                 水平门户：新浪，腾讯<br>                 垂直门户：W3C,语义Web社区等<br> EAI（企业应用集成）：<br>     强调内容层面和应用逻辑层面集成的架构<br>     集成遗留系统<br>     采用中间件<br>     继承不同数据源，不同平台的异构应用<br> SOA（面向服务的架构）：<br>     提供一种集成框架<br>     关键是服务<br>         Web服务是实现SOA的方式之一<br>         应用程序的业务功能称为服务<br> 面向数据的架构<br>     数据结构分类<br>         数据库的结构化数据<br>         文档类<br>         多媒体数据和媒体服务器<br>     Web应用结合使用<br>     以数据库为中心的架构<br>     Web文档管理架构<br>     流媒体数据的架构：<br>         直播是 实时流协议<br>     使用广播的流架构</p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><pre><code>好的架构可以提高Web应用的开发效率，可重用性，易于维护和扩展
+    架构模式
+    层次架构
+    面向数据的架构
+    集成架构</code></pre><p>淘宝基于Node的前后端分离<br>    Node服务：</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://github.com/111zx/111zx.github.io/2020/03/21/Web%E5%B7%A5%E7%A8%8B/" data-id="ck88at6v7000214ub0h7mg3kf" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-Python基础" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2020/03/18/Python%E5%9F%BA%E7%A1%80/" class="article-date">
@@ -374,7 +1515,7 @@ Android Studio：谷歌公司基于IDEA开发的。</code></pre><h3 id="2-Intell
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">July 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a></li></ul>
     </div>
   </div>
 
@@ -387,23 +1528,23 @@ Android Studio：谷歌公司基于IDEA开发的。</code></pre><h3 id="2-Intell
       <ul>
         
           <li>
+            <a href="/2020/07/06/%E6%96%87%E4%BB%B6%E4%BC%A0%E8%BE%93%E7%B3%BB%E7%BB%9F/">文件传输系统</a>
+          </li>
+        
+          <li>
+            <a href="/2020/07/05/1.%20%E7%82%B9%E5%87%BB%E6%96%87%E4%BB%B6%E6%A0%91%E6%98%BE%E7%A4%BA%E6%96%87%E4%BB%B6%E5%88%97%E8%A1%A8/">1. 点击文件树显示文件列表</a>
+          </li>
+        
+          <li>
+            <a href="/2020/06/22/IO%E6%B5%81/">IO流</a>
+          </li>
+        
+          <li>
             <a href="/2020/06/10/%E6%B3%9B%E5%9E%8B/">泛型</a>
           </li>
         
           <li>
             <a href="/2020/06/09/%E8%BD%AF%E4%BB%B6%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84%E8%AF%BE%E7%A8%8B%E6%8A%A5%E5%91%8A/">软件体系结构课程报告</a>
-          </li>
-        
-          <li>
-            <a href="/2020/06/01/%E6%9E%9A%E4%B8%BE%E7%B1%BB%E5%92%8C%E6%B3%A8%E8%A7%A3/">枚举类和注解</a>
-          </li>
-        
-          <li>
-            <a href="/2020/05/26/%E5%B8%B8%E7%94%A8%E7%B1%BB/">常用类</a>
-          </li>
-        
-          <li>
-            <a href="/2020/05/24/linux/">linux</a>
           </li>
         
       </ul>

@@ -7,15 +7,45 @@
   
   <title>nginx | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="article">
+  <meta name="description" content="第一章 Nginx基本概念基本概念 什么是Nginx nginx是一个轻量级的高性能的HTTP和反向代理Web服务器。专门为性能而生，有报告显示，可以支持高达50000个连接数。  优点 占用内存少，并发能力强。   反向代理 正向代理 Nginx不仅可以做反向代理，实现负载均衡。还能用做正向代理来进行上网等功能。 正向代理：如果把局域网外的Internet想象成一个巨大的资源库，则局域网中的客户">
+<meta property="og:type" content="article">
 <meta property="og:title" content="nginx">
 <meta property="og:url" content="https://github.com/111zx/111zx.github.io/2020/05/20/nginx/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="第一章 Nginx基本概念基本概念 什么是Nginx nginx是一个轻量级的高性能的HTTP和反向代理Web服务器。专门为性能而生，有报告显示，可以支持高达50000个连接数。  优点 占用内存少，并发能力强。   反向代理 正向代理 Nginx不仅可以做反向代理，实现负载均衡。还能用做正向代理来进行上网等功能。 正向代理：如果把局域网外的Internet想象成一个巨大的资源库，则局域网中的客户">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2020-05-19T23:47:56.000Z">
-<meta property="article:modified_time" content="2020-05-19T23:47:56.825Z">
+<meta property="og:image" content="https://github.com/111zx/111zx.github.io/2020/05/20/nginx/C:%5CUsers%5C14914%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200616194405669.png">
+<meta property="og:image" content="https://github.com/111zx/111zx.github.io/2020/05/20/nginx/C:%5CUsers%5C14914%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200616200631773.png">
+<meta property="og:image" content="https://github.com/111zx/111zx.github.io/2020/05/20/nginx/C:%5CUsers%5C14914%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200616201349988.png">
+<meta property="og:image" content="https://github.com/111zx/111zx.github.io/2020/05/20/nginx/C:%5CUsers%5C14914%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200616211607012.png">
+<meta property="og:image" content="https://github.com/111zx/111zx.github.io/2020/05/20/nginx/Users/14914/AppData/Roaming/Typora/typora-user-images/image-20200616211623412.png">
+<meta property="og:image" content="https://github.com/111zx/111zx.github.io/2020/05/20/nginx/Users/14914/AppData/Roaming/Typora/typora-user-images/image-20200616213211137.png">
+<meta property="og:image" content="https://github.com/111zx/111zx.github.io/2020/05/20/nginx/Users/14914/AppData/Roaming/Typora/typora-user-images/image-20200616213251020.png">
+<meta property="og:image" content="https://github.com/111zx/111zx.github.io/2020/05/20/nginx/C:%5CUsers%5C14914%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200616213438518.png">
+<meta property="og:image" content="https://github.com/111zx/111zx.github.io/2020/05/20/nginx/C:%5CUsers%5C14914%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200618143827811.png">
+<meta property="og:image" content="https://github.com/111zx/111zx.github.io/2020/05/20/nginx/Users/14914/AppData/Roaming/Typora/typora-user-images/image-20200618145403876.png">
+<meta property="og:image" content="https://github.com/111zx/111zx.github.io/2020/05/20/nginx/Users/14914/AppData/Roaming/Typora/typora-user-images/image-20200618155440733.png">
+<meta property="og:image" content="https://github.com/111zx/111zx.github.io/2020/05/20/nginx/C:%5CUsers%5C14914%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200618155504464.png">
+<meta property="og:image" content="https://github.com/111zx/111zx.github.io/2020/05/20/nginx/C:%5CUsers%5C14914%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200618160142518.png">
+<meta property="og:image" content="https://github.com/111zx/111zx.github.io/2020/05/20/nginx/C:%5CUsers%5C14914%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200618160104821.png">
+<meta property="og:image" content="https://github.com/111zx/111zx.github.io/2020/05/20/nginx/C:%5CUsers%5C14914%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200618162705438.png">
+<meta property="og:image" content="https://github.com/111zx/111zx.github.io/2020/05/20/nginx/C:%5CUsers%5C14914%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200618172526127.png">
+<meta property="og:image" content="https://github.com/111zx/111zx.github.io/2020/05/20/nginx/C:%5CUsers%5C14914%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200618181908923.png">
+<meta property="og:image" content="https://github.com/111zx/111zx.github.io/2020/05/20/nginx/C:%5CUsers%5C14914%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200618181921728.png">
+<meta property="og:image" content="https://github.com/111zx/111zx.github.io/2020/05/20/nginx/C:%5CUsers%5C14914%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200618182258446.png">
+<meta property="og:image" content="https://github.com/111zx/111zx.github.io/2020/05/20/nginx/Users/14914/AppData/Roaming/Typora/typora-user-images/image-20200618183357858.png">
+<meta property="og:image" content="https://github.com/111zx/111zx.github.io/2020/05/20/nginx/C:%5CUsers%5C14914%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200618183420803.png">
+<meta property="og:image" content="https://github.com/111zx/111zx.github.io/2020/05/20/nginx/C:%5CUsers%5C14914%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200619104710350.png">
+<meta property="og:image" content="https://github.com/111zx/111zx.github.io/2020/05/20/nginx/C:%5CUsers%5C14914%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200619105058735.png">
+<meta property="og:image" content="https://github.com/111zx/111zx.github.io/2020/05/20/nginx/C:%5CUsers%5C14914%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200619154627120.png">
+<meta property="og:image" content="https://github.com/111zx/111zx.github.io/2020/05/20/nginx/C:%5CUsers%5C14914%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200619162241983.png">
+<meta property="og:image" content="https://github.com/111zx/111zx.github.io/2020/05/20/nginx/C:%5CUsers%5C14914%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200619162354529.png">
+<meta property="og:image" content="https://github.com/111zx/111zx.github.io/2020/05/20/nginx/C:%5CUsers%5C14914%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200619162513285.png">
+<meta property="article:published_time" content="2020-05-19T23:47:56.481Z">
+<meta property="article:modified_time" content="2020-06-19T08:41:31.581Z">
 <meta property="article:author" content="zx">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://github.com/111zx/111zx.github.io/2020/05/20/nginx/C:%5CUsers%5C14914%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200616194405669.png">
   
     <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -67,7 +97,7 @@
         <section id="main"><article id="post-nginx" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2020/05/20/nginx/" class="article-date">
-  <time datetime="2020-05-19T23:47:56.000Z" itemprop="datePublished">2020-05-20</time>
+  <time datetime="2020-05-19T23:47:56.481Z" itemprop="datePublished">2020-05-20</time>
 </a>
     
   </div>
@@ -86,7 +116,420 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <h1 id="第一章-Nginx基本概念"><a href="#第一章-Nginx基本概念" class="headerlink" title="第一章 Nginx基本概念"></a>第一章 Nginx基本概念</h1><h2 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h2><ul>
+<li><p>什么是Nginx</p>
+<p>nginx是一个轻量级的高性能的HTTP和反向代理Web服务器。专门为性能而生，有报告显示，可以支持高达50000个连接数。</p>
+</li>
+<li><p>优点</p>
+<p>占用内存少，并发能力强。</p>
+</li>
+</ul>
+<h3 id="反向代理"><a href="#反向代理" class="headerlink" title="反向代理"></a>反向代理</h3><ul>
+<li><p>正向代理</p>
+<p>Nginx不仅可以做反向代理，实现负载均衡。还能用做正向代理来进行上网等功能。</p>
+<p>正向代理：如果把局域网外的Internet想象成一个巨大的资源库，则局域网中的客户端要访问Internet，则需要通过代理服务器来访问，这种代理服务称为正向代理。</p>
+</li>
+</ul>
+<p><img src="/111zx/111zx.github.io/2020/05/20/nginx/C:%5CUsers%5C14914%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200616194405669.png" alt="image-20200616194405669"></p>
+<ul>
+<li><p>上图是通过代理服务器访问谷歌，即正向代理。</p>
+</li>
+<li><p>反向代理</p>
+<p>客户端对代理是无感知的，因为客户端不需要任何配置就可以访问，我们只需要将请求发送到反向代理服务器，由反向代理服务器去选择目标服务器获取数据后，在返回给客户端，此时反向代理服务器和目标服务器对外就是一个服务器，<strong>暴露的是代理服务器地址</strong>，<strong>隐藏了真实服务器IP地址</strong>。</p>
+<p><img src="/111zx/111zx.github.io/2020/05/20/nginx/C:%5CUsers%5C14914%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200616200631773.png" alt="image-20200616200631773"></p>
+</li>
+</ul>
+<h3 id="负载均衡"><a href="#负载均衡" class="headerlink" title="负载均衡"></a>负载均衡</h3><ul>
+<li><p>传统的方式：客户端可以发送多个请求到服务器，服务器处理请求，有一些可能要与数据库进行交互，服务器处理完毕后，再将结果返回给客户端。在并发较小的情况下，是可以支持的。但是项目并发要求高，请求量大的情况下，会出现很多性能问题。</p>
+</li>
+<li><p>负载均衡：增加服务器的数量，将请求尽可能平均分发到多个服务器上。</p>
+<p><img src="/111zx/111zx.github.io/2020/05/20/nginx/C:%5CUsers%5C14914%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200616201349988.png" alt="image-20200616201349988"></p>
+</li>
+</ul>
+<h3 id="动静分离"><a href="#动静分离" class="headerlink" title="动静分离"></a>动静分离</h3><ul>
+<li><p>为了加快网站的解析速度，可以把动态页面和静态页面分配给不同的服务器部署。</p>
+<h1 id="第二章-安装Nginx，常用命令和配置文件"><a href="#第二章-安装Nginx，常用命令和配置文件" class="headerlink" title="第二章 安装Nginx，常用命令和配置文件"></a>第二章 安装Nginx，常用命令和配置文件</h1></li>
+</ul>
+<h2 id="在linux系统中安装nginx"><a href="#在linux系统中安装nginx" class="headerlink" title="在linux系统中安装nginx"></a>在linux系统中安装nginx</h2><ol>
+<li><p>远程终端打开linux系统</p>
+<p><img src="/111zx/111zx.github.io/2020/05/20/nginx/C:%5CUsers%5C14914%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200616211607012.png" alt="image-20200616211607012"></p>
+<img src="/111zx/111zx.github.io/2020/05/20/nginx/Users\14914\AppData\Roaming\Typora\typora-user-images\image-20200616211623412.png" alt="image-20200616211623412" style="zoom:33%;">
+
+<ul>
+<li><p>安装pcre</p>
+<p>将文件从windows拖到Xshell命令行下，可以复制到当前目录</p>
+<p>tar -xvf pcre-8.37.atr.gz</p>
+<p>cd pcre-8.37</p>
+<p>./configure</p>
+<img src="/111zx/111zx.github.io/2020/05/20/nginx/Users\14914\AppData\Roaming\Typora\typora-user-images\image-20200616213211137.png" alt="image-20200616213211137" style="zoom:50%;">
+
+<p>make &amp;&amp; make install：编译并且安装</p>
+<img src="/111zx/111zx.github.io/2020/05/20/nginx/Users\14914\AppData\Roaming\Typora\typora-user-images\image-20200616213251020.png" alt="image-20200616213251020" style="zoom:50%;">
+
+<ul>
+<li><p>注意：./configure检查配置时有可能缺少很多前置应用，需要安装</p>
+<p>yum -y install kernel-headers kernel-devel gcc</p>
+<p>yum -y install gcc-c++</p>
+</li>
+<li><p>查看是否安装成功：</p>
+<p><img src="/111zx/111zx.github.io/2020/05/20/nginx/C:%5CUsers%5C14914%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200616213438518.png" alt="image-20200616213438518"></p>
+</li>
+</ul>
+</li>
+<li><p>使用yum安装其他以依赖</p>
+<p>yum -y install make zlib zlib-devel gcc-c++ libtool openssl openssl-devel</p>
+</li>
+<li><p>安装niginx</p>
+<ol>
+<li>将安装文件放到linux系统</li>
+<li>解压文件</li>
+<li>./config</li>
+<li>make &amp;&amp; make install</li>
+</ol>
+<ul>
+<li>安装成功后，在/usr/local/nginx/sbin/下有一个nginx启动脚本</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<ul>
+<li><p>注意：在安装成功后，防火墙设置默认没有端口号为nginx开放，需要自己设置端口号</p>
+<ul>
+<li><p>在/usr/local/nginx/conf/nginx.conf文件里有默认端口号配置信息（80端口）</p>
+</li>
+<li><p>查看防火墙开放的端口号</p>
+<p>firewall-cmd –list-all</p>
+</li>
+<li><p>添加开放的端口号</p>
+<p>sudo firewall-cmd –add-port=80/tcp –permanent</p>
+</li>
+<li><p>重启防火墙</p>
+<p>firewall-cmd –reload</p>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="nginx常用命令"><a href="#nginx常用命令" class="headerlink" title="nginx常用命令"></a>nginx常用命令</h2><ul>
+<li><p>使用nginx需要进入/usr/local/nginx/sbin目录下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd &#x2F;usr&#x2F;local&#x2F;nginx&#x2F;sbin</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查看版本</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.&#x2F;nginx -v</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>开启nginx服务</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.&#x2F;nginx -s start</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>关闭nginx服务</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.&#x2F;nginx -s stop</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>重新在nginx</p>
+<p>不需要重启nginx服务器，重新加载配置文件即可</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.&#x2F;nginx -s reload</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h2 id="nginx配置文件"><a href="#nginx配置文件" class="headerlink" title="nginx配置文件"></a>nginx配置文件</h2><ul>
+<li><p>位置</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd &#x2F;usr&#x2F;local&#x2F;nginx&#x2F;conf</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h3 id="组成部分"><a href="#组成部分" class="headerlink" title="组成部分"></a>组成部分</h3><ul>
+<li><p>全局块</p>
+<p>从配置文件开始到events之间的内容，主要会设置一些影响nginx服务器整体运行的指令，主要包括配置运行nginx服务器的用户（组），允许生产的worker process数，进程PID存放路径，日志存放路径和类型以及配置文件的引入等。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">worker_processes 1;</span><br></pre></td></tr></table></figure>
+
+<p>这是Nginx服务器并发处理服务的关键配置，worker_processes值越大，可以支持的并发处理量也越多，但是会受到硬件，软件等配置的制约。</p>
+</li>
+<li><p>events块</p>
+<p>nginx主要影响Nginx服务器与用户的网络连接</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">events &#123;</span><br><span class="line">    worker_connections  1024;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<p>​        上述events块中的个内容表示支持的最大连接数时 1024个</p>
+<ul>
+<li><p>http块（配置最频繁的部分）</p>
+<p>代理，缓存和日志定义绝大多数功能和第三方模块的配置都在这里，分为http全局快和server块。</p>
+<ul>
+<li><p>http全局块</p>
+<p>http全局快配置的指令包括文件引入，MIME_TYPE定义，日志定义，连接超时时间，但连接请求数上线等。</p>
+</li>
+<li><p>server块</p>
+<p>这块和虚拟主机有密切关系，虚拟主机从用户角度看，和一台独立的硬件主机是完全一样的，该技术的产生是为了节省互联网服务器硬件成本。</p>
+<p>每个http块包含多个server块，而每个server块就相当于一个虚拟主机</p>
+<p>而每个server块也分为全局server块，以及可以同时包含多个location块</p>
+<ul>
+<li><p>全局server块</p>
+<p>最常见的配置时本虚拟机主机的监听配置和本溪你寄主机的名称或IP配置</p>
+</li>
+<li><p>location块</p>
+<p>一个server块可以配置多个location块</p>
+<p>这块的主要作用是基于Nginx服务器接收到的请求字符串，对虚拟主机名称之外的字符串进行匹配，对特定的请求进行处理。地址定向，数据缓存和应答控制等功能，还有许多第三方模块的配置也在这。</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h1 id="第三章-Nginx配置实例"><a href="#第三章-Nginx配置实例" class="headerlink" title="第三章 Nginx配置实例"></a>第三章 Nginx配置实例</h1><h2 id="反向代理-1"><a href="#反向代理-1" class="headerlink" title="反向代理"></a>反向代理</h2><h3 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h3><ul>
+<li><p>在Linux系统汇中安装tomcat使用默认端口8080</p>
+</li>
+<li><p>加入对外开放的端口号</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">firewall-cmd --add-port&#x3D;8080&#x2F;tcp --permanent</span><br><span class="line"></span><br><span class="line">firewall-cmd --reload</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查看已经开放的端口号</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">firewall-cmd --list-all</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在windows浏览器访问tomcat服务器</p>
+<ul>
+<li>windows访问网址的过程：<ol>
+<li>根据域名去本地的host文件找ip地址，如果没有，通过dns解析出ip</li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="访问过程"><a href="#访问过程" class="headerlink" title="访问过程"></a>访问过程</h3><p><img src="/111zx/111zx.github.io/2020/05/20/nginx/C:%5CUsers%5C14914%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200618143827811.png" alt="image-20200618143827811"></p>
+<h3 id="实例1"><a href="#实例1" class="headerlink" title="实例1"></a>实例1</h3><ol>
+<li><p>在windows系统的host文件进行域名和ip对应关系的配置</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">192.168.208.130 www.123.com</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在nginx进行请求转发的配置（反向代理）</p>
+<ul>
+<li><p>找到nginx配置文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd &#x2F;usr&#x2F;local&#x2F;nginx&#x2F;conf</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>修改server块相关内容</p>
+<pre><code>server {
+        listen       80;//向外展示的端口号
+        server_name  192.168.208.130; //此处修改成本机的IP
+    location / {
+        root   html;
+        proxy_pass http://127.0.0.1:8080;//tomcat向外隐藏只有nginx看到的ip和duan&apos;kou&apos;hao
+        index  index.html index.htm;
+    }</code></pre></li>
+</ul>
+</li>
+<li><p>配置完成，启动nginx，在windows中访问<a href="http://www.123.com" target="_blank" rel="noopener">www.123.com</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd &#x2F;usr&#x2F;local&#x2F;nginx&#x2F;sbin</span><br><span class="line">.&#x2F;nginx</span><br></pre></td></tr></table></figure>
+
+<img src="/111zx/111zx.github.io/2020/05/20/nginx/Users\14914\AppData\Roaming\Typora\typora-user-images\image-20200618145403876.png" alt="image-20200618145403876" style="zoom:50%;">
+
+</li>
+</ol>
+<h3 id="实例2"><a href="#实例2" class="headerlink" title="实例2"></a>实例2</h3><h4 id="实现的效果"><a href="#实现的效果" class="headerlink" title="实现的效果"></a>实现的效果</h4><ul>
+<li><p>使用nginx反向代理，根据访问的路径跳转到不同端口的服务中，nginx监听端口为9001。</p>
+<p>访问<a href="http://127.0.0.1:9001/edu/" target="_blank" rel="noopener">http://127.0.0.1:9001/edu/</a> 直接跳转到127.0.0.1:8080</p>
+<p>访问<a href="http://127.0.0.1:9001/vod/" target="_blank" rel="noopener">http://127.0.0.1:9001/vod/</a> 直接跳转到127.0.0.1:8081</p>
+</li>
+</ul>
+<h4 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h4><ul>
+<li><p>准备两个服务器，一个8080端口，一个8081端口</p>
+</li>
+<li><p>在/usr/src/下创建两个文件夹</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mkdir tomcat8080</span><br><span class="line">mkdir tomcat8081</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>分别在这两个目录下复制一份tomcat压缩文件并解压</p>
+</li>
+<li><p>配置环境变量（base和home名需要起的不一样）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">#tomcat8080</span><br><span class="line">CATALINA0_BASE&#x3D;&#x2F;usr&#x2F;src&#x2F;tomcat8080&#x2F;apache-tomcat-7.0.70</span><br><span class="line">CATALINA0_HOME&#x3D;&#x2F;usr&#x2F;src&#x2F;tomcat8080&#x2F;apache-tomcat-7.0.70</span><br><span class="line">export CLASSPATH&#x3D;.:$&#123;CATALINA0_HOME&#125;&#x2F;bin&#x2F;tomcat-juli.jar:$&#123;CATALINA0_HOME&#125;&#x2F;bin&#x2F;bootstrap.jar</span><br><span class="line">export CATALINA0_BASE CATALINA0_HOME</span><br><span class="line"></span><br><span class="line">#tomcat8081</span><br><span class="line">CATALINA1_BASE&#x3D;&#x2F;usr&#x2F;src&#x2F;tomcat8081&#x2F;apache-tomcat-7.0.70</span><br><span class="line">CATALINA1_HOME&#x3D;&#x2F;usr&#x2F;src&#x2F;tomcat8081&#x2F;apache-tomcat-7.0.70</span><br><span class="line">export CLASSPATH&#x3D;.:$&#123;CATALINA1_HOME&#125;&#x2F;bin&#x2F;tomcat-juli.jar:$&#123;CATALINA1_HOME&#125;&#x2F;bin&#x2F;bootstrap.jar</span><br><span class="line">export CATALINA1_BASE CATALINA1_HOME</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>修改两个tomcat启动寻找路径文件/bin/caralina.sh(找到如下注释，插入以下两行)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">#OS specific support.  $var _must_ be set to either true or false.</span><br><span class="line">export CATALINA_BASE&#x3D;$CATALINA0_BASE</span><br><span class="line">export CATALINA_HOME&#x3D;$CATALINA0_HOME</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查看防火墙对应端口号是否开启，如果没有，开启端口号。</p>
+</li>
+<li><p>准备测试的文件夹</p>
+<img src="/111zx/111zx.github.io/2020/05/20/nginx/Users\14914\AppData\Roaming\Typora\typora-user-images\image-20200618155440733.png" alt="image-20200618155440733">
+
+<p><img src="/111zx/111zx.github.io/2020/05/20/nginx/C:%5CUsers%5C14914%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200618155504464.png" alt="image-20200618155504464"></p>
+</li>
+</ul>
+<h4 id="具体配置"><a href="#具体配置" class="headerlink" title="具体配置"></a>具体配置</h4><ul>
+<li><p>找到nginx配置文件/usr，进行反向代理配置</p>
+<p><img src="/111zx/111zx.github.io/2020/05/20/nginx/C:%5CUsers%5C14914%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200618160142518.png" alt="image-20200618160142518"></p>
+</li>
+<li><p><img src="/111zx/111zx.github.io/2020/05/20/nginx/C:%5CUsers%5C14914%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200618160104821.png" alt="image-20200618160104821"></p>
+</li>
+</ul>
+<ul>
+<li><p>开放9001端口</p>
+<p>firewall-cmd –add-port=8080/tcp –permanent</p>
+<p>firewall-cmd –reload</p>
+</li>
+<li><p>关闭nginx服务重新启动，访问页面</p>
+<p><img src="/111zx/111zx.github.io/2020/05/20/nginx/C:%5CUsers%5C14914%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200618162705438.png" alt="image-20200618162705438"></p>
+</li>
+</ul>
+<h3 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h3><ul>
+<li>需要确定自己实在同一个nginx文件里面配置，有可能安装了多个nginx，配置错了。</li>
+</ul>
+<h2 id="负载均衡-1"><a href="#负载均衡-1" class="headerlink" title="负载均衡"></a>负载均衡</h2><h3 id="实现效果"><a href="#实现效果" class="headerlink" title="实现效果"></a>实现效果</h3><ul>
+<li>浏览器地址栏输入地址：<a href="http://192.168.208.130/edu/a.html，负载均衡效果，平均8080和8081端口中" target="_blank" rel="noopener">http://192.168.208.130/edu/a.html，负载均衡效果，平均8080和8081端口中</a></li>
+</ul>
+<h3 id="准备工作-1"><a href="#准备工作-1" class="headerlink" title="准备工作"></a>准备工作</h3><ul>
+<li>准备两台服务器tomcat8080和tomcat8081</li>
+<li>在两台tomcat里面webapps目录这种，创建edu文件夹，并且创建a.html。</li>
+</ul>
+<h3 id="配置文件"><a href="#配置文件" class="headerlink" title="配置文件"></a>配置文件</h3><ul>
+<li><p>在http块中添加</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">upstream myserver&#123;</span><br><span class="line">        server 192.168.208.130:8080;</span><br><span class="line">        server 192.168.208.130:8081;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在location中添加（需要保证只有一个这样格式的语句）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">proxy_pass http:&#x2F;&#x2F;myserver;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>启动nginx，在windows端查看，会发现8080和8081端口会交替分担任务。</p>
+</li>
+</ul>
+<h3 id="分配策略"><a href="#分配策略" class="headerlink" title="分配策略"></a>分配策略</h3><h4 id="轮询（默认）"><a href="#轮询（默认）" class="headerlink" title="轮询（默认）"></a>轮询（默认）</h4><ul>
+<li>每个请求按照时间顺序注意分到不同的后端服务器，如果后端服务器down掉，能自动剔除。</li>
+</ul>
+<h4 id="weight"><a href="#weight" class="headerlink" title="weight"></a>weight</h4><ul>
+<li><p>weight代表权重，默认为1，权重越高被分配的客户端越多</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">upstream myserver&#123;</span><br><span class="line">        server 192.168.208.130:8080 weight &#x3D; 5;</span><br><span class="line">        server 192.168.208.130:8081 weight &#x3D; 10;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h4 id="ip-hash"><a href="#ip-hash" class="headerlink" title="ip hash"></a>ip hash</h4><ul>
+<li><p>每个请求按照访问ip的hash结果分配，这样每个方可固定访问一个后端服务器，可以解决session问题</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">upstream myserver&#123;</span><br><span class="line">		ip_hash;</span><br><span class="line">        server 192.168.208.130:8080 weight &#x3D; 5;        			server 192.168.208.130:8081 weight &#x3D; 10;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h4 id="fair-第三方"><a href="#fair-第三方" class="headerlink" title="fair(第三方)"></a>fair(第三方)</h4><ul>
+<li><p>按后端服务器的响应时间来分配强求，响应时间越短就优先分配</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">upstream myserver&#123;</span><br><span class="line">     server 192.168.208.130:8080 weight &#x3D; 5;        </span><br><span class="line">	 server 192.168.208.130:8081 weight &#x3D; 10;</span><br><span class="line">	 fair；</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h2 id="动静分离-1"><a href="#动静分离-1" class="headerlink" title="动静分离"></a>动静分离</h2><ul>
+<li><p>目的：提高访问效率</p>
+</li>
+<li><p>将动态请求和静态请求分离开来，使用Nginx处理静态页面，Tomcat处理动态页面</p>
+</li>
+<li><p>分为两种方式：</p>
+<ul>
+<li>方式一：纯粹把静态文件成单独的域名，放在独立的服务器上，也是目前主流推崇的方案</li>
+<li>方式二：动态和静态混合在一起发布，通过nginx分开</li>
+</ul>
+</li>
+<li><p>通过location指定不同的后缀名实现不同的请求转发。通过expires参数设置，可以使浏览器缓存过期时间，减少与服务器之间的请求和流量。机里expires定义：给一个资源设定一个过期时间，也就是说无需去服务端验证，直接通过浏览器自身确认是否过期即可，所以不会产生额外的流量。</p>
+</li>
+</ul>
+<p><img src="/111zx/111zx.github.io/2020/05/20/nginx/C:%5CUsers%5C14914%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200618172526127.png" alt="image-20200618172526127"></p>
+<h3 id="准备工作-2"><a href="#准备工作-2" class="headerlink" title="准备工作"></a>准备工作</h3><p><img src="/111zx/111zx.github.io/2020/05/20/nginx/C:%5CUsers%5C14914%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200618181908923.png" alt="image-20200618181908923"></p>
+<p><img src="/111zx/111zx.github.io/2020/05/20/nginx/C:%5CUsers%5C14914%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200618181921728.png" alt="image-20200618181921728"></p>
+<h3 id="修改配置文件"><a href="#修改配置文件" class="headerlink" title="修改配置文件"></a>修改配置文件</h3><p><img src="/111zx/111zx.github.io/2020/05/20/nginx/C:%5CUsers%5C14914%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200618182258446.png" alt="image-20200618182258446"></p>
+<h3 id="重启nginx"><a href="#重启nginx" class="headerlink" title="重启nginx"></a>重启nginx</h3><h3 id="最终测试效果"><a href="#最终测试效果" class="headerlink" title="最终测试效果"></a>最终测试效果</h3><ul>
+<li><p>访问<a href="http://192.168.208.130/image/String%E5%AE%9E%E4%BE%8B%E5%8C%96.png" target="_blank" rel="noopener">http://192.168.208.130/image/String%E5%AE%9E%E4%BE%8B%E5%8C%96.png</a></p>
+<img src="/111zx/111zx.github.io/2020/05/20/nginx/Users\14914\AppData\Roaming\Typora\typora-user-images\image-20200618183357858.png" alt="image-20200618183357858" style="zoom: 25%;">
+</li>
+<li><p>访问<a href="http://192.168.208.130/www/a.html" target="_blank" rel="noopener">http://192.168.208.130/www/a.html</a></p>
+<p><img src="/111zx/111zx.github.io/2020/05/20/nginx/C:%5CUsers%5C14914%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200618183420803.png" alt="image-20200618183420803"></p>
+</li>
+</ul>
+<h2 id="配置高并发可用集群"><a href="#配置高并发可用集群" class="headerlink" title="配置高并发可用集群"></a>配置高并发可用集群</h2><ul>
+<li><p>传统方式的问题：nginx宕机时，服务会无法进行</p>
+<p><img src="/111zx/111zx.github.io/2020/05/20/nginx/C:%5CUsers%5C14914%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200619104710350.png" alt="image-20200619104710350"></p>
+</li>
+<li><p>高可用集群：主nginx服务器宕机后会自动切换到备用nginx服务器</p>
+<p><img src="/111zx/111zx.github.io/2020/05/20/nginx/C:%5CUsers%5C14914%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200619105058735.png" alt="image-20200619105058735"></p>
+<ul>
+<li><p>高可用集群条件：</p>
+<ul>
+<li>两台nginx服务器</li>
+<li>在两台服务器中安装nginx软件</li>
+<li>在两台服务器中安装keepalived</li>
+</ul>
+</li>
+<li><p>安装keepalived：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum -y install keepalived</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在/etc/keepalived下会生成配置文件</p>
+</li>
+<li><p>克隆一个主机slave2</p>
+</li>
+</ul>
+</li>
+<li><p>完成高可用配置</p>
+<ol>
+<li><p><strong>修改/etc/keepalived/keepalived.conf</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">! Configuration File for keepalived</span><br><span class="line">  </span><br><span class="line">global_defs &#123;</span><br><span class="line">     notification_email &#123;</span><br><span class="line">     acassen@firewall.loc</span><br><span class="line">       failover@firewall.loc</span><br><span class="line">     sysadmin@firewall.loc</span><br><span class="line">     &#125;</span><br><span class="line">   notification_email_from Alexandre.Cassen@firewall.loc</span><br><span class="line">     smtp_server 192.168.208.130 # 主机ip，不管主从服务器都是这个ip，必须填写主服务ip</span><br><span class="line">   smtp_connect_timeout 30 # 超时时间</span><br><span class="line">     router_id master # 主机名称 vi &#x2F;etc&#x2F;hosts  类似这样的格式：127.0.0.1   master</span><br><span class="line">&#125;</span><br><span class="line">  </span><br><span class="line">  vrrp_instance VI_1 &#123;</span><br><span class="line">      state MASTER #主机为MASTER 备用机为BACKUP</span><br><span class="line">      interface ens33 # 网卡号，ifconfig可查看</span><br><span class="line">      virtual_router_id 51 # 主机和备用机必须一样</span><br><span class="line">      priority 100 # 主机一般设计为100  备用机低于100</span><br><span class="line">      advert_int 1 # 每隔1s发送一个心跳，检测服务机状态</span><br><span class="line">  	</span><br><span class="line">      authentication &#123;# 判断依据</span><br><span class="line">          auth_type PASS</span><br><span class="line">          auth_pass 1111</span><br><span class="line">      &#125;</span><br><span class="line">      virtual_ipaddress &#123;# 虚拟ip 需要和主机在一个网段</span><br><span class="line">          192.168.200.50</span><br><span class="line">          192.168.200.51</span><br><span class="line">          192.168.200.52</span><br><span class="line">      &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  vrrp_script chk_http_port&#123;</span><br><span class="line">  	script &quot;&#x2F;usr&#x2F;local&#x2F;src&#x2F;nginx_check.sh&quot; # 脚本位置</span><br><span class="line">  	interval 2 # 检测脚本执行的间隔</span><br><span class="line">  	weight -20 # 主服务器宕机的话让主服务器权重-20，备用服务器就可以顶上</span><br><span class="line">  	&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>在/usr/local/src添加检测脚本</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">#!&#x2F;bin&#x2F;bash</span><br><span class="line">A&#x3D;&#96;ps -C nginx –no-header |wc -l&#96;</span><br><span class="line">if [ $A -eq 0 ];then</span><br><span class="line">    &#x2F;usr&#x2F;local&#x2F;nginx&#x2F;sbin&#x2F;nginx</span><br><span class="line">    sleep 2</span><br><span class="line">    if [ &#96;ps -C nginx --no-header |wc -l&#96; -eq 0 ];then</span><br><span class="line">        killall keepalived</span><br><span class="line">    fi</span><br><span class="line">fi</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ol>
+</li>
+</ul>
+<ol start="3">
+<li><p>在两台服务器启动niginx和keepalived</p>
+<p>./nginx</p>
+<p>systemctl start keepalived.service</p>
+</li>
+<li><p>测试</p>
+<ol>
+<li><p>在浏览器输入ip地址192.168.208.50（虚拟ip在linux上通过指令 ip a可以查看）</p>
+</li>
+<li><p>将主服务器192.160.208.130停止，然后测试</p>
+</li>
+</ol>
+</li>
+<li><p>演示：kill</p>
+<p><img src="/111zx/111zx.github.io/2020/05/20/nginx/C:%5CUsers%5C14914%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200619154627120.png" alt="image-20200619154627120"></p>
+</li>
+</ol>
+<h1 id="Nginx执行原理"><a href="#Nginx执行原理" class="headerlink" title="Nginx执行原理"></a>Nginx执行原理</h1><p><img src="/111zx/111zx.github.io/2020/05/20/nginx/C:%5CUsers%5C14914%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200619162241983.png" alt="image-20200619162241983"></p>
+<ul>
+<li><p>nginx启动有两个进程 worker和nginx</p>
+<p><img src="/111zx/111zx.github.io/2020/05/20/nginx/C:%5CUsers%5C14914%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200619162354529.png" alt="image-20200619162354529"></p>
+<ul>
+<li><p>worker（<strong>可以有多个worker</strong>）：实际工人</p>
+<p>完成master分配来的任务</p>
+</li>
+<li><p>master（<strong>一个</strong>）：管理员</p>
+<p>分配任务给worker</p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="机制"><a href="#机制" class="headerlink" title="机制"></a>机制</h3><p><img src="/111zx/111zx.github.io/2020/05/20/nginx/C:%5CUsers%5C14914%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200619162513285.png" alt="image-20200619162513285"></p>
+<ul>
+<li><p>管理员发送请求，先到niginx的master进程，worker接收到master的任务信息，通过<strong>争抢机制</strong>获取请求，并通过反向代理或者和tomcat配合完成具体操作。</p>
+</li>
+<li><p><strong>一个master多个worker的优点</strong></p>
+<ul>
+<li>可以使用nginx -s reload热部署，工作的worker可以干自己的事情，空闲的worker重新加载修改的文件，完成之后可以以新的配置完成任务。</li>
+<li>worker时独立的进程，不需要加锁，省掉了锁的开销。</li>
+<li>有一个worker挂掉，master可以很快启动其他的worker完成这件任务。不会造成服务中断。</li>
+</ul>
+</li>
+<li><p><strong>设置worker数量的根据</strong></p>
+<p>Nginx和redis采用了io多路复用机制。<strong>在windows中这个机制无法产生效果。</strong></p>
+<p>每个worker线程需要把cpu的性能发挥到极致。<strong>几个cpu设置几个worker</strong>。</p>
+</li>
+<li><p>worker连接数worker_connection</p>
+<ul>
+<li><p>发送一个请求，占用了worker几个连接数</p>
+<p>答案：<strong>2个或者4个。</strong></p>
+<ul>
+<li>2个：访问静态资源，只需要在nginx进行。nginx直接和客户机交互一来一回两次。</li>
+<li>4个：需要访问数据库，要经过tomcat。nginx需要通过反向代理经过tomcat完成客户机的请求，需要4个链接</li>
+</ul>
+</li>
+<li><p>nginx有一个master，有四个worker，每个worker最大连接数1024个，求<strong>最大的并发数</strong></p>
+<p>worker数量 * worker最大连接数 / 2</p>
+<p>如果是http作为反向代理，需要经过tomcat：worker数量 * worker最大连接数 / 2</p>
+</li>
+</ul>
+</li>
+</ul>
+
       
     </div>
     <footer class="article-footer">
@@ -135,7 +578,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">July 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a></li></ul>
     </div>
   </div>
 
@@ -148,23 +591,23 @@
       <ul>
         
           <li>
+            <a href="/2020/07/06/%E6%96%87%E4%BB%B6%E4%BC%A0%E8%BE%93%E7%B3%BB%E7%BB%9F/">文件传输系统</a>
+          </li>
+        
+          <li>
+            <a href="/2020/07/05/1.%20%E7%82%B9%E5%87%BB%E6%96%87%E4%BB%B6%E6%A0%91%E6%98%BE%E7%A4%BA%E6%96%87%E4%BB%B6%E5%88%97%E8%A1%A8/">1. 点击文件树显示文件列表</a>
+          </li>
+        
+          <li>
+            <a href="/2020/06/22/IO%E6%B5%81/">IO流</a>
+          </li>
+        
+          <li>
             <a href="/2020/06/10/%E6%B3%9B%E5%9E%8B/">泛型</a>
           </li>
         
           <li>
             <a href="/2020/06/09/%E8%BD%AF%E4%BB%B6%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84%E8%AF%BE%E7%A8%8B%E6%8A%A5%E5%91%8A/">软件体系结构课程报告</a>
-          </li>
-        
-          <li>
-            <a href="/2020/06/01/%E6%9E%9A%E4%B8%BE%E7%B1%BB%E5%92%8C%E6%B3%A8%E8%A7%A3/">枚举类和注解</a>
-          </li>
-        
-          <li>
-            <a href="/2020/05/26/%E5%B8%B8%E7%94%A8%E7%B1%BB/">常用类</a>
-          </li>
-        
-          <li>
-            <a href="/2020/05/24/linux/">linux</a>
           </li>
         
       </ul>
